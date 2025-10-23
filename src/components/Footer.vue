@@ -5,7 +5,7 @@
     <footer id="contact">
         <div class="footer__container">
             <div class="footer__row footer__row--top">
-                <h3 class="footer__heading">Máte zájem se mnou spolupracovat?</h3>
+                <p class="footer__heading">Máte zájem se mnou spolupracovat?</p>
                 <!-- <Button variant="white">Project Form</Button> -->
             </div>
             <div class="footer__row footer__row--bottom">
@@ -142,22 +142,11 @@ footer {
 }
 
 .footer__heading {
-    font-size: 6rem;
-    line-height: 1;
-    letter-spacing: -0.075em;
-    text-transform: uppercase;
-    font-weight: 400;
-    margin: 0;
-
-    @media (max-width: 1024px) {
-        font-size: 4rem;
-        letter-spacing: -0.025em;
-
-    }
+    font-size: 4rem;
+    line-height: 1.25;
 
     @media (max-width: 750px) {
-        font-size: 1.5rem;
-        letter-spacing: -0.015em;
+        font-size: 2rem;
     }
 }
 
