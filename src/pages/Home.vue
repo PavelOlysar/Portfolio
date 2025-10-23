@@ -77,7 +77,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import FooterImage from '@/assets/footer-image.png';
 import HeaderImage from '@/assets/header.png';
 import ProfileImage from '@/assets/profile.png';
 
