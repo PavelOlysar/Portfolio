@@ -1,0 +1,59 @@
+:root {
+    --light: #FFFFFF;
+    --dark: #000000;
+    --gray: #9E9E9E;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body,
+#app {
+    height: 100vh;
+}
+
+body {
+    background: var(--light);
+    color: var(--dark);
+    font-family: Helvetica, sans-serif, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    letter-spacing: 0;
+    font-weight: 300;
+}
+
+* {
+    font-family: Helvetica, sans-serif, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    border: none;
+}
+
+h2 {
+    font-size: 6rem;
+    line-height: 1;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 3.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.footer__heading {
+    font-size: 3.5rem;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+b {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
