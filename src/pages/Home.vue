@@ -7,19 +7,19 @@
                 <img :src="HeaderImage" alt="Pavel Olysar Header" class="header__image">
                 <div class="header__content">
                     <div class="header__text">
-                        <b>Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic design love Finland
-                            media hello lorem Visual designer lorem ipsum dolor sit amet Czech Republic hello
-                            graphic.</b>
+                        <b>Jsem designer a web developer, který tvoří digitální projekty, jež nejen vypadají skvěle, ale
+                            zároveň přinášejí uživatelům intuitivní a příjemný zážitek. Specializuji se na UI/UX design,
+                            moderní webový vývoj a tvorbu vizuálních identit.</b>
                         <nav class="hero-nav" aria-label="primary">
                             <ol>
                                 <li>
-                                    <Link href="#works" size="hero">Works</Link>
+                                    <Link href="#works" size="hero">Projekty</Link>
                                 </li>
                                 <li>
-                                    <Link href="#services" size="hero">Services</Link>
+                                    <Link href="#services" size="hero">Služby</Link>
                                 </li>
                                 <li>
-                                    <Link href="#contact" size="hero">Contact</Link>
+                                    <Link href="#contact" size="hero">Kontakt</Link>
                                 </li>
                             </ol>
                         </nav>
@@ -32,13 +32,14 @@
 
             <section class="works" id="works">
                 <div class="works__header">
-                    <h2 class="works__heading">Featured works</h2>
+                    <h2 class="works__heading">Vybrané projekty</h2>
                     <!--<Button class="works__button">All projects</Button>-->
                 </div>
 
                 <div class="works__grid">
-                    <article v-for="project in projects" :key="project.id" class="works__card"
-                        @click="openModal(project)" role="button" tabindex="0" @keydown.enter="openModal(project)"
+                    <article v-for="(project, index) in projects" :key="project.id"
+                        :class="{ 'works__card--left': index < 2 }" class="works__card" @click="openModal(project)"
+                        role="button" tabindex="0" @keydown.enter="openModal(project)"
                         @keydown.space="openModal(project)">
                         <img :src="project.image" :alt="project.title" class="works__card-image" />
                         <h3 class="works__card-title">{{ project.title }}</h3>
@@ -48,26 +49,25 @@
             </section>
 
             <section class="services" id="services">
-                <h2 class="services__heading">Services</h2>
+                <h2 class="services__heading">Služby</h2>
 
                 <div class="services__content">
-                    <p class="services__description">Visual designer lorem ipsum dolor sit amet Czech Republic hello
-                        graphic design love finland media hello lorem Visual designer lorem ipsum dolor sit amet
-                        Czech Republic hello graphic.</p>
+                    <p class="services__description">Specializuji se na tvorbu moderních webů, intuitivních
+                        uživatelských rozhraní a silných vizuálních identit, které propojují design a technologii.
+                        Přečtěte si více o službách, které nabízím, a zjistěte, co přesně tvořím.</p>
 
                     <div class="services__list">
-                        <ServiceCard title="Branding"
-                            description="Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic design love finland media hello lorem Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic."
-                            :tags="['Posters', 'Logos', 'Magazines']" />
-                        <ServiceCard title="Graphic Design"
-                            description="Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic design love finland media hello lorem Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic."
-                            :tags="['Posters', 'Logos', 'Magazines']" />
-                        <ServiceCard title="Web Development"
-                            description="Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic design love finland media hello lorem Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic."
-                            :tags="['Posters', 'Logos', 'Magazines']" />
-                        <ServiceCard title="Email Marketing"
-                            description="Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic design love finland media hello lorem Visual designer lorem ipsum dolor sit amet Czech Republic hello graphic."
-                            :tags="['Posters', 'Logos', 'Magazines']" />
+                        <ServiceCard title="Grafický Design"
+                            description="Vytvářím vizuální design, který dokáže zaujmout a zanechat dojem. Od log, plakátů a magazínů až po komplexní grafické materiály. Každý projekt stavím tak, aby komunikoval jasně a efektivně, a zároveň odrážel osobnost značky."
+                            :tags="['Loga', 'Plakáty', 'Magazíny']" />
+
+                        <ServiceCard title="UI/UX Design"
+                            description="Navrhuji uživatelská rozhraní, která jsou nejen estetická, ale hlavně funkční. S důrazem na intuitivní interakce a přehlednou navigaci pomáhám uživatelům rychle najít to, co potřebují a zajistit skvělý zážitek při každém používání."
+                            :tags="['Web Design', 'Mobile App Design']" />
+
+                        <ServiceCard title="Vývoj Webu"
+                            description="Vyvíjím moderní weby a aplikace, které kombinují estetiku s robustním kódem. Od responzivního designu po komplexní frontend a backend řešení. Každý projekt stavím tak, aby byl rychlý, funkční a přinášel skutečnou hodnotu uživatelům i klientům."
+                            :tags="['HTML/CSS', 'React/Vue', 'Webflow/Framer', 'Next.js', 'Express.js', 'SQL/MongoDB']" />
                     </div>
                 </div>
             </section>
@@ -81,8 +81,18 @@ import HeaderImage from '@/assets/header.png';
 import ProfileImage from '@/assets/profile.png';
 
 // work images
-import PetrhovKamenyShort from '@/assets/works/work_petrovy_kameny_short-min.png';
-import PetrhovKamenyLong from '@/assets/works/work_petrovy_kameny_long-min.png';
+import PetrhovKamenyShort from '@/assets/works/petrovy_kameny_short.png';
+import PetrhovKamenyLong from '@/assets/works/petrovy_kameny_long.png';
+import KxgShort from '@/assets/works/kxg_short.jpg';
+import KxgLong from '@/assets/works/kxg_long.jpg';
+import KaiserShort from '@/assets/works/kaiser_short.jpg';
+import KaiserLong from '@/assets/works/kaiser_long.jpg';
+import FlexlyShort from '@/assets/works/flexly_short.jpg';
+import FlexlyLong from '@/assets/works/flexly_long.jpg';
+import KatieShort from '@/assets/works/katie_short.jpg';
+import KatieLong from '@/assets/works/katie_long.jpg';
+import BoxShort from '@/assets/works/box_short.jpg';
+import BoxLong from '@/assets/works/box_long.jpg';
 
 interface Project {
     id: string;
@@ -107,52 +117,51 @@ const selectedProject = ref<Project>({
 const projects: Project[] = [
     {
         id: '1',
-        title: 'Flexly AI App',
-        category: 'Brand Identity',
-        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-        modalImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&h=1200&fit=crop',
-        description: 'A comprehensive brand identity system for an AI-powered productivity application. Includes logo design, color palette, typography guidelines, and brand voice documentation.',
+        title: 'KXG Hospitality',
+        category: 'Web Design',
+        image: KxgShort,
+        modalImage: KxgLong,
+        description: 'Design webu pro KXG Hospitality vytvořený v rámci praxe v marketingové agentuře Pickerly. Projekt se zaměřuje na luxusní a minimalistický design, který zvýrazňuje to nejpodstatnější a nabízí návštěvníkům přehledný a elegantní zážitek. V tuto chvíli je web pouze vizuálním návrhem, který ukazuje schopnost kombinovat estetiku s funkčností a propracovaným UX.',
     },
     {
         id: '2',
-        title: 'Katie Feygie Art Gallery',
-        category: 'Web Design Concept',
-        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-        modalImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&h=1200&fit=crop',
-        description: 'A modern web design concept for an online art gallery showcasing contemporary artwork. Features responsive layouts, image galleries, and artist profiles.',
+        title: 'Franz Josef Kaiser',
+        category: 'Web Design',
+        image: KaiserShort,
+        modalImage: KaiserLong,
+        description: 'Návrh designu webu pro značku Franz Josef Kaiser, která klade důraz na luxus. Web je koncipován tak, aby zvýraznil kvalitu produktů a vytvořil příjemný vizuální zážitek pro návštěvníky. Tento projekt sloužil jako konceptuální práce, nikoli reálná zakázka.',
     },
     {
         id: '3',
-        title: 'Franz Josef Kaiser',
-        category: 'Web Design Concept',
-        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-        modalImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&h=1200&fit=crop',
-        description: 'Premium portfolio website concept for a luxury photographer. Emphasizes high-quality imagery and minimalist design principles.',
+        title: 'Flexly AI App',
+        category: 'Brand Identity, Logo Design',
+        image: FlexlyShort,
+        modalImage: FlexlyLong,
+        description: 'Vizuální identita pro AI aplikaci zahrnující logo, barevnou paletu, typografii a celkový vizuální styl. Důraz je kladen na vyjádření hodnot značky, jako jsou ambice, sebevědomí a inovativní přístup, a na vytvoření jednotného, profesionálního a zapamatovatelného vzhledu.',
     },
     {
         id: '4',
-        title: 'Inovateo',
-        category: 'Web Development',
-        image: PetrhovKamenyShort,
-        modalImage: PetrhovKamenyLong,
-        description: 'Full-stack web development project for an innovative tech startup. Includes interactive features, real-time data visualization, and user authentication.',
-        projectUrl: 'https://example.com/inovateo',
+        title: 'Katie Feygie Art Gallery',
+        category: 'Web Design',
+        image: KatieShort,
+        modalImage: KatieLong,
+        description: 'Návrh moderního webu pro malou galerii umění zaměřenou na současné umění. Projekt klade důraz na přehledné a atraktivní předání informací návštěvníkům, prezentaci umělců a jejich děl a vytvoření příjemného uživatelského zážitku. V tuto chvíli je web stále ve fázi tvorby.',
     },
     {
         id: '5',
-        title: 'Bowling RADAVA',
-        category: 'Web Development',
-        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-        modalImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&h=1200&fit=crop',
-        description: 'Complete web solution for a bowling facility including booking system, event management, and leaderboard functionality.',
+        title: 'Petrovy Kameny',
+        category: 'Web Design',
+        image: PetrhovKamenyShort,
+        modalImage: PetrhovKamenyLong,
+        description: 'Design webu pro hotel Petrovy Kamen vytvořený v rámci praxe v marketingové agentuře Pickerly. Projekt se zaměřuje na moderní a přehledný vzhled, který usnadňuje orientaci návštěvníků, prezentuje služby hotelu a vytváří příjemný uživatelský zážitek.',
     },
     {
         id: '6',
-        title: 'KXG Hospitality',
-        category: 'Web Design Concept',
-        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop',
-        modalImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&h=1200&fit=crop',
-        description: 'Luxury hospitality website concept featuring room showcases, reservation system, and guest experience highlights.',
+        title: 'Boxerna Mudroch team',
+        category: 'Web Design',
+        image: BoxShort,
+        modalImage: BoxLong,
+        description: 'Jedna z mých prvních prací, design webu Boxerna Mudroch Team. Projekt mi umožnil učit se základy UI/UX designu. Web klade důraz na přehledné uživatelské rozhraní, prezentaci služeb a zároveň slouží jako ukázka mého raného přístupu k designu a digitálním projektům.',
     },
 ];
 
@@ -433,6 +442,10 @@ header {
                 transform: none;
             }
         }
+    }
+
+    &__card--left &__card-image {
+        object-position: 10% center;
     }
 
     &__card-image {

@@ -10,14 +10,17 @@
                                 <span class="material-symbols-outlined">close</span>
                             </button>
                         </div>
-                        <p class="modal-category">{{ project.category }}</p>
-                        <p class="modal-description">{{ project.description }}</p>
-                        <Link v-if="project.projectUrl" :href="project.projectUrl" external class="modal-project-link">
-                        View project
-                        </Link>
                     </div>
 
                     <div class="modal-body">
+                        <div class="modal-info">
+                            <p class="modal-category">{{ project.category }}</p>
+                            <p class="modal-description">{{ project.description }}</p>
+                            <Link v-if="project.projectUrl" :href="project.projectUrl" external
+                                class="modal-project-link">
+                            View project
+                            </Link>
+                        </div>
                         <img :src="project.modalImage" :alt="project.title" class="modal-image" />
                     </div>
                 </div>
@@ -97,7 +100,6 @@ const closeModal = () => {
     top: 0;
     background: var(--light);
     padding: 2rem;
-    border-bottom: 1px solid var(--gray);
     z-index: 1001;
 
     @media (max-width: 750px) {
@@ -156,10 +158,6 @@ const closeModal = () => {
     }
 }
 
-.modal-project-link {
-    margin-top: 1rem;
-}
-
 .modal-body {
     display: flex;
     flex-direction: column;
@@ -193,7 +191,7 @@ const closeModal = () => {
     font-size: 1.25rem;
     line-height: 1.5;
     color: var(--dark);
-    margin: 1rem 0 0 0;
+    margin: 0;
     max-width: 750px;
 
     @media (max-width: 750px) {

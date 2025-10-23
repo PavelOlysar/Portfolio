@@ -5,31 +5,31 @@
     <footer id="contact">
         <div class="footer__container">
             <div class="footer__row footer__row--top">
-                <h3 class="footer__heading">Interested in working with me?</h3>
+                <h3 class="footer__heading">Máte zájem se mnou spolupracovat?</h3>
                 <!-- <Button variant="white">Project Form</Button> -->
             </div>
             <div class="footer__row footer__row--bottom">
                 <div class="footer__contact">
                     <div>
-                        <div class="footer__label">Send a message</div>
+                        <div class="footer__label">Pošlete zprávu:</div>
                         <a class="footer__link" href="mailto:olysarp@gmail.com">olysarp@gmail.com</a>
                     </div>
                     <div>
-                        <div class="footer__label">Give a call</div>
+                        <div class="footer__label">Zavolejte:</div>
                         <a class="footer__link" href="tel:+420728035080">+420 728 035 080</a>
                     </div>
                 </div>
                 <nav class="footer__socials" aria-label="Social links">
-                    <Link href="#" external>Linkedin</Link>
-                    <Link href="#" external>Behance</Link>
-                    <Link href="#" external>Instagram</Link>
-                    <Link href="#" external>YouTube</Link>
+                    <Link href="https://www.linkedin.com/in/pavel-oly%C5%A1ar-25309a331/" external>Linkedin</Link>
+                    <Link href="https://www.behance.net/pavelolysar" external>Behance</Link>
+                    <Link href="https://www.instagram.com/pavel_olysar/" external>Instagram</Link>
+                    <Link href="https://www.youtube.com/@pavelolysar" external>YouTube</Link>
                 </nav>
             </div>
         </div>
         <div class="footer__bottom">
-            <span>Copyright @ 2025 Pavel Olyšar. All rights reserved.</span>
-            <span class="footer__credit">Design &amp; Development by Pavel Olyšar</span>
+            <span>Copyright @ 2025 Pavel Olyšar. Všechna práva vyhrazena.</span>
+            <span class="footer__credit">Design &amp; Development - Pavel Olyšar</span>
         </div>
     </footer>
 </template>
