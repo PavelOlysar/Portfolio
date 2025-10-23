@@ -85,9 +85,11 @@ const closeModal = () => {
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     gap: 0;
+    box-sizing: border-box;
 
     @media (max-width: 750px) {
         max-height: 95vh;
@@ -148,6 +150,7 @@ const closeModal = () => {
     text-transform: uppercase;
     font-weight: 400;
     margin: 0 0 0.5rem 0;
+    word-break: break-word;
 
     @media (max-width: 1024px) {
         font-size: 2.5rem;
