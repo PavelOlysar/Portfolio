@@ -85,7 +85,6 @@ const closeModal = () => {
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
-    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     gap: 0;

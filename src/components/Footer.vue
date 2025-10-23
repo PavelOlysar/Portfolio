@@ -141,6 +141,26 @@ footer {
     color: var(--gray);
 }
 
+.footer__heading {
+    font-size: 6rem;
+    line-height: 1;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0;
+
+    @media (max-width: 1024px) {
+        font-size: 4rem;
+        letter-spacing: -0.025em;
+
+    }
+
+    @media (max-width: 750px) {
+        font-size: 1.5rem;
+        letter-spacing: -0.015em;
+    }
+}
+
 @media (max-width: 900px) {
     .footer__container {
         gap: 2rem;
