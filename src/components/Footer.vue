@@ -22,8 +22,6 @@
                 <nav class="footer__socials" aria-label="Social links">
                     <Link href="https://www.linkedin.com/in/pavel-oly%C5%A1ar-25309a331/" external>Linkedin</Link>
                     <Link href="https://www.behance.net/pavelolysar" external>Behance</Link>
-                    <Link href="https://www.instagram.com/pavel_olysar/" external>Instagram</Link>
-                    <Link href="https://www.youtube.com/@pavelolysar" external>YouTube</Link>
                 </nav>
             </div>
         </div>
@@ -117,6 +115,7 @@ footer {
 
 .footer__socials {
     display: flex;
+    height: 100%;
     flex-direction: column;
     align-items: flex-end;
     gap: 0.5rem;

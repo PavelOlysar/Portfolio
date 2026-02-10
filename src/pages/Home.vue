@@ -53,7 +53,7 @@
 
                 <div class="services__content">
                     <p class="services__description">Specializuji se na tvorbu moderních webů, intuitivních
-                        uživatelských rozhraní a silných vizuálních identit, které propojují design a technologii.
+                        uživatelských rozhraní a kvalitních vizuálních identit, které propojují design a technologii.
                         Přečtěte si více o službách, které nabízím, a zjistěte, co přesně tvořím.</p>
 
                     <div class="services__list">
@@ -125,30 +125,6 @@ const projects: Project[] = [
     },
     {
         id: '2',
-        title: 'Franz Josef Kaiser',
-        category: 'Web Design',
-        image: KaiserShort,
-        modalImage: KaiserLong,
-        description: 'Návrh designu webu pro značku Franz Josef Kaiser, která klade důraz na luxus. Web je koncipován tak, aby zvýraznil kvalitu produktů a vytvořil příjemný vizuální zážitek pro návštěvníky. Tento projekt sloužil jako konceptuální práce, nikoli reálná zakázka.',
-    },
-    {
-        id: '3',
-        title: 'Flexly AI App',
-        category: 'Brand Identity, Logo Design',
-        image: FlexlyShort,
-        modalImage: FlexlyLong,
-        description: 'Vizuální identita pro AI aplikaci zahrnující logo, barevnou paletu, typografii a celkový vizuální styl. Důraz je kladen na vyjádření hodnot značky, jako jsou ambice, sebevědomí a inovativní přístup, a na vytvoření jednotného, profesionálního a zapamatovatelného vzhledu.',
-    },
-    {
-        id: '4',
-        title: 'Katie Feygie Art Gallery',
-        category: 'Web Design',
-        image: KatieShort,
-        modalImage: KatieLong,
-        description: 'Návrh moderního webu pro malou galerii umění zaměřenou na současné umění. Projekt klade důraz na přehledné a atraktivní předání informací návštěvníkům, prezentaci umělců a jejich děl a vytvoření příjemného uživatelského zážitku. V tuto chvíli je web stále ve fázi tvorby.',
-    },
-    {
-        id: '5',
         title: 'Petrovy Kameny',
         category: 'Web Design',
         image: PetrhovKamenyShort,
@@ -156,7 +132,7 @@ const projects: Project[] = [
         description: 'Design webu pro hotel Petrovy Kamen vytvořený v rámci praxe v marketingové agentuře Pickerly. Projekt se zaměřuje na moderní a přehledný vzhled, který usnadňuje orientaci návštěvníků, prezentuje služby hotelu a vytváří příjemný uživatelský zážitek.',
     },
     {
-        id: '6',
+        id: '3',
         title: 'Boxerna Mudroch team',
         category: 'Web Design',
         image: BoxShort,

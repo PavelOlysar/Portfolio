@@ -30,8 +30,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from 'vue';
-
 interface Project {
     id: string;
     title: string;
@@ -81,7 +79,7 @@ const closeModal = () => {
     position: relative;
     background: var(--light);
     border-radius: 0;
-    max-width: 900px;
+    max-width: 1600px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
