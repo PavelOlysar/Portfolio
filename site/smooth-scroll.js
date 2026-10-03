@@ -147,7 +147,7 @@
 
   if (reduced) return;
   var s = document.createElement('script');
-  s.src = 'https://unpkg.com/lenis@1.1.13/dist/lenis.min.js';
+  s.src = '/vendor/lenis.min.js'; // lenis@1.1.13, self-hosted (was unpkg)
   s.onload = function () {
     if (!window.Lenis) return;
     var l = new window.Lenis({ duration: 1.15, easing: function (t) { return 1 - Math.pow(1 - t, 4); }, smoothWheel: true });
