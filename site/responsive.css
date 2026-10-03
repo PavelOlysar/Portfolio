@@ -1,0 +1,54 @@
+/*
+  Responsive overrides for index.html.
+  The Claude Design template styles everything inline and has no breakpoints, so elements that need to
+  adapt carry a data-r="…" hook (space-separated tokens) and the rules below override their inline
+  styles with !important. Keep every layout breakpoint for the home page in this file.
+*/
+
+/* Nothing on the page should ever scroll sideways. `clip`, not `hidden`: hidden would turn the body into a
+   scroll container and break the sticky project cards. */
+html, body { overflow-x: clip; }
+
+@media (max-width: 560px) {
+  /* Big lime/dark buttons: let the label wrap instead of pushing the button off-screen. The tile and arrow
+     keep their size and position; min-height preserves the original button height. */
+  [data-r~="cta"] {
+    height: auto !important;
+    max-width: 100%;
+    white-space: normal !important;
+    text-align: left;
+    line-height: 1.2;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+    padding-right: 20px !important;
+  }
+  [data-r~="cta"] > span:last-child { text-wrap: balance; }
+  [data-r~="cta-xl"] { min-height: 72px; font-size: 18px !important; }
+  [data-r~="cta-md"] { min-height: 64px; font-size: 17px !important; }
+
+  /* Pricing "one-off / long-term" toggle: equal columns that may wrap to two lines. */
+  [data-r~="pr-toggle"] { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; }
+  [data-r~="pr-toggle"] > button {
+    height: auto !important;
+    min-height: 52px;
+    padding: 8px 10px !important;
+    white-space: normal !important;
+    font-size: 14px !important;
+    line-height: 1.2;
+  }
+
+  /* Expanded service: drop the empty number column so the text and button get the full width. */
+  [data-r~="svc-panel"] { grid-template-columns: minmax(0, 1fr) !important; }
+  [data-r~="svc-panel"] > span:first-child { display: none; }
+
+  /* Section rhythm: the desktop clamp(144px, 24vh, 300px) gaps are far too tall on a phone. */
+  [data-r~="pad-t"] { padding-top: 96px !important; }
+  [data-r~="pad-b"] { padding-bottom: 96px !important; }
+  [data-r~="mt"] { margin-top: 96px !important; }
+}
+
+@media (max-width: 420px) {
+  /* Long single-line headings that would be clipped on the narrowest phones. */
+  [data-r~="wrap"], [data-r~="wrap"] > span { white-space: normal !important; }
+  [data-r~="pr-big"] { font-size: 24px !important; }
+}

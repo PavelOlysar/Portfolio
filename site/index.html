@@ -1,27 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pavel Olyšar</title>
+<meta name="description" content="Grafický design bez starostí. Pavel Olyšar, grafický designér z Prahy: vizuální identita, weby, tiskoviny, sociální sítě a prezentace pro rostoucí firmy.">
+<meta name="theme-color" content="#3E7B5A">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pavelolysar.com/">
+<meta property="og:title" content="Pavel Olyšar · Grafický design bez starostí">
+<meta property="og:description" content="Grafický designér z Prahy. Vizuální identita, weby, tiskoviny a prezentace pro rostoucí firmy.">
+<meta property="og:image" content="https://pavelolysar.com/assets/work-laptop.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/fonts.css">
+<link rel="stylesheet" href="/responsive.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script src="/tab-status.js" defer></script>
 <script>try{var t=JSON.parse(sessionStorage.getItem('poTx')||'null');if(t&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var d=document.documentElement;d.setAttribute('data-po-tx','');d.style.setProperty('--po-tx-c',t.c);setTimeout(function(){d.removeAttribute('data-po-tx')},4000)}}catch(e){}</script>
 <style>html[data-po-tx]::after{content:"";position:fixed;inset:0;z-index:2147483001;background:var(--po-tx-c)}</style>
+<!-- Serve React from this site instead of unpkg (support.js reads this map in cdnScriptFor). -->
+<script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"/vendor/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"/vendor/react-dom.production.min.js"}</script>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <style>::placeholder{color:#8D988F;opacity:1}::selection{background:#C8F169;color:#17301F}html,body{margin:0;background:#3E7B5A;-webkit-font-smoothing:antialiased}body a{color:#FFFFFF;text-decoration:none}body a:hover{color:#FFFFFF}*{box-sizing:border-box}</style>
 <script src="./smooth-scroll.js"></script>
 <script src="./image-slot.js"></script>
 <script src="./solar-icon.js"></script>
 </helmet>
-<div ref="{{ rootRef }}" style="position:relative;height:100vh;height:100svh;overflow:hidden;background:linear-gradient(to bottom,#3E7B5A 0%,#8DB49C 50%,#DCE9E0 84%,#F4F7F2 100%);font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF;display:flex;flex-direction:column">
+<div ref="{{ rootRef }}" style="position:relative;min-height:100vh;min-height:100svh;overflow:hidden;background:linear-gradient(to bottom,#3E7B5A 0%,#8DB49C 50%,#DCE9E0 84%,#F4F7F2 100%);font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF;display:flex;flex-direction:column">
   <div data-intro="bg" style="position:absolute;inset:0;z-index:0;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 68%,transparent 100%);mask-image:linear-gradient(to bottom,#000 68%,transparent 100%)"><dc-import name="Teal Hero Background" teal="#3E7B5A" band-count="{{ 6 }}" grain="{{ 0.1 }}" drift-speed="{{ 0.8 }}" face-right="{{ true }}" parallax-strength="{{ 30 }}" shimmer="{{ true }}" style="position:absolute;left:0;top:0;width:100%;height:max(100%,100vh)" hint-size="100%,100%"></dc-import></div>
   <sc-if value="{{ scrim }}" hint-placeholder-val="{{ true }}">
     <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 75% 60% at 50% 46%,rgba(20,60,40,0.2),rgba(20,60,40,0.07) 55%,rgba(20,60,40,0) 80%)"></div>
@@ -35,12 +44,11 @@
         <button onClick="{{ toggleCookie }}" aria-label="{{ t.cookieClose }}" style="appearance:none;position:absolute;top:14px;right:14px;width:32px;height:32px;border:0;background:none;color:#8D988F;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="color:#16231B"><solar-icon icon="close-circle-broken" size="18" style="display:block"></solar-icon></button>
         <span style="display:inline-flex;align-items:center;height:30px;padding:0 10px;border:1px solid rgba(22,35,27,0.3);border-radius:3px;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#5F6E64">Cookies</span>
         <p style="margin:18px 0 0;font-size:20px;line-height:1.3;font-weight:500;letter-spacing:-0.01em">{{ t.cookieTitle }}</p>
-        <p style="margin:8px 0 0;font-size:16px;line-height:1.4;color:#7E8B82;text-wrap:pretty">{{ t.cookieText }}<a href="#privacy" style="color:#16231B;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px">{{ t.cookieLink }}</a>{{ t.cookieEnd }}</p>
+        <p style="margin:8px 0 0;font-size:16px;line-height:1.4;color:#7E8B82;text-wrap:pretty">{{ t.cookieText }}<a href="/privacy" style="color:#16231B;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px">{{ t.cookieLink }}</a>{{ t.cookieEnd }}</p>
         <button onClick="{{ acceptCookies }}" onMouseEnter="{{ acceptOn }}" onMouseLeave="{{ acceptOff }}" style="appearance:none;position:relative;isolation:isolate;overflow:hidden;margin-top:20px;width:100%;height:56px;border:0;border-radius:8px;background:#C8F169;color:#17301F;font:inherit;font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
           <span style="position:absolute;z-index:-1;left:6px;top:6px;bottom:6px;width:{{ acceptTileW }};border-radius:5px;background:#F3FBE4;opacity:{{ acceptTileOp }};transition:width .6s cubic-bezier(.65,0,.35,1),opacity .3s cubic-bezier(.65,0,.35,1)"></span>
           <span style="display:block">{{ t.cookieAccept }}</span>
         </button>
-        <button onClick="{{ declineCookies }}" style="appearance:none;margin-top:6px;width:100%;height:40px;border:0;background:none;color:#5F6E64;font:inherit;font-size:15px;font-weight:500;cursor:pointer" style-hover="color:#16231B">{{ t.cookieDecline }}</button>
       </div>
     </sc-if>
     <button onClick="{{ toggleCookie }}" onMouseEnter="{{ cookieBtnOn }}" onMouseLeave="{{ cookieBtnOff }}" aria-label="Cookies" aria-expanded="{{ cookieOpen }}" style="appearance:none;width:52px;height:52px;border:0;border-radius:6px;background:#C8F169;color:#16231B;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(10,40,25,0.14);transition:background .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="background:#E2F4C0" style-active="transform:scale(0.94)">
@@ -49,14 +57,14 @@
   </div>
   <sc-if value="{{ showCards }}" hint-placeholder-val="{{ true }}">
   <div style="position:absolute;right:20px;bottom:20px;z-index:3;display:flex;gap:10px">
-    <a data-intro="card" href="#about" onMouseEnter="{{ hoverAbout }}" onMouseLeave="{{ unhover }}" style="position:relative;display:block;width:280px;height:196px;border-radius:8px;overflow:hidden;background:#14211A;box-shadow:0 14px 36px rgba(10,40,25,0.18);text-decoration:none;color:#FFFFFF">
+    <a data-intro="card" href="#about" onMouseEnter="{{ hoverAbout }}" onMouseLeave="{{ unhover }}" style="position:relative;display:block;width:clamp(214px,24.3vh,280px);height:clamp(150px,17vh,196px);border-radius:8px;overflow:hidden;background:#14211A;box-shadow:0 14px 36px rgba(10,40,25,0.18);text-decoration:none;color:#FFFFFF">
       <div style="position:absolute;inset:0;transform:{{ imgAbout }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><img src="assets/card-about-v3.jpg" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></div>
       <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(5,15,10,0.55),rgba(5,15,10,0) 48%)"></div>
       <div style="position:absolute;inset:0;pointer-events:none;background:rgba(5,15,10,0.28);opacity:{{ shadeAbout }};transition:opacity .6s cubic-bezier(.65,0,.35,1)"></div>
       <span style="position:absolute;top:16px;left:18px;font-size:19px;font-weight:600;color:#FFFFFF">{{ t.cardAbout }}</span>
       <span style="position:absolute;right:12px;bottom:12px;width:46px;height:46px;border-radius:50%;background:#FFFFFF;color:#16231B;display:flex;align-items:center;justify-content:center;opacity:{{ arrowOpAbout }};transform:{{ arrowTAbout }};transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-broken" size="22" style="display:block"></solar-icon></span>
     </a>
-    <a data-intro="card" href="#work" onMouseEnter="{{ hoverWork }}" onMouseLeave="{{ unhover }}" style="position:relative;display:block;width:280px;height:196px;border-radius:8px;overflow:hidden;background:#14211A;box-shadow:0 14px 36px rgba(10,40,25,0.18);text-decoration:none;color:#FFFFFF">
+    <a data-intro="card" href="#work" onMouseEnter="{{ hoverWork }}" onMouseLeave="{{ unhover }}" style="position:relative;display:block;width:clamp(214px,24.3vh,280px);height:clamp(150px,17vh,196px);border-radius:8px;overflow:hidden;background:#14211A;box-shadow:0 14px 36px rgba(10,40,25,0.18);text-decoration:none;color:#FFFFFF">
       <div style="position:absolute;inset:0;transform:{{ imgWork }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><img src="assets/card-work.jpg" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></div>
       <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(5,15,10,0.55),rgba(5,15,10,0) 48%)"></div>
       <div style="position:absolute;inset:0;pointer-events:none;background:rgba(5,15,10,0.28);opacity:{{ shadeWork }};transition:opacity .6s cubic-bezier(.65,0,.35,1)"></div>
@@ -71,21 +79,21 @@
       <span data-intro="h1" style="display:block;text-wrap:balance">{{ t.h1b }}</span>
     </h1>
     <p data-intro="sub" style="margin:clamp(18px,3.5vh,32px) 0 0;max-width:920px;font-size:clamp(21px,min(2.8vw,5vh),32px);line-height:1.28;font-weight:500;letter-spacing:-0.012em;text-wrap:pretty;text-shadow:0 1px 18px rgba(15,50,30,0.25)">{{ t.sub }}</p>
-    <a data-intro="cta" href="#contact" onMouseEnter="{{ ctaOn }}" onMouseLeave="{{ ctaOff }}" style="flex-shrink:0;margin-top:clamp(24px,5vh,44px);position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:72px;padding:0 34px 0 86px;border-radius:10px;background:#C8F169;color:#17301F;font-size:21px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+    <a data-intro="cta" data-r="cta cta-xl" href="#contact" onMouseEnter="{{ ctaOn }}" onMouseLeave="{{ ctaOff }}" style="flex-shrink:0;margin-top:clamp(24px,5vh,44px);position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:72px;padding:0 34px 0 86px;border-radius:10px;background:#C8F169;color:#17301F;font-size:21px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
       <span style="position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:{{ ctaTileW }};border-radius:6px;background:#F3FBE4;transition:width .6s cubic-bezier(.65,0,.35,1)"></span>
       <span style="position:absolute;left:8px;top:8px;width:56px;height:56px;display:flex;align-items:center;justify-content:center"><solar-icon icon="arrow-right-up-broken" size="26" style="display:block;transform:{{ ctaArrowT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
       <span style="display:block;transform:{{ ctaLabelT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ t.primary }}</span>
     </a>
   </main>
 </div>
-<section id="about" ref="{{ aboutRef }}" style="position:relative;overflow:hidden;background:#F4F7F2;color:#16231B;font-family:'Montserrat',system-ui,sans-serif;padding:clamp(96px,18vh,220px) 0 0">
+<section id="about" ref="{{ aboutRef }}" style="position:relative;overflow:hidden;background:#F4F7F2;color:#16231B;font-family:'Montserrat',system-ui,sans-serif;padding:clamp(96px,18vh,220px) 0 0" data-r="pad-t">
   <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;align-items:center;text-align:center">
     <div role="paragraph" ref="{{ aboutTextRef }}" style="margin:0;max-width:1320px;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em;color:#16231B;text-wrap:balance">
       <sc-for list="{{ aboutWords }}" as="w" hint-placeholder-count="12"><sc-if value="{{ w.word }}" hint-placeholder-val="{{ true }}"><span data-word="" style="opacity:0.14;color:{{ w.color }}">{{ w.text }}</span></sc-if><sc-if value="{{ w.mark }}" hint-placeholder-val="{{ false }}"><span data-word="" style="opacity:0.14"><span data-mark="" style="background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 58%;background-size:0% 86%;border-radius:0.12em;padding:0 0.08em;margin:0 -0.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone">{{ w.text }}</span>{{ w.space }}</span></sc-if></sc-for>
     </div>
     <div data-reveal="" style="margin-top:clamp(48px,8vh,88px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px 36px">
       <div style="display:flex;align-items:center;gap:18px;text-align:left">
-        <div style="width:76px;height:76px;flex-shrink:0;border-radius:50%;overflow:hidden;background:#FFFFFF;box-shadow:0 0 0 1px rgba(22,35,27,0.08),0 8px 22px rgba(10,40,25,0.12)"><img src="assets/portrait-about.png" alt="Pavel Olyšar" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.9);transform-origin:50% 27%"></div>
+        <div style="width:76px;height:76px;flex-shrink:0;border-radius:50%;overflow:hidden;background:#FFFFFF;box-shadow:0 0 0 1px rgba(22,35,27,0.08),0 8px 22px rgba(10,40,25,0.12)"><img src="assets/portrait-about.jpg" alt="Pavel Olyšar" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.9);transform-origin:50% 27%"></div>
         <div style="display:flex;flex-direction:column;gap:4px">
           <span style="font-size:20px;font-weight:600;letter-spacing:-0.01em;color:#16231B">Pavel Olyšar</span>
           <span style="font-size:16px;font-weight:500;color:#5F6E64">{{ t.aboutRole }}</span>
@@ -93,7 +101,7 @@
       </div>
     </div>
   </div>
-  <div style="margin-top:clamp(144px,24vh,280px)">
+  <div data-r="mt" style="margin-top:clamp(144px,24vh,280px)">
     <p data-reveal="" style="margin:0 0 clamp(20px,3vh,32px);padding:0 20px;text-align:center;font-family:'Montserrat',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.clientsCaption }}</p>
     <div onMouseEnter="{{ marqueeSlow }}" onMouseLeave="{{ marqueeFast }}" style="overflow:hidden;border-top:1px solid rgba(22,35,27,0.12);border-bottom:1px solid rgba(22,35,27,0.12);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)">
       <div ref="{{ marqueeRef }}" style="display:flex;width:max-content;will-change:transform">
@@ -110,7 +118,7 @@
   </div>
 </section>
 <section id="work" ref="{{ projRef }}" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B">
-    <div style="padding:clamp(144px,24vh,280px) 0 clamp(144px,24vh,300px)">
+    <div data-r="pad-t pad-b" style="padding:clamp(144px,24vh,280px) 0 clamp(144px,24vh,300px)">
       <div style="padding:0 clamp(20px,4vw,56px);margin-bottom:clamp(28px,5vh,56px);display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap">
         <h2 data-reveal="" style="margin:0;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em">{{ t.workTitle }}</h2>
       </div>
@@ -123,17 +131,14 @@
               <div data-shade="" style="position:absolute;inset:0;pointer-events:none;background:#16231B;opacity:0"></div>
               <div style="position:absolute;top:clamp(20px,3vw,48px);left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;pointer-events:none">
                 <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ p.tags }}" as="tag" hint-placeholder-count="2"><span style="display:inline-flex;align-items:center;height:34px;padding:0 14px;border:1px solid rgba(255,255,255,0.55);border-radius:999px;background:rgba(5,15,10,0.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase">{{ tag }}</span></sc-for></div>
-                <span style="font-size:14px;font-weight:600;letter-spacing:0.14em">{{ p.num }} / {{ count }}</span>
+                <span style="font-size:14px;font-weight:600;letter-spacing:0.14em;white-space:nowrap">{{ p.num }} / {{ count }}</span>
               </div>
               <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(24px,4vw,56px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap;pointer-events:none">
                 <div style="display:flex;flex-direction:column;gap:clamp(12px,2vh,20px);min-width:0">
                   <h3 style="margin:0;font-size:clamp(48px,8vw,160px);line-height:0.92;font-weight:600;letter-spacing:-0.05em">{{ p.name }}</h3>
                   <p style="margin:0;max-width:640px;font-size:clamp(19px,1.7vw,26px);line-height:1.4;font-weight:500;color:#EEF3EF;text-wrap:pretty">{{ p.desc }}</p>
                 </div>
-                <a href="{{ p.href }}" onMouseEnter="{{ p.on }}" onMouseLeave="{{ p.off }}" style="pointer-events:auto;display:flex;align-items:center;gap:18px;height:72px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap;text-decoration:none">
-                  <span style="padding:6px 0;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:{{ p.uline }};transition:background-size .6s cubic-bezier(.65,0,.35,1)">{{ t.caseCta }}</span>
-                  <span style="position:relative;width:56px;height:56px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C8F169;background:{{ p.circleBg }};color:{{ p.arrowFg }};display:flex;align-items:center;justify-content:center;overflow:hidden;transition:background .6s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;transform:{{ p.arrA }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-broken" size="24" style="display:block"></solar-icon></span><span style="position:absolute;transform:{{ p.arrB }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-broken" size="24" style="display:block"></solar-icon></span></span>
-                </a>
+                
               </div>
             </div>
           </div>
@@ -142,7 +147,7 @@
       </div>
     </div>
 </section>
-<section id="services" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)">
+<section id="services" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)" data-r="pad-b">
   <div style="padding:0 clamp(20px,4vw,56px);margin-bottom:clamp(28px,5vh,56px)">
     <h2 data-reveal="" style="margin:0;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em">{{ t.servicesTitle }}</h2>
   </div>
@@ -156,12 +161,12 @@
           </button>
           <div style="display:grid;grid-template-rows:{{ s.rows }};transition:grid-template-rows .6s cubic-bezier(.65,0,.35,1)">
             <div style="overflow:hidden">
-              <div style="display:grid;grid-template-columns:clamp(44px,6vw,96px) minmax(0,1fr);gap:16px">
+              <div data-r="svc-panel" style="display:grid;grid-template-columns:clamp(44px,6vw,96px) minmax(0,1fr);gap:16px">
                 <span></span>
                 <div style="display:flex;flex-wrap:wrap;gap:24px clamp(24px,4vw,64px);padding:0 0 clamp(28px,5vh,48px)">
-                  <div style="flex:1 1 300px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;opacity:{{ s.descOpA }};transform:{{ s.descTA }};transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .6s cubic-bezier(.65,0,.35,1)">
+                  <div style="flex:1 1 min(100%,300px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;opacity:{{ s.descOpA }};transform:{{ s.descTA }};transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .6s cubic-bezier(.65,0,.35,1)">
                     <p style="margin:0;max-width:680px;font-size:clamp(20px,1.9vw,28px);line-height:1.4;font-weight:500;color:#5F6E64;text-wrap:pretty">{{ s.desc }}</p>
-                    <a href="{{ s.ctaHref }}" onMouseEnter="{{ s.ctaOn }}" onMouseLeave="{{ s.ctaOff }}" style="align-self:flex-start;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border-radius:10px;background:#C8F169;color:#17301F;font-size:18px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+                    <a data-r="cta cta-md" href="{{ s.ctaHref }}" onMouseEnter="{{ s.ctaOn }}" onMouseLeave="{{ s.ctaOff }}" style="align-self:flex-start;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border-radius:10px;background:#C8F169;color:#17301F;font-size:18px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
                       <span style="position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:{{ s.ctaTileW }};border-radius:6px;background:#F3FBE4;transition:width .6s cubic-bezier(.65,0,.35,1)"></span>
                       <span style="position:absolute;left:8px;top:8px;width:48px;height:48px;display:flex;align-items:center;justify-content:center"><solar-icon icon="arrow-right-up-broken" size="24" style="display:block;transform:{{ s.ctaArrT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
                       <span style="display:block;transform:{{ s.ctaLblT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ t.svCta }}</span>
@@ -178,7 +183,7 @@
       </sc-for>
     </div>
 </section>
-<section id="pricing" ref="{{ prRef }}" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)">
+<section id="pricing" ref="{{ prRef }}" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)" data-r="pad-b">
   <div style="padding:0 clamp(20px,4vw,56px);margin-bottom:clamp(32px,6vh,64px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 48px">
     <h2 data-reveal="" style="margin:0;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em">{{ t.prTitle }}</h2>
     <p data-reveal="" style="margin:0;max-width:440px;font-size:clamp(17px,1.4vw,20px);line-height:1.45;font-weight:500;color:#5F6E64;text-wrap:pretty">{{ t.prLead }}</p>
@@ -186,7 +191,7 @@
   <sc-if value="{{ pr4 }}" hint-placeholder-val="{{ true }}">
     <div style="padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(28px,4vw,64px);align-items:start">
       <div data-reveal="" style="display:flex;flex-direction:column;gap:32px">
-        <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(100%,560px);padding:4px;border-radius:999px;background:#E7F0D8">
+        <div data-r="pr-toggle" style="position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(100%,560px);padding:4px;border-radius:999px;background:#E7F0D8">
           <span style="position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#16231B;transform:{{ pr4Ind }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></span>
           <sc-for list="{{ pr4Modes }}" as="k" hint-placeholder-count="2"><button onClick="{{ k.pick }}" style="appearance:none;position:relative;height:52px;padding:0 16px;border:0;border-radius:999px;background:none;color:{{ k.fg }};font:inherit;font-size:16px;font-weight:600;white-space:nowrap;cursor:pointer;transition:color .3s cubic-bezier(.65,0,.35,1)">{{ k.label }}</button></sc-for>
         </div>
@@ -226,7 +231,7 @@
               <span style="position:absolute;top:3px;bottom:3px;left:3px;width:56px;border-radius:999px;background:#17301F;transform:{{ prCurInd }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></span>
               <sc-for list="{{ prCurs }}" as="k" hint-placeholder-count="3"><button onClick="{{ k.pick }}" aria-pressed="{{ k.pressed }}" style="appearance:none;position:relative;height:38px;padding:0;border:0;border-radius:999px;background:none;color:{{ k.fg }};font:inherit;font-size:13px;font-weight:600;letter-spacing:0.06em;cursor:pointer;transition:color .3s cubic-bezier(.65,0,.35,1)">{{ k.label }}</button></sc-for>
             </div></div>
-          <span style="font-size:clamp(26px,2.8vw,48px);line-height:1;font-weight:600;letter-spacing:-0.04em;font-variant-numeric:tabular-nums;white-space:nowrap">{{ pr4Big }}</span>
+          <span data-r="pr-big wrap" style="font-size:clamp(26px,2.8vw,48px);line-height:1;font-weight:600;letter-spacing:-0.04em;font-variant-numeric:tabular-nums;white-space:nowrap">{{ pr4Big }}</span>
           <span style="font-size:17px;font-weight:600">{{ pr4Sub }}</span>
         </div>
         <sc-if value="{{ pr4P }}" hint-placeholder-val="{{ true }}">
@@ -244,7 +249,7 @@
             </sc-for>
           </div>
         <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px">
-          <a href="#contact" onMouseEnter="{{ prCtaOn }}" onMouseLeave="{{ prCtaOff }}" style="position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border-radius:10px;background:#16231B;color:{{ prLbl2C }};font-size:18px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+          <a data-r="cta cta-md" href="#contact" onMouseEnter="{{ prCtaOn }}" onMouseLeave="{{ prCtaOff }}" style="position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border-radius:10px;background:#16231B;color:{{ prLbl2C }};font-size:18px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
             <span style="position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:{{ prTileW }};border-radius:6px;background:#F3FBE4;transition:width .6s cubic-bezier(.65,0,.35,1)"></span>
             <span style="position:absolute;left:8px;top:8px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#17301F"><solar-icon icon="arrow-right-up-broken" size="24" style="display:block;transform:{{ prArrT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
             <span style="display:block;transform:{{ prLblT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ t.prCta }}</span>
@@ -255,7 +260,7 @@
     </div>
   </sc-if>
 </section>
-<section id="faq" ref="{{ faqRef }}" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)">
+<section id="faq" ref="{{ faqRef }}" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)" data-r="pad-b">
   <div style="padding:0 clamp(20px,4vw,56px);margin-bottom:clamp(32px,6vh,64px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 48px">
     <h2 data-reveal="" style="margin:0;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em">{{ t.faqTitle }}</h2>
     <p data-reveal="" style="margin:0;font-size:clamp(17px,1.4vw,20px);line-height:1.45;font-weight:500;color:#5F6E64">{{ t.faqAsk }} <a href="#contact" style="color:#16231B;font-weight:600;text-decoration:none;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:100% 2px;padding-bottom:2px" style-hover="color:#16231B;background-size:100% 100%">{{ t.faqAskLink }}</a></p>
@@ -308,7 +313,7 @@
     <div style="position:relative;max-width:1480px;margin:0 auto;padding:clamp(80px,13vh,140px) clamp(20px,4vw,56px) clamp(96px,16vh,160px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(40px,5vw,96px);align-items:stretch">
       <div data-reveal="" style="display:flex;flex-direction:column;align-items:flex-start;gap:clamp(20px,3vh,28px);min-width:0">
         <span style="display:inline-flex;align-items:center;gap:10px;min-height:40px;padding:8px 16px;border-radius:999px;background:rgba(244,247,242,0.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:15px;line-height:1.3;font-weight:600;color:#FFFFFF"><span style="width:8px;height:8px;flex-shrink:0;border-radius:50%;background:#C8F169"></span>{{ t.finAvail }}</span>
-        <h2 style="margin:0;font-size:clamp(30px,4.2vw,72px);line-height:1;font-weight:600;letter-spacing:-0.045em"><span style="display:block;white-space:nowrap">{{ t.finT1 }}</span><span style="display:block;white-space:nowrap;color:#C8F169">{{ t.finT2 }}</span></h2>
+        <h2 data-r="wrap" style="margin:0;font-size:clamp(30px,4.2vw,72px);line-height:1;font-weight:600;letter-spacing:-0.045em"><span style="display:block;white-space:nowrap">{{ t.finT1 }}</span><span style="display:block;white-space:nowrap;color:#C8F169">{{ t.finT2 }}</span></h2>
         <p style="margin:0;max-width:460px;font-size:clamp(17px,1.4vw,20px);line-height:1.45;font-weight:500;color:#FFFFFF;text-wrap:pretty">{{ t.finLead }}</p>
         <div style="margin-top:auto;align-self:stretch;display:flex;flex-direction:column;border-top:1px solid rgba(244,247,242,0.3)">
         <a href="{{ mailHref }}" onMouseEnter="{{ mailOn }}" onMouseLeave="{{ fhOff }}" style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:clamp(14px,2.4vh,20px) 0;border-bottom:1px solid rgba(244,247,242,0.3);color:#FFFFFF;text-decoration:none">
@@ -326,6 +331,7 @@
         <p style="margin:8px 0 24px;font-size:16px;line-height:1.45;font-weight:500;color:#5F6E64;text-wrap:pretty">{{ t.finFormSub }}</p>
         <sc-if value="{{ fNotSent }}" hint-placeholder-val="{{ true }}">
           <form onSubmit="{{ submitForm }}" style="flex:1;display:flex;flex-direction:column;gap:16px">
+            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none"></input>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
               <label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.fName }}<span style="color:#3E7B5A"> *</span></span></span><input name="name" required="{{ true }}" autocomplete="name" placeholder="{{ t.fNamePh }}" style="appearance:none;width:100%;height:56px;padding:0 18px;border-radius:10px;border:1.5px solid rgba(22,35,27,0.14);background:#F4F7F2;color:#16231B;font:inherit;font-size:17px;font-weight:500;outline:none;transition:border-color .3s cubic-bezier(.65,0,.35,1),background .3s cubic-bezier(.65,0,.35,1)" style-focus="border-color:#3E7B5A;background:#FFFFFF"></input></label>
               <label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.fEmail }}<span style="color:#3E7B5A"> *</span></span></span><input name="email" type="email" required="{{ true }}" autocomplete="email" placeholder="{{ t.fEmailPh }}" style="appearance:none;width:100%;height:56px;padding:0 18px;border-radius:10px;border:1.5px solid rgba(22,35,27,0.14);background:#F4F7F2;color:#16231B;font:inherit;font-size:17px;font-weight:500;outline:none;transition:border-color .3s cubic-bezier(.65,0,.35,1),background .3s cubic-bezier(.65,0,.35,1)" style-focus="border-color:#3E7B5A;background:#FFFFFF"></input></label>
@@ -336,13 +342,14 @@
             </div>
             <label style="flex:1;display:flex;flex-direction:column;gap:8px"><span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.fMsg }}</span></span><textarea name="message" rows="3" placeholder="{{ t.fMsgPh }}" style="appearance:none;width:100%;flex:1;height:auto;min-height:120px;padding:16px 18px;resize:none;line-height:1.45;display:block;border-radius:10px;border:1.5px solid rgba(22,35,27,0.14);background:#F4F7F2;color:#16231B;font:inherit;font-size:17px;font-weight:500;outline:none;transition:border-color .3s cubic-bezier(.65,0,.35,1),background .3s cubic-bezier(.65,0,.35,1)" style-focus="border-color:#3E7B5A;background:#FFFFFF"></textarea></label>
             <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;margin-top:4px">
-            <button type="submit" onMouseEnter="{{ fbOn }}" onMouseLeave="{{ fbOff }}" style="appearance:none;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border:0;border-radius:10px;background:#16231B;color:{{ fbLblC }};font:inherit;font-size:18px;font-weight:600;white-space:nowrap;cursor:pointer;transition:transform .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+            <button type="submit" disabled="{{ fSending }}" data-r="cta cta-md" onMouseEnter="{{ fbOn }}" onMouseLeave="{{ fbOff }}" style="appearance:none;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border:0;border-radius:10px;background:#16231B;color:{{ fbLblC }};font:inherit;font-size:18px;font-weight:600;white-space:nowrap;cursor:{{ fbCur }};opacity:{{ fbOp }};transition:transform .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1),opacity .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
               <span style="position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:{{ fbTileW }};border-radius:6px;background:#F3FBE4;transition:width .6s cubic-bezier(.65,0,.35,1)"></span>
               <span style="position:absolute;left:8px;top:8px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#17301F"><solar-icon icon="arrow-right-up-broken" size="24" style="display:block;transform:{{ fbArrT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
-              <span style="display:block;transform:{{ fbLblT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ t.fSend }}</span>
+              <span style="display:block;transform:{{ fbLblT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ fSendLbl }}</span>
             </button>
               <span style="font-size:14px;font-weight:500;color:#5F6E64"><span style="color:#3E7B5A">*</span> {{ t.fReqNote }}</span>
             </div>
+            <sc-if value="{{ fError }}" hint-placeholder-val="{{ false }}"><p role="alert" style="margin:0;padding:14px 16px;border-radius:10px;background:#FDECEC;color:#8A1F23;font-size:15px;line-height:1.45;font-weight:500">{{ t.fErr }}<a href="{{ mailHref }}" style="color:#8A1F23;font-weight:600;text-decoration:underline;text-underline-offset:3px">{{ email }}</a>.</p></sc-if>
           </form>
         </sc-if>
         <sc-if value="{{ fSent }}" hint-placeholder-val="{{ false }}">
@@ -360,13 +367,13 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:48px 32px;padding-bottom:clamp(48px,8vh,88px)">
         <div data-reveal="" style="display:flex;flex-direction:column;gap:8px"><span style="font-size:32px;font-weight:600;letter-spacing:-0.03em;color:#FFFFFF">Pavel<span style="color:#C8F169">.</span></span><span style="font-size:15px;font-weight:500;color:#DCE9E0">{{ t.aboutRole }}</span></div>
         <div data-reveal="" style="display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#DCE9E0;margin-bottom:4px">{{ t.ftNav }}</span><sc-for list="{{ ftLinks }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ l.label }}</a></sc-for></div>
-        <div data-reveal="" style="display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#DCE9E0;margin-bottom:4px">{{ t.ftSocial }}</span><sc-for list="{{ ftSocial }}" as="l" hint-placeholder-count="3"><a href="{{ l.href }}" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ l.label }}</a></sc-for></div>
+        <div data-reveal="" style="display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#DCE9E0;margin-bottom:4px">{{ t.ftSocial }}</span><sc-for list="{{ ftSocial }}" as="l" hint-placeholder-count="2"><a href="{{ l.href }}" target="_blank" rel="noopener" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ l.label }}</a></sc-for></div>
         <div data-reveal="" style="display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#DCE9E0;margin-bottom:4px">{{ t.ftContact }}</span><a href="{{ mailHref }}" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ email }}</a><a href="{{ telHref }}" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ phone }}</a><span style="font-size:17px;font-weight:500;color:#DCE9E0">{{ t.ftLoc }}</span></div>
       </div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 24px;padding:16px 0 24px;border-top:1px solid rgba(244,247,242,0.16);font-size:14px;font-weight:500;color:#DCE9E0">
         <span>{{ t.ftRights }}</span>
         <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px">
-          <a href="#privacy" style="color:#DCE9E0;text-decoration:none;transition:color .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF">{{ t.ftPrivacy }}</a>
+          <a href="/privacy" style="color:#DCE9E0;text-decoration:none;transition:color .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF">{{ t.ftPrivacy }}</a>
           <button onClick="{{ toTop }}" onMouseEnter="{{ topOn }}" onMouseLeave="{{ fhOff }}" style="appearance:none;display:flex;align-items:center;gap:18px;height:72px;padding:0;border:0;background:none;color:#FFFFFF;font:inherit;font-size:19px;font-weight:600;white-space:nowrap;cursor:pointer">
             <span style="padding:6px 0;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:{{ topUline }};transition:background-size .6s cubic-bezier(.65,0,.35,1)">{{ t.ftTop }}</span>
             <span style="position:relative;width:56px;height:56px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C8F169;background:{{ topCircBg }};color:{{ topFg }};display:flex;align-items:center;justify-content:center;overflow:hidden;transition:background .6s cubic-bezier(.65,0,.35,1),color .6s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;transform:{{ topArrA }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-up-broken" size="24" style="display:block"></solar-icon></span><span style="position:absolute;transform:{{ topArrB }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-up-broken" size="24" style="display:block"></solar-icon></span></span>
@@ -389,12 +396,12 @@ class Component extends DCLogic {
       nav: 'Domluvit hovor',
       cardAbout: 'Více o mně',
       cardWork: 'Nejnovější práce',
-      cookieTitle: 'Tento web používá cookies',
-      cookieText: 'Tento web používá analytické cookies ke zlepšení svých služeb. Více v ',
+      cookieTitle: 'Soukromí na tomto webu',
+      cookieText: 'Nepoužívám analytické ani reklamní cookies. Prohlížeč si pamatuje jen vaše nastavení, třeba jazyk a měnu. Více v ',
       cookieLink: 'zásadách ochrany osobních údajů',
       cookieEnd: '.',
       cookieClose: 'Zavřít',
-      cookieAccept: 'Přijmout',
+      cookieAccept: 'Rozumím',
       cookieDecline: 'Odmítnout',
       about: [['Jsem Pavel, grafický designér z Prahy. Pomáhám firmám'], ['vypadat tak dobře', 'mark', ''], [', jak dobře skutečně pracují.']],
       aboutCta: 'Více o mně',
@@ -428,6 +435,8 @@ class Component extends DCLogic {
       fEmail: 'E-mail', fEmailPh: 'jan@firma.cz', fPhone: 'Telefon', fPhonePh: '+420 600 000 000', fService: 'Služba', fServicePh: 'Vyberte službu', fServiceOther: 'Zatím nevím', fOptional: 'nepovinné', fReqNote: 'povinné údaje',
       fMsg: 'Co potřebujete?', fMsgPh: 'Pár vět o projektu, termínu a rozpočtu.',
       fSend: 'Odeslat zprávu',
+      fSending: 'Odesílám…',
+      fErr: 'Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo mi napište přímo na ',
       fSentT: 'Díky, zpráva dorazila.',
       fSentS: 'Ozvu se do 24 hodin v pracovní dny.',
       fAgain: 'Napsat další zprávu',
@@ -502,12 +511,12 @@ class Component extends DCLogic {
       nav: 'Book a call',
       cardAbout: 'More about me',
       cardWork: 'Latest work',
-      cookieTitle: 'This site uses cookies',
-      cookieText: 'This website uses analytics cookies to improve its services. See the ',
+      cookieTitle: 'Privacy on this site',
+      cookieText: 'I don’t use analytics or advertising cookies. Your browser only remembers your settings, like language and currency. See the ',
       cookieLink: 'privacy policy',
       cookieEnd: ' for details.',
       cookieClose: 'Close',
-      cookieAccept: 'Accept',
+      cookieAccept: 'Got it',
       cookieDecline: 'Decline',
       about: [['I’m Pavel, a graphic designer from Prague. I help companies'], ['look as good', 'mark', ' '], ['as the work they do.']],
       aboutCta: 'More about me',
@@ -541,6 +550,8 @@ class Component extends DCLogic {
       fEmail: 'Email', fEmailPh: 'jane@company.com', fPhone: 'Phone', fPhonePh: '+420 600 000 000', fService: 'Service', fServicePh: 'Choose a service', fServiceOther: 'Not sure yet', fOptional: 'optional', fReqNote: 'required',
       fMsg: 'What do you need?', fMsgPh: 'A few lines about the project, timing and budget.',
       fSend: 'Send message',
+      fSending: 'Sending…',
+      fErr: 'The message couldn’t be sent. Please try again, or email me directly at ',
       fSentT: 'Thanks, message received.',
       fSentS: 'I’ll get back to you within 24 hours on weekdays.',
       fAgain: 'Write another message',
@@ -838,7 +849,7 @@ class Component extends DCLogic {
       if (shade) shade.style.opacity = (0.6 * p).toFixed(3);
     });
   };
-  static IMGS = { nordvik: 'work-laptop.png', lipa: 'proj-lipa.png', vltava: 'proj-vltava.png', plavba: 'proj-plavba.png' };
+  static IMGS = { nordvik: 'work-laptop.jpg', lipa: 'proj-lipa.jpg', vltava: 'proj-vltava.jpg', plavba: 'proj-plavba.jpg' };
   static LOGOS = [
     { name: 'NORDVIK', ff: "'Montserrat',sans-serif", fw: 600, fs: '24px', ls: '0.24em', square: true },
     { name: 'kavárna lípa', ff: "'Instrument Serif',serif", fw: 400, fs: '40px', ls: '-0.01em', fst: 'italic' },
@@ -880,9 +891,36 @@ class Component extends DCLogic {
     if (!tr || this.reduce || !tr.animate) return;
     this.mAnim = tr.animate([{ transform: 'translate3d(0,0,0)' }, { transform: 'translate3d(-50%,0,0)' }], { duration: 48000, iterations: Infinity });
   }
+  // Web3Forms access key (web3forms.com). It is public by design: it can only deliver mail to the inbox it was
+  // issued for. While it is empty, the form hands the message to the visitor's mail app instead of dropping it.
+  static W3F_KEY = '';
+  static EMAIL = 'olysarp@gmail.com';
+  sendForm(e) {
+    e.preventDefault();
+    if (this.state.fSending) return;
+    const form = e.currentTarget || e.target, fd = new FormData(form);
+    if (fd.get('botcheck')) return;
+    const C = Component.COPY[this.state.lang], name = String(fd.get('name') || '').trim();
+    if (!Component.W3F_KEY) {
+      const lines = [[C.fName, name], [C.fEmail, fd.get('email')], [C.fPhone, fd.get('phone')], [C.fService, fd.get('service')]]
+        .filter(([, v]) => v).map(([k, v]) => k + ': ' + v);
+      location.href = 'mailto:' + Component.EMAIL + '?subject=' + encodeURIComponent('Poptávka z pavelolysar.com') +
+        '&body=' + encodeURIComponent(lines.join('\n') + '\n\n' + (fd.get('message') || ''));
+      return;
+    }
+    fd.append('access_key', Component.W3F_KEY);
+    fd.append('subject', 'Nová zpráva z pavelolysar.com' + (name ? ' – ' + name : ''));
+    fd.append('from_name', 'pavelolysar.com');
+    fd.append('replyto', fd.get('email') || '');
+    this.setState({ fSending: true, fError: false });
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { Accept: 'application/json' }, body: fd })
+      .then(r => r.json().catch(() => ({})).then(j => { if (!r.ok || !j.success) throw new Error(j.message || 'HTTP ' + r.status); }))
+      .then(() => this.setState({ fSent: true, fSending: false, fError: false, fbH: false, fService: '' }),
+        () => this.setState({ fSending: false, fError: true }));
+  }
   finVals(lang) {
     const C = Component.COPY[lang], st = this.state, fh = st.fh, v = '1';
-    const email = 'ahoj@pavel.design', phone = '+420 777 123 456';
+    const email = Component.EMAIL, phone = '+420 728 035 080';
     const on = k => () => this.setState({ fh: k });
     const fb = !!st.fbH, top = fh === 'top';
     const hov = { '1': '#17301F', '2': '#16231B', '3': '#C8F169' }[v] || '#17301F', base = { '1': '#FFFFFF', '2': '#16231B', '3': '#17301F' }[v] || '#FFFFFF';
@@ -892,20 +930,22 @@ class Component extends DCLogic {
       fServices: [...C.services.map(x => x.name), C.fServiceOther],
       fService: st.fService || '', fServiceC: st.fService ? '#16231B' : '#8D988F',
       setService: e => this.setState({ fService: e.target.value }),
-      email, phone, mailHref: 'mailto:' + email, telHref: 'tel:+420777123456',
+      email, phone, mailHref: 'mailto:' + email, telHref: 'tel:+420728035080',
       fhOff: () => this.setState({ fh: null }), mailOn: on('mail'), telOn: on('tel'), topOn: on('top'),
       mailBg: fh === 'mail' ? '100% 100%' : '0% 0.06em', mailFg: fh === 'mail' ? hov : base,
       telBg: fh === 'tel' ? '100% 100%' : '0% 0.06em', telFg: fh === 'tel' ? hov : base,
       fSent: !!st.fSent, fNotSent: !st.fSent,
-      submitForm: e => { e.preventDefault(); this.setState({ fSent: true, fbH: false }); },
-      resetForm: () => this.setState({ fSent: false }),
+      submitForm: e => this.sendForm(e),
+      resetForm: () => this.setState({ fSent: false, fError: false }),
+      fSending: !!st.fSending, fError: !!st.fError, fSendLbl: st.fSending ? C.fSending : C.fSend,
+      fbOp: st.fSending ? 0.6 : 1, fbCur: st.fSending ? 'progress' : 'pointer',
       fbOn: () => this.setState({ fbH: true }), fbOff: () => this.setState({ fbH: false }),
       fbTileW: fb ? 'calc(100% - 16px)' : '48px', fbArrT: fb ? 'rotate(45deg)' : 'rotate(0deg)', fbLblT: fb ? 'translateX(4px)' : 'translateX(0)', fbLblC: fb ? '#17301F' : '#F4F7F2',
       topUline: top ? '100% 2px' : '0% 2px', topCircBg: top ? '#C8F169' : 'rgba(200,241,105,0)', topFg: top ? '#17301F' : '#FFFFFF',
       topArrA: top ? 'translateY(-48px)' : 'translateY(0)', topArrB: top ? 'translateY(0)' : 'translateY(48px)',
       toTop: () => { this.setState({ fh: null }); if (window.poJump) window.poJump(document.body); else window.scrollTo({ top: 0, behavior: 'smooth' }); },
       ftLinks: C.links.map((l, i) => ({ label: l, href: ['#work', '#services', '#about', '#contact'][i] })),
-      ftSocial: [{ label: 'Instagram', href: '#' }, { label: 'LinkedIn', href: '#' }, { label: 'Behance', href: '#' }]
+      ftSocial: [{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/pavel-oly%C5%A1ar-25309a331/' }, { label: 'Behance', href: 'https://www.behance.net/pavelolysar' }]
     };
   }
   playIntro() {
@@ -943,6 +983,20 @@ class Component extends DCLogic {
         run('cookie', up('10px'), 1200, 1330);
       });
   }
+  // The hero cards sit bottom-right (right 20, bottom 20) and scale with the viewport height: clamp(150px,17vh,196px)
+  // tall. With them shown the hero copy is centred above a bottom padding of card height + 40px; if even then the
+  // CTA would reach into the cards' band, keep the cards hidden.
+  // Offsets (not getBoundingClientRect) so the intro animation's transforms don't skew the measurement.
+  cardsFit() {
+    const main = this.rootRef.current && this.rootRef.current.querySelector('main');
+    const h1 = main && main.querySelector('h1'), cta = main && main.querySelector('[data-intro="cta"]');
+    if (!h1 || !cta) return false;
+    const vh = window.innerHeight, H = cta.offsetTop + cta.offsetHeight - h1.offsetTop;
+    const cardH = Math.min(196, Math.max(150, vh * 0.17));
+    const top = Math.min(160, Math.max(124, vh * 0.22)), avail = vh - top - cardH - 40;
+    const bottom = top + (H <= avail ? (avail + H) / 2 : H);
+    return bottom <= vh - 20 - cardH - 16;
+  }
   componentDidMount() {
     this.mqFaq = matchMedia('(max-width: 760px), (max-height: 640px)');
     this.onFaqMq = () => this.setState({ faqMob: this.mqFaq.matches });
@@ -953,8 +1007,10 @@ class Component extends DCLogic {
     window.addEventListener('resize', this.onScroll);
     document.documentElement.lang = this.state.lang === 'cz' ? 'cs' : 'en';
     this.mq = matchMedia('(min-width: 1100px) and (min-height: 800px)');
-    this.onMq = () => this.setState({ cards: this.mq.matches });
+    this.onMq = () => { const c = this.mq.matches && this.cardsFit(); if (c !== !!this.state.cards) this.setState({ cards: c }); };
     this.mq.addEventListener('change', this.onMq);
+    window.addEventListener('resize', this.onMq);
+    if (document.fonts) document.fonts.ready.then(() => this.onMq());
     this.mqSig = matchMedia('(min-width: 640px)');
     this.onSig = () => this.setState({ wideSig: this.mqSig.matches });
     this.mqSig.addEventListener('change', this.onSig);
@@ -962,11 +1018,11 @@ class Component extends DCLogic {
     this.onMq();
   }
   componentWillUnmount() {
-    clearTimeout(this.cpT); this.mqFaq && this.mqFaq.removeEventListener('change', this.onFaqMq); cancelAnimationFrame(this.prRaf); cancelAnimationFrame(this.twRaf); this.mq && this.mq.removeEventListener('change', this.onMq); this.mqSig && this.mqSig.removeEventListener('change', this.onSig); this.io && this.io.disconnect(); window.removeEventListener('scroll', this.onScroll, { capture: true }); window.removeEventListener('resize', this.onScroll); this.mAnim && this.mAnim.cancel(); }
+    clearTimeout(this.cpT); this.mqFaq && this.mqFaq.removeEventListener('change', this.onFaqMq); cancelAnimationFrame(this.prRaf); cancelAnimationFrame(this.twRaf); this.mq && this.mq.removeEventListener('change', this.onMq); this.mqSig && this.mqSig.removeEventListener('change', this.onSig); this.io && this.io.disconnect(); window.removeEventListener('scroll', this.onScroll, { capture: true }); window.removeEventListener('resize', this.onScroll); window.removeEventListener('resize', this.onMq); this.mAnim && this.mAnim.cancel(); }
   componentDidUpdate() {
     this.tweenPrice();
     this.twAll();
-    if (this.lastLang !== this.state.lang) { this.lastLang = this.state.lang; this.updateWords(); }
+    if (this.lastLang !== this.state.lang) { this.lastLang = this.state.lang; this.updateWords(); if (this.onMq) this.onMq(); }
   }
 
   setCookies(v) {
@@ -1018,7 +1074,7 @@ class Component extends DCLogic {
               v3Clip: open ? 'inset(0% 0% 0% 0% round 12px)' : 'inset(100% 0% 0% 0% round 12px)',
               v3ImgT: open ? 'scale(1)' : 'scale(1.15)',
               slot: 'svc-' + (i + 1),
-              img: 'assets/' + ['work-laptop.png', 'proj-vltava.png', 'proj-lipa.png', 'proj-plavba.png', 'card-work.jpg'][i % 5],
+              img: 'assets/' + ['work-laptop.jpg', 'proj-vltava.jpg', 'proj-lipa.jpg', 'proj-plavba.jpg', 'card-work.jpg'][i % 5],
               ph: (lang === 'cz' ? 'Obrázek: ' : 'Image: ') + s.name
             };
           }),
@@ -1097,7 +1153,7 @@ class Component extends DCLogic {
       cookieBtnOn: () => this.setState({ cookieBtnHover: true }),
       cookieBtnOff: () => this.setState({ cookieBtnHover: false }),
       cookieIconT: this.state.cookieBtnHover ? 'rotate(-40deg) scale(1.12)' : 'rotate(0deg) scale(1)',
-      mainPadBottom: 'clamp(40px,22vh,160px)',
+      mainPadBottom: this.state.cards ? 'calc(clamp(150px,17vh,196px) + 40px)' : 'clamp(92px,22vh,160px)',
       acceptCookies: () => this.setCookies('accepted'),
       declineCookies: () => this.setCookies('declined'),
       hoverAbout: () => this.setState({ hover: 'about' }),

@@ -24,9 +24,16 @@
   root.appendChild(blur); root.appendChild(veil); root.appendChild(panel);
   document.documentElement.appendChild(root);
 
+  // Resolves when the animation finishes, or shortly after it should have: if the browser never starts it
+  // (throttled tab, low-power mode, some WebKit builds) the jump/navigation must still happen.
   function anim(el, from, to, dur, ease, delay) {
     var a = el.animate([from, to], { duration: dur, delay: delay || 0, easing: ease, fill: 'forwards' });
-    return a.finished.then(function () { for (var k in to) el.style[k] = to[k]; a.cancel(); });
+    return new Promise(function (resolve) {
+      var done = false;
+      function finish() { if (done) return; done = true; for (var k in to) el.style[k] = to[k]; a.cancel(); resolve(); }
+      a.finished.then(finish, finish);
+      setTimeout(finish, (delay || 0) + dur + 150);
+    });
   }
   function reset() {
     blur.style.opacity = veil.style.opacity = '0';

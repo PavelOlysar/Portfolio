@@ -3,16 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>404 · Pavel Olyšar</title>
+<title>Ochrana osobních údajů · Pavel Olyšar</title>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script src="/tab-status.js" defer></script>
-<meta name="robots" content="noindex">
+<meta name="description" content="Jak pavelolysar.com zachází s osobními údaji: kontaktní formulář, nastavení v prohlížeči a hosting.">
 <meta name="theme-color" content="#3E7B5A">
 <!--
-  Standalone 404, served by Cloudflare for any unknown path (wrangler.toml: not_found_handling = "404-page").
-  Deliberately not a Design Component: it can be served at any depth (/a/b/c), so every URL here is absolute,
-  and it needs no runtime. The nav is a static port of Nav.dc.html (same copy, links, 1200px breakpoint);
-  the bands are a static port of Teal Hero Background.dc.html (teal #3E7B5A, 6 bands, drift 0.8).
+  Standalone privacy page (/privacy). Built from the 404 template: same nav, bands and CTA; all URLs absolute.
 -->
 <script>(function(){var l='cz';try{if(localStorage.getItem('po-lang')==='en')l='en'}catch(e){}var d=document.documentElement;d.setAttribute('data-lang',l);d.lang=l==='en'?'en':'cs'})()</script>
 <link rel="stylesheet" href="/fonts.css">
@@ -88,6 +85,26 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
   .main{padding-left:16px;padding-right:16px}
   .main>.cta{--t:48px;height:64px;padding:0 28px 0 76px;font-size:18px}
 }
+/* Privacy page: a shorter header over the bands, then a reading column on the light background. */
+.page--doc{min-height:0}
+.page--doc .main{flex:none;padding:calc(128px + clamp(48px,9vh,96px)) 20px clamp(96px,16vh,160px)}
+.doc-title{margin:0;max-width:1100px;font-weight:600;font-size:clamp(40px,7vw,96px);line-height:1;letter-spacing:-.042em;text-wrap:balance;text-shadow:0 2px 32px rgba(15,50,30,.22)}
+.doc-date{margin:16px 0 0;font-size:17px;font-weight:500;text-shadow:0 1px 18px rgba(15,50,30,.25)}
+.doc{background:#F4F7F2;color:var(--ink);padding:clamp(16px,4vh,48px) 20px clamp(80px,12vh,128px)}
+.doc__inner{max-width:760px;margin:0 auto}
+.doc h2{margin:48px 0 12px;font-size:clamp(24px,2.4vw,32px);line-height:1.15;font-weight:600;letter-spacing:-.03em}
+.doc h2:first-child{margin-top:0}
+.doc p,.doc li{margin:0 0 14px;font-size:18px;line-height:1.6;font-weight:500;color:#40514A;text-wrap:pretty}
+.doc ul{margin:0 0 14px;padding-left:1.2em}
+.doc li{margin-bottom:6px}
+.doc li::marker{color:#3E7B5A}
+.doc a:not(.cta){color:var(--ink);font-weight:600;text-decoration:none;background:linear-gradient(var(--lime),var(--lime)) no-repeat 0 100%/100% 2px;padding-bottom:1px;transition:background-size .3s var(--ease)}
+.doc a:not(.cta):hover,.doc a:not(.cta):focus-visible{background-size:100% 100%}
+.doc .cta{margin-top:48px;width:max-content;max-width:100%}
+@media (max-width:560px){
+  .doc p,.doc li{font-size:17px}
+  .doc .cta{--t:48px;height:64px;padding:0 28px 0 76px;font-size:18px}
+}
 @media (prefers-reduced-motion:reduce){
   .drift,.dot::before{animation:none}
   .dot::before{display:none}
@@ -96,7 +113,7 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
 </style>
 </head>
 <body>
-<div class="page">
+<div class="page page--doc">
   <div class="bg" aria-hidden="true"><div class="bands">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="bs" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="22"/></filter><filter id="bi" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="28"/></filter><filter id="bg" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="7"/></filter><filter id="bl" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="0.9"/></filter></defs></svg>
 <div class="band"><div class="drift" style="--a:20px;--d:14.4s;--dl:0.0s"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fb0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#3e7b5a"/><stop offset="0.5" stop-color="#7ca58f"/><stop offset="0.84" stop-color="#d8e5de"/><stop offset="1" stop-color="#f6f9f8"/></linearGradient><linearGradient id="eb0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="hsl(148,41%,66%)"/><stop offset="0.45" stop-color="#c5d7ce"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/></linearGradient><radialGradient id="qb0" gradientUnits="userSpaceOnUse" cx="980" cy="400" r="880"><stop offset="0" stop-color="#3a3a3a"/><stop offset="0.55" stop-color="#8a8a8a"/><stop offset="1" stop-color="#ffffff"/></radialGradient><mask id="mb0" maskUnits="userSpaceOnUse" x="-800" y="-800" width="3200" height="2600"><rect x="-800" y="-800" width="3200" height="2600" fill="url(#qb0)"/></mask><clipPath id="cb0"><circle cx="1490" cy="1080" r="1750" /></clipPath></defs><g mask="url(#mb0)"><circle cx="1490" cy="1080" r="1750" fill="none" stroke="hsl(148,33%,22%)" stroke-width="50" opacity="0.3" filter="url(#bs)" transform="translate(-14 0)"/></g><circle cx="1490" cy="1080" r="1750" fill="url(#fb0)"/><g clip-path="url(#cb0)"><circle cx="1490" cy="1080" r="1750" fill="none" stroke="#ffffff" stroke-width="80" opacity="0.2" filter="url(#bi)"/></g><g mask="url(#mb0)"><circle cx="1490" cy="1080" r="1750" fill="none" stroke="url(#eb0)" stroke-width="12" opacity="0.5" filter="url(#bg)"/><circle cx="1490" cy="1080" r="1750" fill="none" stroke="url(#eb0)" stroke-width="2.2" opacity="0.95" filter="url(#bl)"/></g></svg></div></div>
@@ -146,16 +163,45 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
   </header>
 
   <main class="main">
-    <p class="code" aria-hidden="true">404</p>
-    <h1 class="title"><span class="sr">404 – </span><span data-l="cz">Tady nic není. Žádné starosti.</span><span data-l="en">Nothing here. No worries.</span></h1>
-    <p class="sub"><span data-l="cz">Stránka, kterou hledáte, se přesunula nebo nikdy neexistovala.</span><span data-l="en">The page you’re looking for has moved or never existed.</span></p>
-    <a class="cta" href="/">
+    <h1 class="doc-title"><span data-l="cz">Ochrana osobních údajů</span><span data-l="en">Privacy policy</span></h1>
+    <p class="doc-date"><span data-l="cz">Platné od 3. října 2026</span><span data-l="en">Effective 3 October 2026</span></p>
+  </main>
+</div>
+<article class="doc">
+  <div class="doc__inner">
+      <h2 data-l="cz">Kdo vaše údaje zpracovává</h2>
+      <h2 data-l="en">Who processes your data</h2>
+      <p data-l="cz">Správcem osobních údajů jsem já, Pavel Olyšar, grafický designér z Prahy. Ozvat se mi můžete na <a href="mailto:olysarp@gmail.com">olysarp@gmail.com</a> nebo na čísle <a href="tel:+420728035080">+420 728 035 080</a>.</p>
+      <p data-l="en">The data controller is me, Pavel Olyšar, a graphic designer based in Prague. You can reach me at <a href="mailto:olysarp@gmail.com">olysarp@gmail.com</a> or on <a href="tel:+420728035080">+420 728 035 080</a>.</p>
+      <h2 data-l="cz">Kontaktní formulář</h2>
+      <h2 data-l="en">Contact form</h2>
+      <p data-l="cz">Když mi napíšete přes formulář, odešle se vaše jméno, e-mail, případně telefon, vybraná služba a text zprávy přes službu <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>, která mi je doručí e-mailem. Údaje použiju jen k tomu, abych vám odpověděl a připravil nabídku. Právním základem je jednání o smlouvě a můj oprávněný zájem odpovědět na vaši zprávu (čl. 6 odst. 1 písm. b) a f) GDPR).</p>
+      <p data-l="en">When you write to me through the form, your name, email, optional phone number, the service you chose and your message are sent via <a href="https://web3forms.com" target="_blank" rel="noopener">Web3Forms</a>, which delivers them to me by email. I only use them to reply and prepare a quote. The legal basis is taking steps towards a contract and my legitimate interest in answering your message (Art. 6(1)(b) and (f) GDPR).</p>
+      <p data-l="cz">Zprávy uchovávám po dobu nezbytnou k vyřízení poptávky a případné spolupráce. Pokud spolupráce nevznikne, smažu je nejpozději do dvou let. Údaje nikomu neprodávám ani nepředávám pro marketing.</p>
+      <p data-l="en">I keep messages for as long as needed to handle your enquiry and any work that follows. If we don’t end up working together, I delete them within two years at the latest. I never sell your data or pass it on for marketing.</p>
+      <h2 data-l="cz">Cookies a nastavení v prohlížeči</h2>
+      <h2 data-l="en">Cookies and browser settings</h2>
+      <p data-l="cz">Nepoužívám analytické, reklamní ani jiné sledovací cookies. Web si ve vašem prohlížeči (localStorage) ukládá jen vaše nastavení:</p>
+      <p data-l="en">I don’t use analytics, advertising or any other tracking cookies. The site only stores your settings in your browser (localStorage):</p>
+      <ul data-l="cz"><li>zvolený jazyk webu,</li><li>měnu, ve které zobrazujete ceník,</li><li>že jste zavřeli informaci o cookies,</li><li>styl přechodu mezi stránkami a to, zda jste už viděli úvodní animaci.</li></ul>
+      <ul data-l="en"><li>the language you picked,</li><li>the currency you view prices in,</li><li>that you dismissed the cookie notice,</li><li>the page-transition style and whether you’ve already seen the intro animation.</li></ul>
+      <p data-l="cz">Tyto údaje zůstávají ve vašem zařízení, nikam se neodesílají a můžete je kdykoli smazat v nastavení prohlížeče.</p>
+      <p data-l="en">This stays on your device, is never sent anywhere, and you can clear it at any time in your browser settings.</p>
+      <h2 data-l="cz">Hosting</h2>
+      <h2 data-l="en">Hosting</h2>
+      <p data-l="cz">Web běží na infrastruktuře společnosti Cloudflare, která při každém načtení stránky technicky zpracovává vaši IP adresu a údaje o prohlížeči, aby web mohla doručit a chránit před útoky. Písma i všechny skripty se načítají přímo z tohoto webu, nic se nestahuje od Googlu ani jiných třetích stran.</p>
+      <p data-l="en">The site runs on Cloudflare’s infrastructure, which technically processes your IP address and browser details on every page load to deliver the site and protect it from attacks. Fonts and all scripts are served from this site itself; nothing is loaded from Google or other third parties.</p>
+      <h2 data-l="cz">Vaše práva</h2>
+      <h2 data-l="en">Your rights</h2>
+      <p data-l="cz">Máte právo na přístup ke svým údajům, jejich opravu nebo výmaz, omezení zpracování, přenositelnost a právo vznést námitku. Stačí mi napsat na <a href="mailto:olysarp@gmail.com">olysarp@gmail.com</a>. Pokud s mým postupem nebudete spokojeni, můžete podat stížnost u Úřadu pro ochranu osobních údajů (<a href="https://uoou.gov.cz" target="_blank" rel="noopener">uoou.gov.cz</a>).</p>
+      <p data-l="en">You have the right to access, correct or erase your data, to restrict processing, to data portability and to object. Just write to me at <a href="mailto:olysarp@gmail.com">olysarp@gmail.com</a>. If you’re not happy with how I handle it, you can complain to the Czech data protection authority (<a href="https://uoou.gov.cz" target="_blank" rel="noopener">uoou.gov.cz</a>).</p>
+      <a class="cta" href="/">
       <span class="cta__tile"></span>
       <span class="cta__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.846" aria-hidden="true"><path d="M6 18L8.5 15.5M18 15V6H9M18 6L11.5 12.5"/></svg></span>
       <span class="cta__label"><span data-l="cz">Zpět na úvod</span><span data-l="en">Back to home</span></span>
     </a>
-  </main>
-</div>
+  </div>
+</article>
 <script>
 (function () {
   var d = document.documentElement, nav = document.getElementById('nav');

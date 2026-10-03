@@ -18,22 +18,23 @@ npx wrangler dev   # http://localhost:8787 — same asset handling as production
 
 ## Updating the current portfolio
 
-Copy the files from the Claude Design export into `site/`, saving `Hero.dc.html` as `index.html`.
-The runtime (`support.js`) loads the other components (`Nav.dc.html`, `Teal Hero Background.dc.html`)
-by file name, so keep those names unchanged. In `Nav.dc.html`, the logo link points at `./` rather
-than `Hero.dc.html`.
+`site/` started as a Claude Design export but has since been fixed by hand, so **it is now the source of
+truth — do not copy a fresh export over it.** Make changes in `site/` directly (or port a redesign in
+piece by piece). What was added on top of the export:
 
-The export has no `<title>` or favicon, so after copying it in, re-add these three lines to the
-`<head>` of `index.html` (right after the viewport meta):
+| File | What it does |
+|---|---|
+| `responsive.css` | All phone/tablet breakpoints. `index.html` styles everything inline, so elements that need to adapt carry a `data-r="…"` hook and the rules here override them with `!important`. |
+| `fonts.css`, `fonts/` | Self-hosted Montserrat + Instrument Serif (no Google Fonts). |
+| `vendor/` | Self-hosted React 18.3.1, mapped via `window.__resources` in `index.html` (no unpkg at runtime). |
+| `tab-status.js`, `favicon*.svg` | Favicon, and the animated "On hold" title + red-dot favicon while the tab is in the background. |
+| `privacy.html`, `404.html` | Standalone pages (no runtime) sharing the nav and hero bands. |
 
-```html
-<title>Pavel Olyšar</title>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<script src="/tab-status.js" defer></script>
-```
-
-`tab-status.js` swaps the title to an animated "On hold" and the favicon to `favicon-hold.svg` (red dot)
-while the tab is in the background.
+Hand edits inside export files: the contact form in `index.html` posts to Web3Forms (`static W3F_KEY`
+holds the access key; while it is empty the form opens the visitor's mail app instead), real contact
+details/social links, hero-card fit check, menu-closes-on-tap in `Nav.dc.html`, and two `pavelolysar.com:`
+patches in `image-slot.js` that silence editor-only requests. `smooth-scroll.js` jumps no longer wait
+forever on an animation that never starts.
 
 ## Rebuilding the archive
 
