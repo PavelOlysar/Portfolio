@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=JSON.parse(sessionStorage.getItem('poTx')||'null');if(t&&!matchMedia('(prefers-reduced-motion: reduce)').matches){var d=document.documentElement;d.setAttribute('data-po-tx','');d.style.setProperty('--po-tx-c',t.c);setTimeout(function(){d.removeAttribute('data-po-tx')},4000)}}catch(e){}</script>
+<style>html[data-po-tx]::after{content:"";position:fixed;inset:0;z-index:2147483001;background:var(--po-tx-c)}</style>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>::placeholder{color:#8D988F;opacity:1}::selection{background:#C8F169;color:#17301F}html,body{margin:0;background:#3E7B5A;-webkit-font-smoothing:antialiased}body a{color:#FFFFFF;text-decoration:none}body a:hover{color:#FFFFFF}*{box-sizing:border-box}</style>
+<script src="./smooth-scroll.js"></script>
+<script src="./image-slot.js"></script>
+<script src="./solar-icon.js"></script>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;height:100vh;height:100svh;overflow:hidden;background:linear-gradient(to bottom,#3E7B5A 0%,#8DB49C 50%,#DCE9E0 84%,#F4F7F2 100%);font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF;display:flex;flex-direction:column">
+  <div data-intro="bg" style="position:absolute;inset:0;z-index:0;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 68%,transparent 100%);mask-image:linear-gradient(to bottom,#000 68%,transparent 100%)"><dc-import name="Teal Hero Background" teal="#3E7B5A" band-count="{{ 6 }}" grain="{{ 0.1 }}" drift-speed="{{ 0.8 }}" face-right="{{ true }}" parallax-strength="{{ 30 }}" shimmer="{{ true }}" style="position:absolute;left:0;top:0;width:100%;height:max(100%,100vh)" hint-size="100%,100%"></dc-import></div>
+  <sc-if value="{{ scrim }}" hint-placeholder-val="{{ true }}">
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 75% 60% at 50% 46%,rgba(20,60,40,0.2),rgba(20,60,40,0.07) 55%,rgba(20,60,40,0) 80%)"></div>
+  </sc-if>
+
+  <div data-intro="nav" style="position:fixed;top:0;left:0;right:0;z-index:50;pointer-events:none"><div style="pointer-events:auto;transform:{{ navT }};transition:transform .6s cubic-bezier(.65,0,.35,1);will-change:transform"><dc-import name="Nav" current="home" lang="{{ lang }}" on-lang="{{ setLang }}" lang-style="{{ langStyle }}" style="position:relative;width:100%" hint-size="100%,94px"></dc-import></div></div>
+
+  <div data-intro="cookie" style="position:absolute;left:20px;bottom:20px;z-index:4;display:flex;flex-direction:column;align-items:flex-start;gap:10px">
+    <sc-if value="{{ cookieOpen }}" hint-placeholder-val="{{ false }}">
+      <div role="dialog" aria-label="Cookies" style="position:relative;width:340px;max-width:calc(100vw - 40px);padding:22px;background:#FFFFFF;border:1px solid rgba(22,35,27,0.14);border-radius:3px;color:#16231B;box-shadow:0 24px 60px rgba(10,40,25,0.16)">
+        <button onClick="{{ toggleCookie }}" aria-label="{{ t.cookieClose }}" style="appearance:none;position:absolute;top:14px;right:14px;width:32px;height:32px;border:0;background:none;color:#8D988F;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="color:#16231B"><solar-icon icon="close-circle-broken" size="18" style="display:block"></solar-icon></button>
+        <span style="display:inline-flex;align-items:center;height:30px;padding:0 10px;border:1px solid rgba(22,35,27,0.3);border-radius:3px;font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#5F6E64">Cookies</span>
+        <p style="margin:18px 0 0;font-size:20px;line-height:1.3;font-weight:500;letter-spacing:-0.01em">{{ t.cookieTitle }}</p>
+        <p style="margin:8px 0 0;font-size:16px;line-height:1.4;color:#7E8B82;text-wrap:pretty">{{ t.cookieText }}<a href="#privacy" style="color:#16231B;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px">{{ t.cookieLink }}</a>{{ t.cookieEnd }}</p>
+        <button onClick="{{ acceptCookies }}" onMouseEnter="{{ acceptOn }}" onMouseLeave="{{ acceptOff }}" style="appearance:none;position:relative;isolation:isolate;overflow:hidden;margin-top:20px;width:100%;height:56px;border:0;border-radius:8px;background:#C8F169;color:#17301F;font:inherit;font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+          <span style="position:absolute;z-index:-1;left:6px;top:6px;bottom:6px;width:{{ acceptTileW }};border-radius:5px;background:#F3FBE4;opacity:{{ acceptTileOp }};transition:width .6s cubic-bezier(.65,0,.35,1),opacity .3s cubic-bezier(.65,0,.35,1)"></span>
+          <span style="display:block">{{ t.cookieAccept }}</span>
+        </button>
+        <button onClick="{{ declineCookies }}" style="appearance:none;margin-top:6px;width:100%;height:40px;border:0;background:none;color:#5F6E64;font:inherit;font-size:15px;font-weight:500;cursor:pointer" style-hover="color:#16231B">{{ t.cookieDecline }}</button>
+      </div>
+    </sc-if>
+    <button onClick="{{ toggleCookie }}" onMouseEnter="{{ cookieBtnOn }}" onMouseLeave="{{ cookieBtnOff }}" aria-label="Cookies" aria-expanded="{{ cookieOpen }}" style="appearance:none;width:52px;height:52px;border:0;border-radius:6px;background:#C8F169;color:#16231B;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 24px rgba(10,40,25,0.14);transition:background .3s cubic-bezier(.65,0,.35,1),transform .3s cubic-bezier(.65,0,.35,1)" style-hover="background:#E2F4C0" style-active="transform:scale(0.94)">
+      <svg width="24" height="24" style="transform:{{ cookieIconT }};transition:transform .6s cubic-bezier(.65,0,.35,1)" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd"><path d="M12 2.5a9.5 9.5 0 1 0 9.5 9.5a3.2 3.2 0 0 1-3.6-3.3a3.2 3.2 0 0 1-3.3-3.6A3.2 3.2 0 0 1 12 2.5z M8.4 9.3m-1.5 0a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0-3 0z M8.6 15.4m-1.2 0a1.2 1.2 0 1 0 2.4 0a1.2 1.2 0 1 0-2.4 0z M14.6 16.2m-1.4 0a1.4 1.4 0 1 0 2.8 0a1.4 1.4 0 1 0-2.8 0z M12.4 12.2m-0.9 0a0.9 0.9 0 1 0 1.8 0a0.9 0.9 0 1 0-1.8 0z"></path></svg>
+    </button>
+  </div>
+  <sc-if value="{{ showCards }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;right:20px;bottom:20px;z-index:3;display:flex;gap:10px">
+    <a data-intro="card" href="#about" onMouseEnter="{{ hoverAbout }}" onMouseLeave="{{ unhover }}" style="position:relative;display:block;width:280px;height:196px;border-radius:8px;overflow:hidden;background:#14211A;box-shadow:0 14px 36px rgba(10,40,25,0.18);text-decoration:none;color:#FFFFFF">
+      <div style="position:absolute;inset:0;transform:{{ imgAbout }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><img src="assets/card-about-v3.jpg" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></div>
+      <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(5,15,10,0.55),rgba(5,15,10,0) 48%)"></div>
+      <div style="position:absolute;inset:0;pointer-events:none;background:rgba(5,15,10,0.28);opacity:{{ shadeAbout }};transition:opacity .6s cubic-bezier(.65,0,.35,1)"></div>
+      <span style="position:absolute;top:16px;left:18px;font-size:19px;font-weight:600;color:#FFFFFF">{{ t.cardAbout }}</span>
+      <span style="position:absolute;right:12px;bottom:12px;width:46px;height:46px;border-radius:50%;background:#FFFFFF;color:#16231B;display:flex;align-items:center;justify-content:center;opacity:{{ arrowOpAbout }};transform:{{ arrowTAbout }};transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-broken" size="22" style="display:block"></solar-icon></span>
+    </a>
+    <a data-intro="card" href="#work" onMouseEnter="{{ hoverWork }}" onMouseLeave="{{ unhover }}" style="position:relative;display:block;width:280px;height:196px;border-radius:8px;overflow:hidden;background:#14211A;box-shadow:0 14px 36px rgba(10,40,25,0.18);text-decoration:none;color:#FFFFFF">
+      <div style="position:absolute;inset:0;transform:{{ imgWork }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><img src="assets/card-work.jpg" alt="" style="display:block;width:100%;height:100%;object-fit:cover"></div>
+      <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(5,15,10,0.55),rgba(5,15,10,0) 48%)"></div>
+      <div style="position:absolute;inset:0;pointer-events:none;background:rgba(5,15,10,0.28);opacity:{{ shadeWork }};transition:opacity .6s cubic-bezier(.65,0,.35,1)"></div>
+      <span style="position:absolute;top:16px;left:18px;font-size:19px;font-weight:600;color:#FFFFFF">{{ t.cardWork }}</span>
+      <span style="position:absolute;right:12px;bottom:12px;width:46px;height:46px;border-radius:50%;background:#FFFFFF;color:#16231B;display:flex;align-items:center;justify-content:center;opacity:{{ arrowOpWork }};transform:{{ arrowTWork }};transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-broken" size="22" style="display:block"></solar-icon></span>
+    </a>
+  </div>
+  </sc-if>
+  <main style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:safe center;text-align:center;padding:clamp(124px,22vh,160px) 20px {{ mainPadBottom }};gap:0;min-height:0">
+    <h1 style="flex-shrink:0;margin:0;font-weight:600;letter-spacing:-0.025em;line-height:1.04;font-size:{{ h1Size }};max-width:1500px;text-shadow:0 2px 32px rgba(15,50,30,0.22)">
+      <span data-intro="h1" style="display:block;text-wrap:balance">{{ t.h1a }}</span>
+      <span data-intro="h1" style="display:block;text-wrap:balance">{{ t.h1b }}</span>
+    </h1>
+    <p data-intro="sub" style="margin:clamp(18px,3.5vh,32px) 0 0;max-width:920px;font-size:clamp(21px,min(2.8vw,5vh),32px);line-height:1.28;font-weight:500;letter-spacing:-0.012em;text-wrap:pretty;text-shadow:0 1px 18px rgba(15,50,30,0.25)">{{ t.sub }}</p>
+    <a data-intro="cta" href="#contact" onMouseEnter="{{ ctaOn }}" onMouseLeave="{{ ctaOff }}" style="flex-shrink:0;margin-top:clamp(24px,5vh,44px);position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:72px;padding:0 34px 0 86px;border-radius:10px;background:#C8F169;color:#17301F;font-size:21px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+      <span style="position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:{{ ctaTileW }};border-radius:6px;background:#F3FBE4;transition:width .6s cubic-bezier(.65,0,.35,1)"></span>
+      <span style="position:absolute;left:8px;top:8px;width:56px;height:56px;display:flex;align-items:center;justify-content:center"><solar-icon icon="arrow-right-up-broken" size="26" style="display:block;transform:{{ ctaArrowT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+      <span style="display:block;transform:{{ ctaLabelT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ t.primary }}</span>
+    </a>
+  </main>
+</div>
+<section id="about" ref="{{ aboutRef }}" style="position:relative;overflow:hidden;background:#F4F7F2;color:#16231B;font-family:'Montserrat',system-ui,sans-serif;padding:clamp(96px,18vh,220px) 0 0">
+  <div style="max-width:1480px;margin:0 auto;padding:0 clamp(20px,4vw,56px);display:flex;flex-direction:column;align-items:center;text-align:center">
+    <div role="paragraph" ref="{{ aboutTextRef }}" style="margin:0;max-width:1320px;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em;color:#16231B;text-wrap:balance">
+      <sc-for list="{{ aboutWords }}" as="w" hint-placeholder-count="12"><sc-if value="{{ w.word }}" hint-placeholder-val="{{ true }}"><span data-word="" style="opacity:0.14;color:{{ w.color }}">{{ w.text }}</span></sc-if><sc-if value="{{ w.mark }}" hint-placeholder-val="{{ false }}"><span data-word="" style="opacity:0.14"><span data-mark="" style="background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 58%;background-size:0% 86%;border-radius:0.12em;padding:0 0.08em;margin:0 -0.02em;-webkit-box-decoration-break:clone;box-decoration-break:clone">{{ w.text }}</span>{{ w.space }}</span></sc-if></sc-for>
+    </div>
+    <div data-reveal="" style="margin-top:clamp(48px,8vh,88px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:24px 36px">
+      <div style="display:flex;align-items:center;gap:18px;text-align:left">
+        <div style="width:76px;height:76px;flex-shrink:0;border-radius:50%;overflow:hidden;background:#FFFFFF;box-shadow:0 0 0 1px rgba(22,35,27,0.08),0 8px 22px rgba(10,40,25,0.12)"><img src="assets/portrait-about.png" alt="Pavel Olyšar" style="display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.9);transform-origin:50% 27%"></div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:20px;font-weight:600;letter-spacing:-0.01em;color:#16231B">Pavel Olyšar</span>
+          <span style="font-size:16px;font-weight:500;color:#5F6E64">{{ t.aboutRole }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:clamp(144px,24vh,280px)">
+    <p data-reveal="" style="margin:0 0 clamp(20px,3vh,32px);padding:0 20px;text-align:center;font-family:'Montserrat',sans-serif;font-weight:500;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.clientsCaption }}</p>
+    <div onMouseEnter="{{ marqueeSlow }}" onMouseLeave="{{ marqueeFast }}" style="overflow:hidden;border-top:1px solid rgba(22,35,27,0.12);border-bottom:1px solid rgba(22,35,27,0.12);-webkit-mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent)">
+      <div ref="{{ marqueeRef }}" style="display:flex;width:max-content;will-change:transform">
+        <sc-for list="{{ logos }}" as="l" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:12px;height:132px;padding:0 clamp(36px,4.4vw,72px);white-space:nowrap;color:#16231B;opacity:0.48;filter:grayscale(1);font-family:{{ l.ff }};font-weight:{{ l.fw }};font-style:{{ l.fst }};font-size:{{ l.fs }};letter-spacing:{{ l.ls }};transition:opacity .3s cubic-bezier(.65,0,.35,1)" style-hover="opacity:1">
+            <sc-if value="{{ l.square }}" hint-placeholder-val="{{ false }}"><span style="width:16px;height:16px;background:currentColor"></span></sc-if>
+            <sc-if value="{{ l.circle }}" hint-placeholder-val="{{ false }}"><span style="width:22px;height:22px;border-radius:50%;border:4px solid currentColor"></span></sc-if>
+            <sc-if value="{{ l.diamond }}" hint-placeholder-val="{{ false }}"><span style="width:14px;height:14px;background:currentColor;transform:rotate(45deg)"></span></sc-if>
+            <span>{{ l.name }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="work" ref="{{ projRef }}" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B">
+    <div style="padding:clamp(144px,24vh,280px) 0 clamp(144px,24vh,300px)">
+      <div style="padding:0 clamp(20px,4vw,56px);margin-bottom:clamp(28px,5vh,56px);display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap">
+        <h2 data-reveal="" style="margin:0;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em">{{ t.workTitle }}</h2>
+      </div>
+      <div style="position:relative">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+          <div data-card="" style="position:sticky;top:0;height:100vh;height:100svh">
+            <div data-card-inner="" style="position:relative;height:100%;overflow:hidden;background:#14211A;color:#FFFFFF;transform-origin:50% 0;will-change:transform">
+              <div style="position:absolute;inset:0"><image-slot id="{{ p.slot }}" src="{{ p.img }}" placeholder="{{ p.ph }}" style="display:block;width:100%;height:100%"></image-slot></div>
+              <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(5,15,10,0.7),rgba(5,15,10,0) 55%)"></div>
+              <div data-shade="" style="position:absolute;inset:0;pointer-events:none;background:#16231B;opacity:0"></div>
+              <div style="position:absolute;top:clamp(20px,3vw,48px);left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;pointer-events:none">
+                <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ p.tags }}" as="tag" hint-placeholder-count="2"><span style="display:inline-flex;align-items:center;height:34px;padding:0 14px;border:1px solid rgba(255,255,255,0.55);border-radius:999px;background:rgba(5,15,10,0.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase">{{ tag }}</span></sc-for></div>
+                <span style="font-size:14px;font-weight:600;letter-spacing:0.14em">{{ p.num }} / {{ count }}</span>
+              </div>
+              <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(24px,4vw,56px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap;pointer-events:none">
+                <div style="display:flex;flex-direction:column;gap:clamp(12px,2vh,20px);min-width:0">
+                  <h3 style="margin:0;font-size:clamp(48px,8vw,160px);line-height:0.92;font-weight:600;letter-spacing:-0.05em">{{ p.name }}</h3>
+                  <p style="margin:0;max-width:640px;font-size:clamp(19px,1.7vw,26px);line-height:1.4;font-weight:500;color:#EEF3EF;text-wrap:pretty">{{ p.desc }}</p>
+                </div>
+                <a href="{{ p.href }}" onMouseEnter="{{ p.on }}" onMouseLeave="{{ p.off }}" style="pointer-events:auto;display:flex;align-items:center;gap:18px;height:72px;color:#FFFFFF;font-size:21px;font-weight:600;white-space:nowrap;text-decoration:none">
+                  <span style="padding:6px 0;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:{{ p.uline }};transition:background-size .6s cubic-bezier(.65,0,.35,1)">{{ t.caseCta }}</span>
+                  <span style="position:relative;width:56px;height:56px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C8F169;background:{{ p.circleBg }};color:{{ p.arrowFg }};display:flex;align-items:center;justify-content:center;overflow:hidden;transition:background .6s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;transform:{{ p.arrA }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-broken" size="24" style="display:block"></solar-icon></span><span style="position:absolute;transform:{{ p.arrB }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-broken" size="24" style="display:block"></solar-icon></span></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div aria-hidden="true" style="height:15vh"></div>
+        </sc-for>
+      </div>
+    </div>
+</section>
+<section id="services" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)">
+  <div style="padding:0 clamp(20px,4vw,56px);margin-bottom:clamp(28px,5vh,56px)">
+    <h2 data-reveal="" style="margin:0;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em">{{ t.servicesTitle }}</h2>
+  </div>
+    <div style="margin:0 clamp(20px,4vw,56px);border-top:1px solid rgba(22,35,27,0.14)">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
+        <div data-reveal="" style="border-bottom:1px solid rgba(22,35,27,0.14)">
+          <button onClick="{{ s.toggle }}" onMouseEnter="{{ s.on }}" onMouseLeave="{{ s.off }}" aria-expanded="{{ s.open }}" style="appearance:none;width:100%;display:grid;grid-template-columns:clamp(44px,6vw,96px) minmax(0,1fr) auto;align-items:center;gap:16px;padding:clamp(20px,3.2vh,36px) 0;border:0;background:none;color:#16231B;font:inherit;text-align:left;cursor:pointer">
+            <span style="font-size:14px;font-weight:600;letter-spacing:0.14em;color:#5F6E64">{{ s.num }}</span>
+            <span style="font-size:clamp(32px,5.6vw,96px);line-height:1;font-weight:600;letter-spacing:-0.04em;transform:{{ s.titleTA }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ s.name }}</span>
+            <span style="width:56px;height:56px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C8F169;background:{{ s.circBg }};color:#17301F;display:flex;align-items:center;justify-content:center;transition:background .3s cubic-bezier(.65,0,.35,1)"><solar-icon icon="add-broken" size="24" style="display:block;transform:{{ s.plusT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+          </button>
+          <div style="display:grid;grid-template-rows:{{ s.rows }};transition:grid-template-rows .6s cubic-bezier(.65,0,.35,1)">
+            <div style="overflow:hidden">
+              <div style="display:grid;grid-template-columns:clamp(44px,6vw,96px) minmax(0,1fr);gap:16px">
+                <span></span>
+                <div style="display:flex;flex-wrap:wrap;gap:24px clamp(24px,4vw,64px);padding:0 0 clamp(28px,5vh,48px)">
+                  <div style="flex:1 1 300px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;opacity:{{ s.descOpA }};transform:{{ s.descTA }};transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .6s cubic-bezier(.65,0,.35,1)">
+                    <p style="margin:0;max-width:680px;font-size:clamp(20px,1.9vw,28px);line-height:1.4;font-weight:500;color:#5F6E64;text-wrap:pretty">{{ s.desc }}</p>
+                    <a href="{{ s.ctaHref }}" onMouseEnter="{{ s.ctaOn }}" onMouseLeave="{{ s.ctaOff }}" style="align-self:flex-start;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border-radius:10px;background:#C8F169;color:#17301F;font-size:18px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+                      <span style="position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:{{ s.ctaTileW }};border-radius:6px;background:#F3FBE4;transition:width .6s cubic-bezier(.65,0,.35,1)"></span>
+                      <span style="position:absolute;left:8px;top:8px;width:48px;height:48px;display:flex;align-items:center;justify-content:center"><solar-icon icon="arrow-right-up-broken" size="24" style="display:block;transform:{{ s.ctaArrT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+                      <span style="display:block;transform:{{ s.ctaLblT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ t.svCta }}</span>
+                    </a>
+                  </div>
+                  <div style="flex:0 1 600px;max-width:100%;margin-left:auto;aspect-ratio:16 / 10;border-radius:12px;overflow:hidden;background:#14211A;clip-path:{{ s.v3Clip }};transition:clip-path 1.2s cubic-bezier(.22,1,.36,1)">
+                    <div style="width:100%;height:100%;transform:{{ s.v3ImgT }};transition:transform 1.2s cubic-bezier(.22,1,.36,1)"><image-slot id="{{ s.slot }}" src="{{ s.img }}" placeholder="{{ s.ph }}" style="display:block;width:100%;height:100%"></image-slot></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+</section>
+<section id="pricing" ref="{{ prRef }}" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)">
+  <div style="padding:0 clamp(20px,4vw,56px);margin-bottom:clamp(32px,6vh,64px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 48px">
+    <h2 data-reveal="" style="margin:0;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em">{{ t.prTitle }}</h2>
+    <p data-reveal="" style="margin:0;max-width:440px;font-size:clamp(17px,1.4vw,20px);line-height:1.45;font-weight:500;color:#5F6E64;text-wrap:pretty">{{ t.prLead }}</p>
+  </div>
+  <sc-if value="{{ pr4 }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(28px,4vw,64px);align-items:start">
+      <div data-reveal="" style="display:flex;flex-direction:column;gap:32px">
+        <div style="position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(100%,560px);padding:4px;border-radius:999px;background:#E7F0D8">
+          <span style="position:absolute;top:4px;bottom:4px;left:4px;width:calc(50% - 4px);border-radius:999px;background:#16231B;transform:{{ pr4Ind }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></span>
+          <sc-for list="{{ pr4Modes }}" as="k" hint-placeholder-count="2"><button onClick="{{ k.pick }}" style="appearance:none;position:relative;height:52px;padding:0 16px;border:0;border-radius:999px;background:none;color:{{ k.fg }};font:inherit;font-size:16px;font-weight:600;white-space:nowrap;cursor:pointer;transition:color .3s cubic-bezier(.65,0,.35,1)">{{ k.label }}</button></sc-for>
+        </div>
+        <sc-if value="{{ pr4P }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <span style="font-size:14px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.prChipsLabel }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <sc-for list="{{ prChips }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.toggle }}" aria-pressed="{{ c.sel }}" style="appearance:none;display:flex;align-items:center;gap:14px;height:64px;padding:0 24px 0 10px;border-radius:999px;border:1.5px solid {{ c.bd }};background:{{ c.bg }};color:{{ c.fg }};font:inherit;text-align:left;cursor:pointer;transition:background .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1),border-color .3s cubic-bezier(.65,0,.35,1)">
+              <span style="width:44px;height:44px;flex-shrink:0;border-radius:50%;background:{{ c.icBg }};color:#17301F;display:flex;align-items:center;justify-content:center;transition:background .3s cubic-bezier(.65,0,.35,1)"><solar-icon icon="add-broken" size="22" style="display:block;transform:{{ c.icT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+              <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:18px;font-weight:600;letter-spacing:-0.01em;white-space:nowrap">{{ c.name }}</span><span style="font-size:13px;font-weight:600;color:{{ c.capC }};transition:color .3s cubic-bezier(.65,0,.35,1)">{{ c.rng }}</span></span>
+            </button></sc-for>
+          </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ pr4L }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:32px">
+            <div style="display:flex;flex-direction:column;gap:20px">
+              <span style="font-size:14px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.prBillLbl }}</span>
+              <div style="display:flex;flex-direction:column;gap:8px;max-width:560px">
+                <sc-for list="{{ prBills }}" as="k" hint-placeholder-count="2"><button onClick="{{ k.pick }}" aria-pressed="{{ k.sel }}" style="appearance:none;display:grid;grid-template-columns:28px minmax(0,1fr);gap:16px;align-items:start;padding:20px 22px;border-radius:14px;border:1.5px solid {{ k.bd }};background:{{ k.bg }};color:{{ k.fg }};font:inherit;text-align:left;cursor:pointer;transition:background .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1),border-color .3s cubic-bezier(.65,0,.35,1)">
+                  <span style="width:24px;height:24px;margin-top:2px;border-radius:50%;box-shadow:inset 0 0 0 1.5px {{ k.ring }};display:flex;align-items:center;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:#C8F169;transform:{{ k.dotT }};transition:transform .3s cubic-bezier(.65,0,.35,1)"></span></span>
+                  <span style="display:flex;flex-direction:column;gap:4px"><span style="font-size:19px;font-weight:600;letter-spacing:-0.01em">{{ k.name }}</span><span style="font-size:15px;line-height:1.4;font-weight:500;color:{{ k.descC }};transition:color .3s cubic-bezier(.65,0,.35,1)">{{ k.desc }}</span></span>
+                </button></sc-for>
+              </div>
+            </div>
+            <sc-if value="{{ prHourly }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:14px;max-width:520px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px"><span style="font-size:14px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.prHoursLbl }}</span><span style="font-size:clamp(28px,2.6vw,40px);font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums">{{ prHoursTxt }}</span></div>
+            <input type="range" min="5" max="80" step="5" value="{{ prHours }}" onChange="{{ prSetHours }}" aria-label="{{ t.prHoursLbl }}" style="width:100%;height:28px;margin:0;accent-color:#16231B;cursor:pointer"></input>
+          </div></sc-if>
+          </div>
+        </sc-if>
+      </div>
+      <div data-reveal="" style="border-radius:14px;background:#C8F169;color:#17301F;padding:clamp(24px,3vw,48px);display:flex;flex-direction:column;gap:clamp(24px,4vh,36px)">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 16px"><span style="font-size:14px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#17301F">{{ pr4Lbl }}</span>
+            <div role="group" aria-label="Currency" style="position:relative;display:grid;grid-template-columns:repeat(3,56px);padding:3px;border-radius:999px;background:rgba(23,48,31,0.1)">
+              <span style="position:absolute;top:3px;bottom:3px;left:3px;width:56px;border-radius:999px;background:#17301F;transform:{{ prCurInd }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></span>
+              <sc-for list="{{ prCurs }}" as="k" hint-placeholder-count="3"><button onClick="{{ k.pick }}" aria-pressed="{{ k.pressed }}" style="appearance:none;position:relative;height:38px;padding:0;border:0;border-radius:999px;background:none;color:{{ k.fg }};font:inherit;font-size:13px;font-weight:600;letter-spacing:0.06em;cursor:pointer;transition:color .3s cubic-bezier(.65,0,.35,1)">{{ k.label }}</button></sc-for>
+            </div></div>
+          <span style="font-size:clamp(26px,2.8vw,48px);line-height:1;font-weight:600;letter-spacing:-0.04em;font-variant-numeric:tabular-nums;white-space:nowrap">{{ pr4Big }}</span>
+          <span style="font-size:17px;font-weight:600">{{ pr4Sub }}</span>
+        </div>
+        <sc-if value="{{ pr4P }}" hint-placeholder-val="{{ true }}">
+          <div style="position:relative;height:10px;border-radius:999px;background:rgba(23,48,31,0.14)">
+            <span style="position:absolute;top:0;bottom:0;left:{{ prBarL }};width:{{ prBarW }};min-width:10px;border-radius:999px;background:#17301F"></span>
+          </div>
+        </sc-if>
+        <div style="display:flex;flex-direction:column;border-top:1px solid rgba(23,48,31,0.2)">
+            <sc-for list="{{ pr4Steps }}" as="st" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:40px minmax(0,1fr) auto;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid rgba(23,48,31,0.2)">
+                <span style="font-size:14px;font-weight:600;letter-spacing:0.14em;color:#17301F">{{ st.num }}</span>
+                <span style="font-size:18px;font-weight:600;letter-spacing:-0.01em;color:#17301F">{{ st.name }}</span>
+                <span style="font-size:15px;font-weight:500;white-space:nowrap;color:#17301F">{{ st.dur }}</span>
+              </div>
+            </sc-for>
+          </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px">
+          <a href="#contact" onMouseEnter="{{ prCtaOn }}" onMouseLeave="{{ prCtaOff }}" style="position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border-radius:10px;background:#16231B;color:{{ prLbl2C }};font-size:18px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+            <span style="position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:{{ prTileW }};border-radius:6px;background:#F3FBE4;transition:width .6s cubic-bezier(.65,0,.35,1)"></span>
+            <span style="position:absolute;left:8px;top:8px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#17301F"><solar-icon icon="arrow-right-up-broken" size="24" style="display:block;transform:{{ prArrT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+            <span style="display:block;transform:{{ prLblT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ t.prCta }}</span>
+          </a>
+          <p style="margin:0;max-width:340px;font-size:15px;line-height:1.45;font-weight:500;color:#17301F;text-wrap:pretty">{{ t.prNote }}</p>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</section>
+<section id="faq" ref="{{ faqRef }}" style="position:relative;font-family:'Montserrat',system-ui,sans-serif;background:#F4F7F2;color:#16231B;padding:0 0 clamp(144px,24vh,300px)">
+  <div style="padding:0 clamp(20px,4vw,56px);margin-bottom:clamp(32px,6vh,64px);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px 48px">
+    <h2 data-reveal="" style="margin:0;font-size:clamp(44px,7vw,128px);line-height:1;font-weight:600;letter-spacing:-0.042em">{{ t.faqTitle }}</h2>
+    <p data-reveal="" style="margin:0;font-size:clamp(17px,1.4vw,20px);line-height:1.45;font-weight:500;color:#5F6E64">{{ t.faqAsk }} <a href="#contact" style="color:#16231B;font-weight:600;text-decoration:none;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:100% 2px;padding-bottom:2px" style-hover="color:#16231B;background-size:100% 100%">{{ t.faqAskLink }}</a></p>
+  </div>
+  <sc-if value="{{ fqMob }}" hint-placeholder-val="{{ false }}">
+    <div style="margin:0 clamp(20px,4vw,56px);border-top:1px solid rgba(22,35,27,0.14)">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <div data-reveal="" style="border-bottom:1px solid rgba(22,35,27,0.14)">
+          <button onClick="{{ f.toggle }}" aria-expanded="{{ f.open }}" style="appearance:none;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:18px 0;border:0;background:none;color:#16231B;font:inherit;text-align:left;cursor:pointer">
+            <span style="font-size:19px;line-height:1.3;font-weight:600;letter-spacing:-0.015em;text-wrap:pretty">{{ f.q }}</span>
+            <span style="width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C8F169;background:{{ f.circBg }};color:#17301F;display:flex;align-items:center;justify-content:center;transition:background .3s cubic-bezier(.65,0,.35,1)"><solar-icon icon="add-broken" size="22" style="display:block;transform:{{ f.plusT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+          </button>
+          <div style="display:grid;grid-template-rows:{{ f.rows }};transition:grid-template-rows .6s cubic-bezier(.65,0,.35,1)">
+            <div style="overflow:hidden">
+              <p style="margin:0;padding:0 24px 22px 0;font-size:19px;line-height:1.5;font-weight:500;color:#5F6E64;text-wrap:pretty;opacity:{{ f.op }};transition:opacity .6s cubic-bezier(.65,0,.35,1)">{{ f.a }}</p>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ fq2 }}" hint-placeholder-val="{{ true }}">
+    <div style="padding:0 clamp(20px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(28px,4vw,64px);align-items:stretch">
+      <div style="display:flex;flex-direction:column;border-top:1px solid rgba(22,35,27,0.14)">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+          <button data-reveal="" onClick="{{ f.sel }}" onMouseEnter="{{ f.sel }}" aria-pressed="{{ f.on }}" style="appearance:none;display:flex;align-items:center;gap:14px;padding:clamp(16px,2.4vh,22px) 0;border:0;border-bottom:1px solid rgba(22,35,27,0.14);background:none;color:{{ f.qC }};font:inherit;text-align:left;cursor:pointer;transition:color .3s cubic-bezier(.65,0,.35,1)">
+            <span style="width:10px;height:10px;flex-shrink:0;border-radius:50%;background:#C8F169;box-shadow:inset 0 0 0 1.5px #3E7B5A;transform:{{ f.dotT }};transition:transform .3s cubic-bezier(.65,0,.35,1)"></span>
+            <span style="font-size:clamp(18px,1.6vw,22px);line-height:1.3;font-weight:600;letter-spacing:-0.015em;transform:{{ f.qT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ f.q }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div data-reveal="" style="display:grid;border-radius:14px;background:#E7F0D8;padding:clamp(24px,3vw,48px);min-height:280px">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="1">
+          <div style="grid-area:1 / 1;display:flex;flex-direction:column;justify-content:space-between;gap:32px;pointer-events:none;opacity:{{ f.paneOp }};transform:{{ f.paneT }};transition:opacity .6s cubic-bezier(.65,0,.35,1),transform .6s cubic-bezier(.65,0,.35,1)">
+            <span style="font-size:14px;font-weight:600;letter-spacing:0.14em;color:#3E7B5A">{{ f.num }} / {{ faqCount }}</span>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <h3 style="margin:0;font-size:clamp(26px,2.6vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.035em;text-wrap:balance">{{ f.q }}</h3>
+              <p style="margin:0;max-width:720px;font-size:clamp(19px,1.6vw,24px);line-height:1.5;font-weight:500;color:#40514A;text-wrap:pretty">{{ f.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+</section>
+<div style="position:relative;background:#F4F7F2;font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF">
+  <section id="contact" ref="{{ finRef }}" style="position:relative;overflow:hidden;background:#3E7B5A;color:#FFFFFF;border-radius:clamp(24px,3vw,48px) clamp(24px,3vw,48px) 0 0">
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:180%;pointer-events:none"><dc-import name="Teal Hero Background" teal="#3E7B5A" band-count="{{ 6 }}" grain="{{ 0.1 }}" drift-speed="{{ 0.8 }}" face-right="{{ false }}" parallax-strength="{{ 30 }}" shimmer="{{ true }}" fill-parent="{{ true }}" style="position:absolute;inset:0" hint-size="100%,100%"></dc-import></div>
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 70% at 20% 40%,rgba(20,60,40,0.26),rgba(20,60,40,0) 75%)"></div>
+    <div style="position:relative;max-width:1480px;margin:0 auto;padding:clamp(80px,13vh,140px) clamp(20px,4vw,56px) clamp(96px,16vh,160px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(40px,5vw,96px);align-items:stretch">
+      <div data-reveal="" style="display:flex;flex-direction:column;align-items:flex-start;gap:clamp(20px,3vh,28px);min-width:0">
+        <span style="display:inline-flex;align-items:center;gap:10px;min-height:40px;padding:8px 16px;border-radius:999px;background:rgba(244,247,242,0.16);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:15px;line-height:1.3;font-weight:600;color:#FFFFFF"><span style="width:8px;height:8px;flex-shrink:0;border-radius:50%;background:#C8F169"></span>{{ t.finAvail }}</span>
+        <h2 style="margin:0;font-size:clamp(30px,4.2vw,72px);line-height:1;font-weight:600;letter-spacing:-0.045em"><span style="display:block;white-space:nowrap">{{ t.finT1 }}</span><span style="display:block;white-space:nowrap;color:#C8F169">{{ t.finT2 }}</span></h2>
+        <p style="margin:0;max-width:460px;font-size:clamp(17px,1.4vw,20px);line-height:1.45;font-weight:500;color:#FFFFFF;text-wrap:pretty">{{ t.finLead }}</p>
+        <div style="margin-top:auto;align-self:stretch;display:flex;flex-direction:column;border-top:1px solid rgba(244,247,242,0.3)">
+        <a href="{{ mailHref }}" onMouseEnter="{{ mailOn }}" onMouseLeave="{{ fhOff }}" style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:clamp(14px,2.4vh,20px) 0;border-bottom:1px solid rgba(244,247,242,0.3);color:#FFFFFF;text-decoration:none">
+          <span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF">{{ t.finEmailLbl }}</span><span style="width:fit-content;max-width:100%;margin-left:-0.08em;padding:0 0.08em;font-size:clamp(22px,2.6vw,44px);line-height:1.15;font-weight:600;letter-spacing:-0.035em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:{{ mailFg }};background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:{{ mailBg }};transition:background-size .6s cubic-bezier(.65,0,.35,1),color .6s cubic-bezier(.65,0,.35,1)">{{ email }}</span></span>
+          <span style="width:56px;height:56px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C8F169;background:{{ mailCBg }};color:{{ mailCFg }};display:flex;align-items:center;justify-content:center;transition:background .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-up-broken" size="24" style="display:block;transform:{{ mailCT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+        </a>
+        <a href="{{ telHref }}" onMouseEnter="{{ telOn }}" onMouseLeave="{{ fhOff }}" style="display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:clamp(14px,2.4vh,20px) 0;border-bottom:1px solid rgba(244,247,242,0.3);color:#FFFFFF;text-decoration:none">
+          <span style="display:flex;flex-direction:column;gap:6px;min-width:0"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#FFFFFF">{{ t.finPhoneLbl }}</span><span style="width:fit-content;max-width:100%;margin-left:-0.08em;padding:0 0.08em;font-size:clamp(22px,2.6vw,44px);line-height:1.15;font-weight:600;letter-spacing:-0.035em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:{{ telFg }};background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:{{ telBg }};transition:background-size .6s cubic-bezier(.65,0,.35,1),color .6s cubic-bezier(.65,0,.35,1)">{{ phone }}</span></span>
+          <span style="width:56px;height:56px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C8F169;background:{{ telCBg }};color:{{ telCFg }};display:flex;align-items:center;justify-content:center;transition:background .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-right-up-broken" size="24" style="display:block;transform:{{ telCT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+        </a>
+        </div>
+      </div>
+      <div data-reveal="" style="border-radius:14px;background:#FFFFFF;color:#16231B;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;box-shadow:0 24px 60px rgba(10,40,25,0.18)">
+        <h3 style="margin:0;font-size:clamp(24px,2.2vw,34px);line-height:1.05;font-weight:600;letter-spacing:-0.035em">{{ t.finFormTitle }}</h3>
+        <p style="margin:8px 0 24px;font-size:16px;line-height:1.45;font-weight:500;color:#5F6E64;text-wrap:pretty">{{ t.finFormSub }}</p>
+        <sc-if value="{{ fNotSent }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submitForm }}" style="flex:1;display:flex;flex-direction:column;gap:16px">
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.fName }}<span style="color:#3E7B5A"> *</span></span></span><input name="name" required="{{ true }}" autocomplete="name" placeholder="{{ t.fNamePh }}" style="appearance:none;width:100%;height:56px;padding:0 18px;border-radius:10px;border:1.5px solid rgba(22,35,27,0.14);background:#F4F7F2;color:#16231B;font:inherit;font-size:17px;font-weight:500;outline:none;transition:border-color .3s cubic-bezier(.65,0,.35,1),background .3s cubic-bezier(.65,0,.35,1)" style-focus="border-color:#3E7B5A;background:#FFFFFF"></input></label>
+              <label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.fEmail }}<span style="color:#3E7B5A"> *</span></span></span><input name="email" type="email" required="{{ true }}" autocomplete="email" placeholder="{{ t.fEmailPh }}" style="appearance:none;width:100%;height:56px;padding:0 18px;border-radius:10px;border:1.5px solid rgba(22,35,27,0.14);background:#F4F7F2;color:#16231B;font:inherit;font-size:17px;font-weight:500;outline:none;transition:border-color .3s cubic-bezier(.65,0,.35,1),background .3s cubic-bezier(.65,0,.35,1)" style-focus="border-color:#3E7B5A;background:#FFFFFF"></input></label>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px">
+              <label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.fPhone }}</span></span><input name="phone" type="tel" autocomplete="tel" placeholder="{{ t.fPhonePh }}" style="appearance:none;width:100%;height:56px;padding:0 18px;border-radius:10px;border:1.5px solid rgba(22,35,27,0.14);background:#F4F7F2;color:#16231B;font:inherit;font-size:17px;font-weight:500;outline:none;transition:border-color .3s cubic-bezier(.65,0,.35,1),background .3s cubic-bezier(.65,0,.35,1)" style-focus="border-color:#3E7B5A;background:#FFFFFF"></input></label>
+              <label style="display:flex;flex-direction:column;gap:8px;min-width:0"><span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.fService }}</span></span><span style="position:relative;display:block"><select name="service" value="{{ fService }}" onChange="{{ setService }}" style="appearance:none;width:100%;height:56px;padding:0 48px 0 18px;cursor:pointer;border-radius:10px;border:1.5px solid rgba(22,35,27,0.14);background:#F4F7F2;color:{{ fServiceC }};font:inherit;font-size:17px;font-weight:500;outline:none;transition:border-color .3s cubic-bezier(.65,0,.35,1),background .3s cubic-bezier(.65,0,.35,1)" style-focus="border-color:#3E7B5A;background:#FFFFFF"><option value="">{{ t.fServicePh }}</option><sc-for list="{{ fServices }}" as="o" hint-placeholder-count="5"><option value="{{ o }}">{{ o }}</option></sc-for></select><span style="position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;color:#16231B;pointer-events:none"><solar-icon icon="alt-arrow-down-broken" size="20"></solar-icon></span></span></label>
+            </div>
+            <label style="flex:1;display:flex;flex-direction:column;gap:8px"><span style="display:flex;justify-content:space-between;align-items:baseline;gap:8px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#5F6E64">{{ t.fMsg }}</span></span><textarea name="message" rows="3" placeholder="{{ t.fMsgPh }}" style="appearance:none;width:100%;flex:1;height:auto;min-height:120px;padding:16px 18px;resize:none;line-height:1.45;display:block;border-radius:10px;border:1.5px solid rgba(22,35,27,0.14);background:#F4F7F2;color:#16231B;font:inherit;font-size:17px;font-weight:500;outline:none;transition:border-color .3s cubic-bezier(.65,0,.35,1),background .3s cubic-bezier(.65,0,.35,1)" style-focus="border-color:#3E7B5A;background:#FFFFFF"></textarea></label>
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 24px;margin-top:4px">
+            <button type="submit" onMouseEnter="{{ fbOn }}" onMouseLeave="{{ fbOff }}" style="appearance:none;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:64px;padding:0 28px 0 76px;border:0;border-radius:10px;background:#16231B;color:{{ fbLblC }};font:inherit;font-size:18px;font-weight:600;white-space:nowrap;cursor:pointer;transition:transform .3s cubic-bezier(.65,0,.35,1),color .3s cubic-bezier(.65,0,.35,1)" style-active="transform:scale(0.97)">
+              <span style="position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:{{ fbTileW }};border-radius:6px;background:#F3FBE4;transition:width .6s cubic-bezier(.65,0,.35,1)"></span>
+              <span style="position:absolute;left:8px;top:8px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;color:#17301F"><solar-icon icon="arrow-right-up-broken" size="24" style="display:block;transform:{{ fbArrT }};transition:transform .6s cubic-bezier(.65,0,.35,1)"></solar-icon></span>
+              <span style="display:block;transform:{{ fbLblT }};transition:transform .6s cubic-bezier(.65,0,.35,1)">{{ t.fSend }}</span>
+            </button>
+              <span style="font-size:14px;font-weight:500;color:#5F6E64"><span style="color:#3E7B5A">*</span> {{ t.fReqNote }}</span>
+            </div>
+          </form>
+        </sc-if>
+        <sc-if value="{{ fSent }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:8px 0">
+            <span style="width:64px;height:64px;border-radius:50%;background:#C8F169;color:#17301F;display:flex;align-items:center;justify-content:center"><solar-icon icon="check-circle-broken" size="30"></solar-icon></span>
+            <h3 style="margin:8px 0 0;font-size:clamp(26px,2.6vw,40px);line-height:1.1;font-weight:600;letter-spacing:-0.035em;color:#16231B">{{ t.fSentT }}</h3>
+            <p style="margin:0;font-size:17px;line-height:1.5;font-weight:500;color:#5F6E64">{{ t.fSentS }}</p>
+            <button onClick="{{ resetForm }}" style="appearance:none;margin-top:4px;padding:6px 0;border:0;background:none;color:#16231B;font:inherit;font-size:17px;font-weight:600;cursor:pointer;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:100% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="background-size:100% 100%">{{ t.fAgain }}</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+  <footer style="position:relative;background:#16231B;color:#FFFFFF;border-radius:clamp(24px,3vw,48px) clamp(24px,3vw,48px) 0 0;margin-top:calc(-1 * clamp(24px,3vw,48px))"><div style="max-width:1480px;margin:0 auto;padding:clamp(56px,9vh,96px) clamp(20px,4vw,56px) 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:48px 32px;padding-bottom:clamp(48px,8vh,88px)">
+        <div data-reveal="" style="display:flex;flex-direction:column;gap:8px"><span style="font-size:32px;font-weight:600;letter-spacing:-0.03em;color:#FFFFFF">Pavel<span style="color:#C8F169">.</span></span><span style="font-size:15px;font-weight:500;color:#DCE9E0">{{ t.aboutRole }}</span></div>
+        <div data-reveal="" style="display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#DCE9E0;margin-bottom:4px">{{ t.ftNav }}</span><sc-for list="{{ ftLinks }}" as="l" hint-placeholder-count="4"><a href="{{ l.href }}" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ l.label }}</a></sc-for></div>
+        <div data-reveal="" style="display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#DCE9E0;margin-bottom:4px">{{ t.ftSocial }}</span><sc-for list="{{ ftSocial }}" as="l" hint-placeholder-count="3"><a href="{{ l.href }}" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ l.label }}</a></sc-for></div>
+        <div data-reveal="" style="display:flex;flex-direction:column;gap:12px"><span style="font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#DCE9E0;margin-bottom:4px">{{ t.ftContact }}</span><a href="{{ mailHref }}" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ email }}</a><a href="{{ telHref }}" style="font-size:17px;font-weight:600;color:#FFFFFF;text-decoration:none;width:fit-content;padding-bottom:2px;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:0% 2px;transition:background-size .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF;background-size:100% 2px">{{ phone }}</a><span style="font-size:17px;font-weight:500;color:#DCE9E0">{{ t.ftLoc }}</span></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 24px;padding:16px 0 24px;border-top:1px solid rgba(244,247,242,0.16);font-size:14px;font-weight:500;color:#DCE9E0">
+        <span>{{ t.ftRights }}</span>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px">
+          <a href="#privacy" style="color:#DCE9E0;text-decoration:none;transition:color .3s cubic-bezier(.65,0,.35,1)" style-hover="color:#FFFFFF">{{ t.ftPrivacy }}</a>
+          <button onClick="{{ toTop }}" onMouseEnter="{{ topOn }}" onMouseLeave="{{ fhOff }}" style="appearance:none;display:flex;align-items:center;gap:18px;height:72px;padding:0;border:0;background:none;color:#FFFFFF;font:inherit;font-size:19px;font-weight:600;white-space:nowrap;cursor:pointer">
+            <span style="padding:6px 0;background-image:linear-gradient(#C8F169,#C8F169);background-repeat:no-repeat;background-position:0 100%;background-size:{{ topUline }};transition:background-size .6s cubic-bezier(.65,0,.35,1)">{{ t.ftTop }}</span>
+            <span style="position:relative;width:56px;height:56px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #C8F169;background:{{ topCircBg }};color:{{ topFg }};display:flex;align-items:center;justify-content:center;overflow:hidden;transition:background .6s cubic-bezier(.65,0,.35,1),color .6s cubic-bezier(.65,0,.35,1)"><span style="position:absolute;transform:{{ topArrA }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-up-broken" size="24" style="display:block"></solar-icon></span><span style="position:absolute;transform:{{ topArrB }};transition:transform .6s cubic-bezier(.65,0,.35,1)"><solar-icon icon="arrow-up-broken" size="24" style="display:block"></solar-icon></span></span>
+          </button>
+        </div>
+      </div></div></footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;pageTransition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Fade&quot;,&quot;Blur&quot;,&quot;Curtain&quot;],&quot;default&quot;:&quot;Fade&quot;,&quot;tsType&quot;:&quot;'Fade' | 'Blur' | 'Curtain'&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;cz&quot;,&quot;en&quot;],&quot;default&quot;:&quot;cz&quot;,&quot;tsType&quot;:&quot;'cz' | 'en'&quot;},&quot;scrim&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;langStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dropdown&quot;,&quot;slide&quot;,&quot;single&quot;],&quot;default&quot;:&quot;single&quot;,&quot;tsType&quot;:&quot;'dropdown' | 'slide' | 'single'&quot;},&quot;intro&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  static COPY = {
+    cz: {
+      tag: 'Grafický design se sídlem v Praze',
+      links: ['Práce', 'Služby', 'O mně', 'Kontakt'],
+      h1a: 'Grafický design',
+      h1b: 'bez starostí',
+      sub: 'Starám se o veškerý grafický design středně velkých rostoucích firem a výsledky jsou vidět. Jeden kontakt, žádné starosti.',
+      primary: 'Chci zdarma zhodnotit web',
+      secondary: 'Více informací',
+      nav: 'Domluvit hovor',
+      cardAbout: 'Více o mně',
+      cardWork: 'Nejnovější práce',
+      cookieTitle: 'Tento web používá cookies',
+      cookieText: 'Tento web používá analytické cookies ke zlepšení svých služeb. Více v ',
+      cookieLink: 'zásadách ochrany osobních údajů',
+      cookieEnd: '.',
+      cookieClose: 'Zavřít',
+      cookieAccept: 'Přijmout',
+      cookieDecline: 'Odmítnout',
+      about: [['Jsem Pavel, grafický designér z Prahy. Pomáhám firmám'], ['vypadat tak dobře', 'mark', ''], [', jak dobře skutečně pracují.']],
+      aboutCta: 'Více o mně',
+      aboutRole: 'Grafický designér, Praha',
+      clientsCaption: 'Firmy a značky, se kterými jsem spolupracoval',
+      workTitle: 'Vybrané projekty',
+      workCaption: 'Práce',
+      workAll: 'Všechny projekty',
+      caseCta: 'Případová studie',
+      servicesTitle: 'Služby',
+      svIntro: 'Pomáhám s ',
+      svCta: 'Poptat tuto službu',
+      faqTitle: 'Otázky a odpovědi',
+      faqAsk: 'Nenašli jste odpověď?',
+      faqAskLink: 'Napište mi',
+      finAvail: 'Volná místa pro 2/3 projekty na měsíc říjen',
+      finFormSub: 'Stačí pár vět. Zbytek probereme na úvodním hovoru.',
+      finT1: 'Máte projekt?',
+      finT2: 'Pojďme to probrat.',
+      finLead: 'Nejrychleji mě zastihnete e-mailem nebo telefonem. V pracovní dny odpovídám do 24 hodin.',
+      finEmailLbl: 'E-mail',
+      finPhoneLbl: 'Telefon',
+      finFormLbl: 'Formulář',
+      finFormVal: 'Napsat zprávu',
+      finCopy: 'Kopírovat e-mail',
+      finCopied: 'Zkopírováno',
+      finHours: 'Po–Pá, 9–17 h',
+      finFormToggle: 'Raději vyplním formulář',
+      finFormTitle: 'Nebo mi napište tady',
+      fName: 'Jméno', fNamePh: 'Jan Novák',
+      fEmail: 'E-mail', fEmailPh: 'jan@firma.cz', fPhone: 'Telefon', fPhonePh: '+420 600 000 000', fService: 'Služba', fServicePh: 'Vyberte službu', fServiceOther: 'Zatím nevím', fOptional: 'nepovinné', fReqNote: 'povinné údaje',
+      fMsg: 'Co potřebujete?', fMsgPh: 'Pár vět o projektu, termínu a rozpočtu.',
+      fSend: 'Odeslat zprávu',
+      fSentT: 'Díky, zpráva dorazila.',
+      fSentS: 'Ozvu se do 24 hodin v pracovní dny.',
+      fAgain: 'Napsat další zprávu',
+      ftNav: 'Navigace', ftSocial: 'Sítě', ftContact: 'Kontakt', ftLoc: 'Praha, Česko',
+      ftRights: '© 2026 Pavel. Všechna práva vyhrazena.',
+      ftPrivacy: 'Ochrana osobních údajů',
+      ftTop: 'Zpět nahoru',
+      faqs: [
+        { q: 'Jak dlouho trvá vytvoření vizuální identity?', a: 'Obvykle 4 až 6 týdnů od úvodního hovoru po předání všech podkladů.' },
+        { q: 'Pracujete i s klienty mimo Prahu?', a: 'Ano. Většina spolupráce probíhá online, v Praze se rád potkám i osobně.' },
+        { q: 'Kolik kol úprav je v ceně?', a: 'Ke každému návrhu jsou v ceně dvě kola úprav. Další úpravy naceníme podle rozsahu.' },
+        { q: 'Dostanu i zdrojové soubory?', a: 'Ano. Po úhradě předám všechny zdrojové i exportované soubory a práva k jejich užití.' },
+        { q: 'Jak probíhá platba?', a: 'U projektů 50 % předem a 50 % při předání. U dlouhodobé spolupráce fakturuji jednou měsíčně.' },
+        { q: 'Postaráte se i o vývoj webu?', a: 'Web navrhnu a připravím k vývoji. Samotný vývoj zajistím s ověřenými vývojáři, se kterými dlouhodobě spolupracuji.' }
+      ],
+      prTitle: 'Proces a cena',
+      prLead: 'Každý projekt začíná nezávazným hovorem. Ceny jsou orientační, přesnou nabídku dostanete do tří dnů.',
+      prSteps: [
+        { name: 'Úvodní hovor', dur: '30 minut', desc: 'Online a zdarma. Probereme cíle, rozsah a termín.' },
+        { name: 'Nabídka', dur: 'Do 3 dnů', desc: 'Pošlu přesnou cenu, harmonogram a seznam všeho, co dostanete.' },
+        { name: 'Návrh', dur: '2–8 týdnů', desc: 'Pracuji v krocích a každý týden uvidíte posun.' },
+        { name: 'Předání', dur: '1 týden', desc: 'Hotové soubory, manuál a podpora po spuštění.' }
+      ],
+      prPkgs: [{ name: 'Vizuální identita', price: 25000, weeks: 4 }, { name: 'Webové stránky', price: 40000, weeks: 5 }, { name: 'Identita + web', price: 60000, weeks: 8 }],
+      prFrom: 'od ',
+      prChipsLabel: 'Co potřebujete?',
+      prEstimate: 'Orientační cena',
+      prHowLabel: 'Jak to probíhá',
+      prPriceLabel: 'Ceník',
+      prCta: 'Domluvit úvodní hovor',
+      prNote: 'Úvodní hovor je zdarma a k ničemu vás nezavazuje.',
+      prModes: ['Jednorázový projekt', 'Dlouhodobá spolupráce', 'Zatím nevím'],
+      prPerHour: ' / hod',
+      prHoursLbl: 'Hodin měsíčně',
+      prBillLbl: 'Jak chcete platit?',
+      prBill: [{ name: 'Hodinová sazba', short: 'Hodinově', desc: 'Jednou měsíčně fakturuji odpracované hodiny.' }, { name: 'Cena za zakázku', short: 'Za každou zakázku', desc: 'Každou zakázku předem naceníme zvlášť.' }],
+      prPerJob: 'Dle zakázky',
+      prPerJobSub: 'Cenu domluvíme vždy předem.',
+      prYourEst: 'Váš odhad',
+      prUnsureBig: 'Domluvíme se',
+      prUnsureSub: 'Na úvodním hovoru najdeme formu spolupráce, která vám sedí.',
+      prQ1: 'Jak chcete spolupracovat?',
+      prQ2: 'Co potřebujete?',
+      prQ3: 'Jak velký je projekt?',
+      prQ4: 'Kolik hodin měsíčně?',
+      prScopes: ['Menší', 'Střední', 'Větší'],
+      prStepsL: [{ name: 'Úvodní hovor', dur: '30 minut' }, { name: 'Nastavení spolupráce', dur: 'Do 3 dnů' }, { name: 'Průběžná práce', dur: 'Každý měsíc' }, { name: 'Přehled a faktura', dur: 'Měsíčně' }],
+      svAnd: ' a ',
+      services: [
+        { name: 'Vizuální identita', inst: 'vizuální identitou', desc: 'Logo, barvy, typografie a pravidla, podle kterých vaši značku poznají všude.' },
+        { name: 'Webové stránky', inst: 'weby', desc: 'Návrh webu od struktury po poslední detail, připravený k vývoji nebo rovnou spuštěný.' },
+        { name: 'Tiskoviny a obaly', inst: 'tiskovinami a obaly', desc: 'Vizitky, katalogy, plakáty a obaly, které obstojí i v ruce.' },
+        { name: 'Sociální sítě', inst: 'sociálními sítěmi', desc: 'Šablony a vizuály, díky kterým každý příspěvek vypadá jako vaše značka.' },
+        { name: 'Prezentace', inst: 'prezentacemi', desc: 'Prezentace pro klienty i investory, které se dobře poslouchají a ještě lépe vypadají.' }
+      ],
+      imgPh: 'Obrázek projektu',
+      projects: [
+        { slug: 'nordvik', name: 'Nordvik', tags: ['Identita', 'Web'], desc: 'Nová vizuální identita a web pro severského výrobce nábytku.' },
+        { slug: 'lipa', name: 'Kavárna Lípa', tags: ['Obaly', 'Ilustrace'], desc: 'Obaly výběrové kávy a ilustrace pro síť pražských kaváren.' },
+        { slug: 'vltava', name: 'Vltava Labs', tags: ['Web', 'Produkt'], desc: 'Web a produktové materiály pro technologický startup.' },
+        { slug: 'plavba', name: 'Pražská Plavba', tags: ['Kampaň', 'Tisk'], desc: 'Kampaň a tiskové materiály pro letní sezónu výletních lodí.' }
+      ]
+    },
+    en: {
+      tag: 'Graphic design based in Prague Czechia',
+      links: ['Work', 'Services', 'About', 'Contact'],
+      h1a: 'Graphic design',
+      h1b: 'without the hassle',
+      sub: 'I take care of all graphic design for mid-sized growing firms, and the results show. One contact, no hassle.',
+      primary: 'Get a free website review',
+      secondary: 'Learn more',
+      nav: 'Book a call',
+      cardAbout: 'More about me',
+      cardWork: 'Latest work',
+      cookieTitle: 'This site uses cookies',
+      cookieText: 'This website uses analytics cookies to improve its services. See the ',
+      cookieLink: 'privacy policy',
+      cookieEnd: ' for details.',
+      cookieClose: 'Close',
+      cookieAccept: 'Accept',
+      cookieDecline: 'Decline',
+      about: [['I’m Pavel, a graphic designer from Prague. I help companies'], ['look as good', 'mark', ' '], ['as the work they do.']],
+      aboutCta: 'More about me',
+      aboutRole: 'Graphic designer, Prague',
+      clientsCaption: 'Companies and brands I’ve worked with',
+      workTitle: 'Selected work',
+      workCaption: 'Work',
+      workAll: 'All projects',
+      caseCta: 'Case study',
+      servicesTitle: 'Services',
+      svIntro: 'I help with ',
+      svCta: 'Ask about this service',
+      faqTitle: 'Questions & answers',
+      faqAsk: 'Didn’t find your answer?',
+      faqAskLink: 'Write to me',
+      finAvail: '2/3 project spots open for October',
+      finFormSub: 'A few lines is enough. We’ll cover the rest on an intro call.',
+      finT1: 'Got a project?',
+      finT2: 'Let’s talk it through.',
+      finLead: 'The quickest way to reach me is email or phone. I reply within 24 hours on weekdays.',
+      finEmailLbl: 'Email',
+      finPhoneLbl: 'Phone',
+      finFormLbl: 'Form',
+      finFormVal: 'Send a message',
+      finCopy: 'Copy email',
+      finCopied: 'Copied',
+      finHours: 'Mon–Fri, 9am–5pm',
+      finFormToggle: 'I’d rather use a form',
+      finFormTitle: 'Or write to me here',
+      fName: 'Name', fNamePh: 'Jane Smith',
+      fEmail: 'Email', fEmailPh: 'jane@company.com', fPhone: 'Phone', fPhonePh: '+420 600 000 000', fService: 'Service', fServicePh: 'Choose a service', fServiceOther: 'Not sure yet', fOptional: 'optional', fReqNote: 'required',
+      fMsg: 'What do you need?', fMsgPh: 'A few lines about the project, timing and budget.',
+      fSend: 'Send message',
+      fSentT: 'Thanks, message received.',
+      fSentS: 'I’ll get back to you within 24 hours on weekdays.',
+      fAgain: 'Write another message',
+      ftNav: 'Navigate', ftSocial: 'Social', ftContact: 'Contact', ftLoc: 'Prague, Czechia',
+      ftRights: '© 2026 Pavel. All rights reserved.',
+      ftPrivacy: 'Privacy policy',
+      ftTop: 'Back to top',
+      faqs: [
+        { q: 'How long does a brand identity take?', a: 'Usually 4 to 6 weeks from the intro call to handing over all the files.' },
+        { q: 'Do you work with clients outside Prague?', a: 'Yes. Most work happens online, and I’m happy to meet in person in Prague.' },
+        { q: 'How many rounds of revisions are included?', a: 'Two rounds of revisions per design are included. Further changes are priced by scope.' },
+        { q: 'Will I get the source files?', a: 'Yes. Once paid, you get all source and exported files along with the rights to use them.' },
+        { q: 'How does payment work?', a: 'For projects, 50% up front and 50% on handover. For long-term partnerships I invoice once a month.' },
+        { q: 'Do you also build the website?', a: 'I design the website and prepare it for development. The build itself is handled with trusted developers I work with long-term.' }
+      ],
+      prTitle: 'Process & pricing',
+      prLead: 'Every project starts with a no-obligation call. Prices are indicative; you get an exact quote within three days.',
+      prSteps: [
+        { name: 'Intro call', dur: '30 minutes', desc: 'Online and free. We go through goals, scope and timing.' },
+        { name: 'Proposal', dur: 'Within 3 days', desc: 'An exact price, a timeline and a list of everything you get.' },
+        { name: 'Design', dur: '2–8 weeks', desc: 'I work in stages and you see progress every week.' },
+        { name: 'Handover', dur: '1 week', desc: 'Final files, a guide and support after launch.' }
+      ],
+      prPkgs: [{ name: 'Brand identity', price: 25000, weeks: 4 }, { name: 'Website', price: 40000, weeks: 5 }, { name: 'Identity + website', price: 60000, weeks: 8 }],
+      prFrom: 'from ',
+      prChipsLabel: 'What do you need?',
+      prEstimate: 'Estimated price',
+      prHowLabel: 'How it works',
+      prPriceLabel: 'Pricing',
+      prCta: 'Book an intro call',
+      prNote: 'The intro call is free and comes with no obligation.',
+      prModes: ['One-off project', 'Long-term partnership', 'Not sure yet'],
+      prPerHour: ' / hour',
+      prHoursLbl: 'Hours per month',
+      prBillLbl: 'How would you like to pay?',
+      prBill: [{ name: 'Hourly rate', short: 'Hourly', desc: 'I invoice the hours worked once a month.' }, { name: 'Price per job', short: 'Per job', desc: 'We agree on a price for each job up front.' }],
+      prPerJob: 'Per job',
+      prPerJobSub: 'Always agreed up front.',
+      prYourEst: 'Your estimate',
+      prUnsureBig: 'Let’s talk',
+      prUnsureSub: 'On the intro call we’ll find the way of working that suits you.',
+      prQ1: 'How would you like to work together?',
+      prQ2: 'What do you need?',
+      prQ3: 'How big is the project?',
+      prQ4: 'How many hours a month?',
+      prScopes: ['Smaller', 'Medium', 'Larger'],
+      prStepsL: [{ name: 'Intro call', dur: '30 minutes' }, { name: 'Setting things up', dur: 'Within 3 days' }, { name: 'Ongoing work', dur: 'Every month' }, { name: 'Report & invoice', dur: 'Monthly' }],
+      svAnd: ' and ',
+      services: [
+        { name: 'Brand identity', inst: 'brand identity', desc: 'Logo, colour, typography and the rules that make your brand recognisable everywhere.' },
+        { name: 'Websites', inst: 'websites', desc: 'Website design from structure to the last detail, ready for development or launched directly.' },
+        { name: 'Print & packaging', inst: 'print & packaging', desc: 'Business cards, catalogues, posters and packaging that hold up in the hand.' },
+        { name: 'Social media', inst: 'social media', desc: 'Templates and visuals that make every post look like your brand.' },
+        { name: 'Presentations', inst: 'presentations', desc: 'Client and investor decks that are easy to follow and look even better.' }
+      ],
+      imgPh: 'Project image',
+      projects: [
+        { slug: 'nordvik', name: 'Nordvik', tags: ['Identity', 'Web'], desc: 'A new visual identity and website for a Nordic furniture maker.' },
+        { slug: 'lipa', name: 'Kavárna Lípa', tags: ['Packaging', 'Illustration'], desc: 'Specialty coffee packaging and illustration for a chain of Prague cafés.' },
+        { slug: 'vltava', name: 'Vltava Labs', tags: ['Web', 'Product'], desc: 'Website and product materials for a tech startup.' },
+        { slug: 'plavba', name: 'Pražská Plavba', tags: ['Campaign', 'Print'], desc: 'Campaign and print materials for a riverboat company’s summer season.' }
+      ]
+    }
+  };
+
+  state = { cookies: (() => { try { return localStorage.getItem('po-cookies'); } catch (e) { return null; } })(), lang: (() => { try { return localStorage.getItem('po-lang'); } catch (e) { return null; } })() || this.props.defaultLang || 'cz' };
+
+  finRef = React.createRef();
+  reduce = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  rootRef = React.createRef();
+  aboutRef = React.createRef();
+  aboutTextRef = React.createRef();
+  marqueeRef = React.createRef();
+  projRef = React.createRef();
+  prRef = React.createRef();
+  faqRef = React.createRef();
+  faqL() { return '2'; }
+  updateFaq = () => {
+    const root = this.faqRef.current;
+    if (!root) return;
+    const vh = window.innerHeight, r = root.getBoundingClientRect();
+    const inView = r.top < vh * 0.5 && r.bottom > vh * 0.5;
+    if (inView !== !!this.state.faqInView) this.setState({ faqInView: inView });
+  };
+  faqVals(lang) {
+    const C = Component.COPY[lang], L = this.faqL(), open = this.state.faqOpen === undefined ? 0 : this.state.faqOpen, sel = this.state.faqSel ?? 0, hov = this.state.faqHover;
+    return {
+      faqRef: this.faqRef,
+      fq2: !this.state.faqMob, fqMob: !!this.state.faqMob, faqInView: !!this.state.faqInView,
+      faqCount: '0' + C.faqs.length,
+      faqOpts: [['1', '1 · Accordion'], ['2', '2 · Index'], ['3', '3 · Open grid']].map(([k, label]) => ({
+        label, bg: L === k ? '#C8F169' : 'rgba(200,241,105,0)', fg: L === k ? '#17301F' : '#FFFFFF',
+        pick: () => this.setState({ faqLayout: k })
+      })),
+      faqs: C.faqs.map((f, i) => ({
+        ...f, num: '0' + (i + 1), open: open === i, on: sel === i,
+        toggle: () => this.setState(st => ({ faqOpen: (st.faqOpen === undefined ? 0 : st.faqOpen) === i ? null : i })),
+        rows: open === i ? '1fr' : '0fr', op: open === i ? 1 : 0,
+        plusT: open === i ? 'rotate(45deg)' : 'rotate(0deg)',
+        circBg: open === i ? '#C8F169' : 'rgba(200,241,105,0)',
+        sel: () => { if ((this.state.faqSel ?? 0) !== i) this.setState({ faqSel: i }); },
+        qC: sel === i ? '#16231B' : '#5F6E64',
+        dotT: sel === i ? 'scale(1)' : 'scale(0)',
+        qT: sel === i ? 'translateX(0)' : 'translateX(-24px)',
+        paneOp: sel === i ? 1 : 0,
+        paneT: sel === i ? 'translate3d(0,0,0)' : 'translate3d(0,12px,0)',
+        hOn: () => this.setState({ faqHover: i }), hOff: () => this.setState({ faqHover: null }),
+        markSz: hov === i ? '100% 100%' : '100% 0.12em'
+      }))
+    };
+  }
+  static PR_SVC = [[25000, 4], [40000, 5], [8000, 2], [10000, 2], [12000, 2]];
+  prL() { return '4'; }
+  static PR_RNG = [[25000, 45000], [40000, 80000], [8000, 20000], [10000, 25000], [12000, 30000]];
+  static PR_RATE = 1200;
+  prN(n) { return this.state.lang === 'cz' ? n.toLocaleString('cs-CZ').replace(/\s/g, '\u00a0') : n.toLocaleString('en-US'); }
+  prCur() { return this.state.lang === 'cz' ? '\u00a0Kč' : '\u00a0CZK'; }
+  static FX = { usd: 23, eur: 25, czk: 1 };
+  prCurK() { const L = this.state.lang; const c = (this.state.curBy || {})[L] ?? (() => { try { return localStorage.getItem('po-cur-' + L); } catch (e) { return null; } })(); return Component.FX[c] ? c : (this.state.lang === 'cz' ? 'czk' : 'usd'); }
+  prConv(n) { const k = this.prCurK(); if (k === 'czk') return Math.round(n); const v = n / Component.FX[k]; return v >= 1000 ? Math.round(v / 100) * 100 : v >= 200 ? Math.round(v / 10) * 10 : Math.round(v / 5) * 5; }
+  prSuf() { return this.prCurK() === 'czk' ? this.prCur() : (this.state.lang === 'cz' ? '\u00a0' + (this.prCurK() === 'usd' ? '$' : '€') : ''); }
+  prPre() { return this.prCurK() === 'czk' || this.state.lang === 'cz' ? '' : (this.prCurK() === 'usd' ? '$' : '€'); }
+  prMoney(n, raw) { return this.prPre() + this.prN(raw ? n : this.prConv(n)) + this.prSuf(); }
+  prRange(a, b, sep) { const p = this.prPre(); return p + this.prN(this.prConv(a)) + sep + p + this.prN(this.prConv(b)) + this.prSuf(); }
+  syncTx() { const v = { Fade: 'fade', Blur: 'blur', Curtain: 'curtain' }[this.props.pageTransition ?? 'Blur'] || 'blur'; if (window.poTxStyle !== v) { window.poTxStyle = v; try { localStorage.setItem('po-tx', v); } catch (e) {} } return v; }
+  prTargets() {
+    const ch = this.prChipsSel(), sc = this.prL() === '5' ? [0.8, 1, 1.4][this.state.prScope ?? 1] : 1;
+    let a = 0, b = 0;
+    Component.PR_RNG.forEach(([lo, hi], i) => { if (ch[i]) { a += lo; b += hi; } });
+    const r = x => Math.round(x * sc / 1000) * 1000;
+    return { a: r(a), b: r(b), m: Component.PR_RATE * (this.state.prHours ?? 20) };
+  }
+  twAll() {
+    const T = this.prTargets(), now = performance.now();
+    this.twTg = this.twTg || {}; this.twA = this.twA || {};
+    let changed = false;
+    for (const k in T) {
+      if (T[k] === this.twTg[k]) continue;
+      const first = this.twTg[k] === undefined;
+      const from = first || this.reduce ? T[k] : (this.state['tw_' + k] ?? T[k]);
+      this.twTg[k] = T[k]; this.twA[k] = { from, to: T[k], t0: now, d: k === 'm' ? 350 : 700 }; changed = true;
+    }
+    if (!changed || this.twRun) return;
+    this.twRun = true;
+    const step = t => {
+      const upd = {}; let live = false;
+      for (const k in this.twA) {
+        const A = this.twA[k], p = Math.min(1, (t - A.t0) / A.d), e = 1 - Math.pow(1 - p, 3);
+        upd['tw_' + k] = Math.round((A.from + (A.to - A.from) * e) / 100) * 100;
+        if (p < 1) live = true; else delete this.twA[k];
+      }
+      this.setState(upd);
+      if (live) this.twRaf = requestAnimationFrame(step); else this.twRun = false;
+    };
+    this.twRaf = requestAnimationFrame(step);
+  }
+  prCalcVals(lang) {
+    const C = Component.COPY[lang], L = this.prL(), T = this.prTargets(), tw = k => this.state['tw_' + k] ?? T[k];
+    const ch = this.prChipsSel(), S = Component.PR_SVC, R = Component.PR_RNG;
+    const m4 = this.state.prMode4 ?? 'p', m5 = this.state.prMode5 ?? 'p', bill = this.state.prBill ?? 0, hrs = this.state.prHours ?? 20, scope = this.state.prScope ?? 1;
+    const sel = S.filter((_, i) => ch[i]), mx = Math.max(0, ...sel.map(x => x[1])), sum = sel.reduce((x, y) => x + y[1], 0);
+    const wk = this.prWk(Math.round(mx + (sum - mx) * 0.5) + 1), cur = this.prCur();
+    const range = this.prRange(tw('a'), tw('b'), ' – ');
+    const rate = this.prMoney(Component.PR_RATE) + C.prPerHour;
+    const monthly = (lang === 'cz' ? 'cca ' : 'about ') + this.prMoney(Math.round(tw('m') / Component.PR_RATE * this.prConv(Component.PR_RATE)), true) + (lang === 'cz' ? ' měsíčně' : ' per month');
+    const partner = bill === 0 ? { lbl: C.prBill[0].name, big: rate, sub: monthly } : { lbl: C.prBill[1].name, big: C.prPerJob, sub: C.prPerJobSub };
+    const pill = (label, on, pick) => ({ label, pick, bg: on ? '#16231B' : 'rgba(22,35,27,0)', fg: on ? '#F4F7F2' : '#16231B', bd: on ? '#16231B' : 'rgba(22,35,27,0.18)' });
+    const numd = list => list.map((x, i) => ({ ...x, num: '0' + (i + 1) }));
+    const p4 = m4 === 'p' ? { lbl: C.prEstimate, big: range, sub: wk } : partner;
+    const p5 = m5 === 'u' ? { lbl: C.prYourEst, big: C.prUnsureBig, sub: C.prUnsureSub } : m5 === 'p' ? { lbl: C.prYourEst, big: range, sub: wk } : partner;
+    const MAX = 200000;
+    return {
+      pr4: L === '4', pr5: L === '5',
+      prCurs: ['usd', 'eur', 'czk'].map(k => ({ label: k.toUpperCase(), fg: this.prCurK() === k ? '#C8F169' : '#17301F', pressed: this.prCurK() === k, pick: () => { const L = this.state.lang; try { localStorage.setItem('po-cur-' + L, k); } catch (e) {} this.setState(s => ({ curBy: { ...(s.curBy || {}), [L]: k } })); } })),
+      prCurInd: 'translateX(' + ['usd', 'eur', 'czk'].indexOf(this.prCurK()) * 100 + '%)',
+      pr4P: m4 === 'p', pr4L: m4 === 'l', pr5P: m5 === 'p', pr5L: m5 === 'l',
+      prHourly: bill === 0,
+      pr4Ind: m4 === 'p' ? 'translateX(0)' : 'translateX(100%)',
+      pr4Modes: ['p', 'l'].map((k, i) => ({ label: C.prModes[i], fg: m4 === k ? '#F4F7F2' : '#16231B', pick: () => this.setState({ prMode4: k }) })),
+      pr5Modes: ['p', 'l', 'u'].map((k, i) => pill(C.prModes[i], m5 === k, () => this.setState({ prMode5: k }))),
+      pr5Scopes: C.prScopes.map((x, i) => pill(x, scope === i, () => this.setState({ prScope: i }))),
+      pr5Bills: C.prBill.map((x, i) => pill(x.short, bill === i, () => this.setState({ prBill: i }))),
+      prBills: C.prBill.map((x, i) => ({
+        ...x, sel: bill === i, pick: () => this.setState({ prBill: i }),
+        bg: bill === i ? '#16231B' : 'rgba(22,35,27,0)', fg: bill === i ? '#F4F7F2' : '#16231B', bd: bill === i ? '#16231B' : 'rgba(22,35,27,0.18)',
+        ring: bill === i ? '#C8F169' : 'rgba(22,35,27,0.3)', dotT: bill === i ? 'scale(1)' : 'scale(0)', descC: bill === i ? '#DCE9E0' : '#5F6E64'
+      })),
+      prHours: hrs,
+      prHoursTxt: hrs + ' h',
+      prSetHours: e => this.setState({ prHours: +e.target.value }),
+      prBarL: (tw('a') / MAX * 100).toFixed(2) + '%',
+      prBarW: (Math.max(0, tw('b') - tw('a')) / MAX * 100).toFixed(2) + '%',
+      pr4Lbl: p4.lbl, pr4Big: p4.big, pr4Sub: p4.sub,
+      pr5Lbl: p5.lbl, pr5Big: p5.big, pr5Sub: p5.sub,
+      pr5HasSum: m5 === 'p',
+      pr5Sum: C.services.filter((_, i) => ch[i]).map(x => x.name).join(', ') + ' · ' + C.prScopes[scope],
+      pr4Steps: numd(m4 === 'l' ? C.prStepsL : C.prSteps),
+      pr5Steps: numd(m5 === 'l' ? C.prStepsL : C.prSteps),
+      prRngCaps: R.map(([lo, hi]) => this.prRange(lo, hi, '–'))
+    };
+  }
+  prChipsSel() { return this.state.prChips || [true, false, false, false, false]; }
+  prTarget() {
+    const L = this.prL(), C = Component.COPY[this.state.lang];
+    if (L === '2') { const ch = this.prChipsSel(); return Component.PR_SVC.reduce((a, [p], i) => a + (ch[i] ? p : 0), 0); }
+    return C.prPkgs[this.state.prPkg ?? 0].price;
+  }
+  prFmt(n) { return this.prMoney(n); }
+  prWk(n) { return this.state.lang === 'cz' ? 'cca ' + n + ' ' + (n === 1 ? 'týden' : n < 5 ? 'týdny' : 'týdnů') : 'about ' + n + ' week' + (n === 1 ? '' : 's'); }
+  updatePricing = () => {
+    const root = this.prRef.current;
+    if (!root) return;
+    const vh = window.innerHeight, r = root.getBoundingClientRect();
+    const inView = r.top < vh * 0.5 && r.bottom > vh * 0.5;
+    if (inView !== !!this.state.prInView) this.setState({ prInView: inView });
+  };
+  tweenPrice() {
+    const tg = this.prTarget();
+    if (tg === this.prTg) return;
+    const from = this.prTg === undefined ? tg : (this.state.prDisp ?? tg);
+    this.prTg = tg;
+    cancelAnimationFrame(this.prRaf);
+    if (from === tg || this.reduce) { this.setState({ prDisp: tg }); return; }
+    const t0 = performance.now();
+    const step = now => {
+      const k = Math.min(1, (now - t0) / 700), e = 1 - Math.pow(1 - k, 3);
+      this.setState({ prDisp: Math.round((from + (tg - from) * e) / 100) * 100 });
+      if (k < 1) this.prRaf = requestAnimationFrame(step);
+    };
+    this.prRaf = requestAnimationFrame(step);
+  }
+  prVals(lang) {
+    const C = Component.COPY[lang], L = this.prL(), pk = this.state.prPkg ?? 0, P = C.prPkgs[pk], st = this.state.prStep, s3 = this.state.prStep3 ?? 0;
+    const ch = this.prChipsSel(), S = Component.PR_SVC, cta = !!this.state.prCtaH, tier = this.state.prTier;
+    const sel = S.filter((_, i) => ch[i]), mx = Math.max(0, ...sel.map(x => x[1])), sum = sel.reduce((a, x) => a + x[1], 0);
+    const grows = [0.15, 0.45, P.weeks, 1], disp = this.state.prDisp ?? this.prTarget();
+    const wkShort = n => this.prWk(n).replace(/^(cca|about) /, '');
+    return {
+      prRef: this.prRef,
+      pr2: L === '2', prInView: !!this.state.prInView,
+      prPrice: C.prFrom + this.prFmt(disp),
+      prWeeks1: this.prWk(P.weeks + 1),
+      prWeeks2: this.prWk(Math.round(mx + (sum - mx) * 0.5) + 1),
+      prOpts: [['2', '2 · Calculator'], ['4', '4 · Range + partnership'], ['5', '5 · Questions']].map(([k, label]) => ({
+        label, bg: L === k ? '#C8F169' : 'rgba(200,241,105,0)', fg: L === k ? '#17301F' : '#FFFFFF',
+        pick: () => this.setState({ prLayout: k })
+      })),
+      prPkgs: C.prPkgs.map((p, i) => ({
+        name: p.name, pick: () => this.setState({ prPkg: i }),
+        bg: i === pk ? '#16231B' : 'rgba(22,35,27,0)', fg: i === pk ? '#F4F7F2' : '#16231B', bd: i === pk ? '#16231B' : 'rgba(22,35,27,0.18)'
+      })),
+      prSteps: C.prSteps.map((x, i) => ({
+        ...x, num: '0' + (i + 1),
+        dur: i === 2 && L === '1' ? wkShort(P.weeks) : x.dur,
+        grow: String(grows[i]),
+        barBg: st === i ? '#C8F169' : '#3E7B5A',
+        barH: st === i ? '14px' : '8px',
+        colOp: st == null || st === i ? 1 : 0.45,
+        on: () => this.setState({ prStep: i }),
+        off: () => this.setState({ prStep: null }),
+        on3: () => { if ((this.state.prStep3 ?? 0) !== i) this.setState({ prStep3: i }); },
+        seg3: i <= s3 ? '#C8F169' : 'rgba(255,255,255,0.16)',
+        nm3: i === s3 ? '#FFFFFF' : 'rgba(255,255,255,0.55)',
+        rows3: i === s3 ? '1fr' : '0fr',
+        op3: i === s3 ? 1 : 0
+      })),
+      prChips: C.services.map((x, i) => ({
+        name: x.name, sel: !!ch[i], price: C.prFrom + this.prFmt(S[i][0]), rng: this.prRange(Component.PR_RNG[i][0], Component.PR_RNG[i][1], '–'),
+        toggle: () => this.setState(stt => { const c = [...(stt.prChips || [true, false, false, false, false])]; c[i] = !c[i]; return c.some(Boolean) ? { prChips: c } : null; }),
+        bg: ch[i] ? '#16231B' : 'rgba(22,35,27,0)', fg: ch[i] ? '#F4F7F2' : '#16231B', bd: ch[i] ? '#16231B' : 'rgba(22,35,27,0.18)',
+        icBg: ch[i] ? '#C8F169' : '#E7F0D8', icT: ch[i] ? 'rotate(45deg)' : 'rotate(0deg)', capC: ch[i] ? '#DCE9E0' : '#5F6E64'
+      })),
+      prTiers: C.prPkgs.map((p, i) => ({
+        name: p.name, price: C.prFrom + this.prFmt(p.price), wk: this.prWk(p.weeks + 1), href: '#contact',
+        on: () => this.setState({ prTier: i }), off: () => this.setState({ prTier: null }),
+        fillT: tier === i ? 'scaleX(1)' : 'scaleX(0)', fg: tier === i ? '#17301F' : '#FFFFFF', capC: tier === i ? '#17301F' : '#DCE9E0'
+      })),
+      prCtaOn: () => this.setState({ prCtaH: true }),
+      prCtaOff: () => this.setState({ prCtaH: false }),
+      prTileW: cta ? 'calc(100% - 16px)' : '48px',
+      prArrT: cta ? 'rotate(45deg)' : 'rotate(0deg)',
+      prLblT: cta ? 'translateX(4px)' : 'translateX(0)',
+      prLbl2C: cta ? '#17301F' : '#F4F7F2'
+    };
+  }
+  updateProjects = () => {
+    const root = this.projRef.current;
+    if (!root) return;
+    const vh = window.innerHeight, cl = x => Math.min(1, Math.max(0, x));
+    const cards = root.querySelectorAll('[data-card]');
+    cards.forEach((c, i) => {
+      const inner = c.querySelector('[data-card-inner]'), shade = c.querySelector('[data-shade]'), next = cards[i + 1];
+      const p = next && !this.reduce ? cl(1 - next.getBoundingClientRect().top / vh) : 0;
+      if (inner) { inner.style.transform = 'scale(' + (1 - 0.07 * p).toFixed(4) + ')'; inner.style.borderRadius = (p * 24).toFixed(1) + 'px'; }
+      if (shade) shade.style.opacity = (0.6 * p).toFixed(3);
+    });
+  };
+  static IMGS = { nordvik: 'work-laptop.png', lipa: 'proj-lipa.png', vltava: 'proj-vltava.png', plavba: 'proj-plavba.png' };
+  static LOGOS = [
+    { name: 'NORDVIK', ff: "'Montserrat',sans-serif", fw: 600, fs: '24px', ls: '0.24em', square: true },
+    { name: 'kavárna lípa', ff: "'Instrument Serif',serif", fw: 400, fs: '40px', ls: '-0.01em', fst: 'italic' },
+    { name: 'ATELIER/09', ff: "'Montserrat',sans-serif", fw: 500, fs: '24px', ls: '0.08em' },
+    { name: 'Moravia', ff: "'Montserrat',sans-serif", fw: 600, fs: '34px', ls: '-0.045em', circle: true },
+    { name: 'Pražská Plavba', ff: "'Instrument Serif',serif", fw: 400, fs: '38px', ls: '0' },
+    { name: 'VLTAVA LABS', ff: "'Montserrat',sans-serif", fw: 500, fs: '19px', ls: '0.34em' },
+    { name: 'ostrov', ff: "'Montserrat',sans-serif", fw: 600, fs: '34px', ls: '-0.03em', diamond: true },
+    { name: 'Hrubý & syn', ff: "'Instrument Serif',serif", fw: 400, fs: '38px', ls: '0', fst: 'italic' }
+  ];
+  updateWords = () => {
+    const el = this.aboutTextRef.current;
+    if (!el) return;
+    const ws = el.querySelectorAll('[data-word]');
+    if (this.reduce) { ws.forEach(w => { w.style.opacity = '1'; }); el.querySelectorAll('[data-mark]').forEach(m => { m.style.backgroundSize = '100% 86%'; }); return; }
+    const r = el.getBoundingClientRect(), vh = window.innerHeight;
+    const p = Math.min(1, Math.max(0, (vh * 0.86 - r.top) / (r.height + vh * 0.28)));
+    const n = ws.length;
+    ws.forEach((w, i) => {
+      const t = Math.min(1, Math.max(0, p * (n + 3) - i));
+      w.style.opacity = (0.14 + 0.86 * t).toFixed(3);
+      const m = w.querySelector('[data-mark]');
+      if (m) { const s = Math.min(1, Math.max(0, (p * (n + 3) - i - 0.6) / 1.6)); m.style.backgroundSize = (100 * (1 - Math.pow(1 - s, 3))).toFixed(1) + '% 86%'; }
+    });
+  };
+  updateNav() {
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    const dy = y - (this.lastY ?? y);
+    this.lastY = y;
+    let hide = this.state.navHidden;
+    if (y < 120) hide = false;
+    else if (dy > 3) hide = true;
+    else if (dy < -3) hide = false;
+    if (hide !== !!this.state.navHidden) this.setState({ navHidden: hide });
+  }
+  onScroll = () => { if (this.raf) return; this.raf = requestAnimationFrame(() => { this.raf = 0; this.updateWords(); this.updateNav(); this.updateProjects(); this.updatePricing(); this.updateFaq(); }); };
+  setupMarquee() {
+    const tr = this.marqueeRef.current;
+    if (!tr || this.reduce || !tr.animate) return;
+    this.mAnim = tr.animate([{ transform: 'translate3d(0,0,0)' }, { transform: 'translate3d(-50%,0,0)' }], { duration: 48000, iterations: Infinity });
+  }
+  finVals(lang) {
+    const C = Component.COPY[lang], st = this.state, fh = st.fh, v = '1';
+    const email = 'ahoj@pavel.design', phone = '+420 777 123 456';
+    const on = k => () => this.setState({ fh: k });
+    const fb = !!st.fbH, top = fh === 'top';
+    const hov = { '1': '#17301F', '2': '#16231B', '3': '#C8F169' }[v] || '#17301F', base = { '1': '#FFFFFF', '2': '#16231B', '3': '#17301F' }[v] || '#FFFFFF';
+    return {
+      finRef: this.finRef,
+      ...['mail', 'tel'].reduce((o, k) => { const h = fh === k; o[k + 'CBg'] = h ? '#C8F169' : 'rgba(200,241,105,0)'; o[k + 'CFg'] = h ? '#17301F' : '#FFFFFF'; o[k + 'CT'] = h ? 'rotate(45deg)' : 'rotate(0deg)'; return o; }, {}),
+      fServices: [...C.services.map(x => x.name), C.fServiceOther],
+      fService: st.fService || '', fServiceC: st.fService ? '#16231B' : '#8D988F',
+      setService: e => this.setState({ fService: e.target.value }),
+      email, phone, mailHref: 'mailto:' + email, telHref: 'tel:+420777123456',
+      fhOff: () => this.setState({ fh: null }), mailOn: on('mail'), telOn: on('tel'), topOn: on('top'),
+      mailBg: fh === 'mail' ? '100% 100%' : '0% 0.06em', mailFg: fh === 'mail' ? hov : base,
+      telBg: fh === 'tel' ? '100% 100%' : '0% 0.06em', telFg: fh === 'tel' ? hov : base,
+      fSent: !!st.fSent, fNotSent: !st.fSent,
+      submitForm: e => { e.preventDefault(); this.setState({ fSent: true, fbH: false }); },
+      resetForm: () => this.setState({ fSent: false }),
+      fbOn: () => this.setState({ fbH: true }), fbOff: () => this.setState({ fbH: false }),
+      fbTileW: fb ? 'calc(100% - 16px)' : '48px', fbArrT: fb ? 'rotate(45deg)' : 'rotate(0deg)', fbLblT: fb ? 'translateX(4px)' : 'translateX(0)', fbLblC: fb ? '#17301F' : '#F4F7F2',
+      topUline: top ? '100% 2px' : '0% 2px', topCircBg: top ? '#C8F169' : 'rgba(200,241,105,0)', topFg: top ? '#17301F' : '#FFFFFF',
+      topArrA: top ? 'translateY(-48px)' : 'translateY(0)', topArrB: top ? 'translateY(0)' : 'translateY(48px)',
+      toTop: () => { this.setState({ fh: null }); if (window.poJump) window.poJump(document.body); else window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      ftLinks: C.links.map((l, i) => ({ label: l, href: ['#work', '#services', '#about', '#contact'][i] })),
+      ftSocial: [{ label: 'Instagram', href: '#' }, { label: 'LinkedIn', href: '#' }, { label: 'Behance', href: '#' }]
+    };
+  }
+  playIntro() {
+    const root = this.rootRef.current;
+    if (!root || this.reduce || (this.props.intro ?? true) === false || !root.animate) return;
+    let seen = false;
+    try { seen = sessionStorage.getItem('po-intro') === '1' || document.documentElement.hasAttribute('data-po-tx') || !!window.__poArrived; sessionStorage.setItem('po-intro', '1'); } catch (e) {}
+    if (seen) return;
+    const els = [...root.querySelectorAll('[data-intro]')];
+    // bg stays at near-zero opacity (not 0) so the browser paints & rasterises the bands while hidden
+    els.forEach(el => { el.style.opacity = el.dataset.intro === 'bg' ? '0.001' : '0'; el.style.willChange = 'transform, opacity'; });
+    const raf = () => new Promise(r => requestAnimationFrame(r));
+    const wait = ms => new Promise(r => setTimeout(r, ms));
+    const bgReady = () => new Promise(res => {
+      const t0 = performance.now();
+      const check = () => (root.querySelector('[data-intro="bg"] svg') || performance.now() - t0 > 2000) ? res() : requestAnimationFrame(check);
+      check();
+    });
+    Promise.all([document.fonts ? document.fonts.ready : null, bgReady(), wait(500)])
+      .then(raf).then(raf).then(() => wait(250)).then(raf).then(raf).then(() => {
+        const ease = 'cubic-bezier(.22,1,.36,1)';
+        const run = (sel, frames, dur, delay, step = 0) =>
+          root.querySelectorAll('[data-intro="' + sel + '"]').forEach((el, i) => {
+            const an = el.animate(frames, { duration: dur, delay: delay + i * step, easing: ease, fill: 'backwards' });
+            el.style.opacity = '';
+            an.onfinish = () => { el.style.willChange = ''; };
+          });
+        const up = d => [{ opacity: 0, transform: 'translate3d(0,' + d + ',0)' }, { opacity: 1, transform: 'translate3d(0,0,0)' }];
+        run('bg', [{ opacity: 0.001, transform: 'translate3d(0,-7vh,0)' }, { opacity: 1, transform: 'translate3d(0,0,0)' }], 2200, 0);
+        run('h1', up('0.28em'), 1200, 700, 90);
+        run('sub', up('18px'), 1200, 880);
+        run('cta', up('18px'), 1200, 970);
+        run('nav', up('-16px'), 1200, 1060);
+        run('card', up('24px'), 1200, 1150, 90);
+        run('cookie', up('10px'), 1200, 1330);
+      });
+  }
+  componentDidMount() {
+    this.mqFaq = matchMedia('(max-width: 760px), (max-height: 640px)');
+    this.onFaqMq = () => this.setState({ faqMob: this.mqFaq.matches });
+    this.mqFaq.addEventListener('change', this.onFaqMq);
+    this.onFaqMq();
+    this.setState({}, () => { this.playIntro(); this.setupMarquee(); this.updateWords(); this.updateProjects(); this.updatePricing(); this.updateFaq(); });
+    window.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', this.onScroll);
+    document.documentElement.lang = this.state.lang === 'cz' ? 'cs' : 'en';
+    this.mq = matchMedia('(min-width: 1100px) and (min-height: 800px)');
+    this.onMq = () => this.setState({ cards: this.mq.matches });
+    this.mq.addEventListener('change', this.onMq);
+    this.mqSig = matchMedia('(min-width: 640px)');
+    this.onSig = () => this.setState({ wideSig: this.mqSig.matches });
+    this.mqSig.addEventListener('change', this.onSig);
+    this.onSig();
+    this.onMq();
+  }
+  componentWillUnmount() {
+    clearTimeout(this.cpT); this.mqFaq && this.mqFaq.removeEventListener('change', this.onFaqMq); cancelAnimationFrame(this.prRaf); cancelAnimationFrame(this.twRaf); this.mq && this.mq.removeEventListener('change', this.onMq); this.mqSig && this.mqSig.removeEventListener('change', this.onSig); this.io && this.io.disconnect(); window.removeEventListener('scroll', this.onScroll, { capture: true }); window.removeEventListener('resize', this.onScroll); this.mAnim && this.mAnim.cancel(); }
+  componentDidUpdate() {
+    this.tweenPrice();
+    this.twAll();
+    if (this.lastLang !== this.state.lang) { this.lastLang = this.state.lang; this.updateWords(); }
+  }
+
+  setCookies(v) {
+    try { localStorage.setItem('po-cookies', v); } catch (e) {}
+    this.setState({ cookies: v, cookieOpen: false });
+  }
+
+  setLang(lang) {
+    try { localStorage.setItem('po-lang', lang); } catch (e) {}
+    document.documentElement.lang = lang === 'cz' ? 'cs' : 'en';
+    this.setState({ lang });
+  }
+
+  renderVals() {
+    const { lang } = this.state;
+    const cz = lang === 'cz';
+    return {
+      t: Component.COPY[lang],
+      rootRef: this.rootRef,
+      projRef: this.projRef,
+      ...this.prVals(lang),
+      ...this.prCalcVals(lang),
+      ...this.faqVals(lang),
+      ...this.finVals(lang),
+      ...(() => {
+        const ph = this.state.ph, ps = Component.COPY[lang].projects;
+        return {
+          count: '0' + ps.length,
+          services: Component.COPY[lang].services.map((s, i) => {
+            const openI = this.state.svOpen === undefined ? 0 : this.state.svOpen;
+            const open = openI === i, hov = this.state.svHover === i, cta = this.state.svCta === i;
+            return {
+              ...s, num: '0' + (i + 1), open,
+              toggle: () => this.setState(st => ({ svOpen: (st.svOpen === undefined ? 0 : st.svOpen) === i ? null : i })),
+              on: () => this.setState({ svHover: i }),
+              off: () => this.setState({ svHover: null }),
+              rows: open ? '1fr' : '0fr',
+              descOpA: open ? 1 : 0,
+              descTA: open ? 'translate3d(0,0,0)' : 'translate3d(0,-10px,0)',
+              plusT: open ? 'rotate(45deg)' : 'rotate(0deg)',
+              circBg: open || hov ? '#C8F169' : 'rgba(200,241,105,0)',
+              titleTA: hov && !open ? 'translateX(12px)' : 'translateX(0)',
+              ctaHref: '#contact',
+              ctaOn: () => this.setState({ svCta: i }),
+              ctaOff: () => this.setState({ svCta: null }),
+              ctaTileW: cta ? 'calc(100% - 16px)' : '48px',
+              ctaArrT: cta ? 'rotate(45deg)' : 'rotate(0deg)',
+              ctaLblT: cta ? 'translateX(4px)' : 'translateX(0)',
+              v3Clip: open ? 'inset(0% 0% 0% 0% round 12px)' : 'inset(100% 0% 0% 0% round 12px)',
+              v3ImgT: open ? 'scale(1)' : 'scale(1.15)',
+              slot: 'svc-' + (i + 1),
+              img: 'assets/' + ['work-laptop.png', 'proj-vltava.png', 'proj-lipa.png', 'proj-plavba.png', 'card-work.jpg'][i % 5],
+              ph: (lang === 'cz' ? 'Obrázek: ' : 'Image: ') + s.name
+            };
+          }),
+          projects: ps.map((p, i) => {
+            const on = ph === i;
+            return {
+              ...p, num: '0' + (i + 1), slot: 'proj-' + p.slug, href: '#case-' + p.slug,
+              ph: Component.COPY[lang].imgPh + ': ' + p.name,
+              img: 'assets/' + Component.IMGS[p.slug],
+              on: () => this.setState({ ph: i }),
+              off: () => this.setState({ ph: null }),
+              uline: on ? '100% 2px' : '0% 2px',
+              circleBg: on ? '#C8F169' : 'rgba(200,241,105,0)',
+              arrowFg: on ? '#17301F' : '#FFFFFF',
+              arrA: on ? 'translateX(48px)' : 'translateX(0)',
+              arrB: on ? 'translateX(0)' : 'translateX(-48px)',
+              badgeOp: on ? 1 : 0,
+              badgeT: on ? 'translate(-50%,-50%) scale(1)' : 'translate(-50%,-50%) scale(0.5)',
+              shade: on ? 0.2 : 0
+            };
+          })
+        };
+      })(),
+      aboutRef: this.aboutRef,
+      navT: this.state.navHidden ? 'translate3d(0,-110%,0)' : 'translate3d(0,0,0)',
+      aboutTextRef: this.aboutTextRef,
+      marqueeRef: this.marqueeRef,
+      aboutWords: Component.COPY[lang].about.flatMap(([s, kind, space]) => kind === 'mark'
+        ? [{ text: s, space, mark: true, word: false }]
+        : s.split(' ').map(x => ({ text: x + ' ', word: true, mark: false, color: '#16231B' }))),
+      logos: [...Component.LOGOS, ...Component.LOGOS].map(l => ({ fst: 'normal', square: false, circle: false, diamond: false, ...l })),
+      marqueeSlow: () => this.mAnim && this.mAnim.updatePlaybackRate(0.3),
+      marqueeFast: () => this.mAnim && this.mAnim.updatePlaybackRate(1),
+      aboutBtnOn: () => this.setState({ aboutHover: true }),
+      aboutBtnOff: () => this.setState({ aboutHover: false }),
+      aboutTileW: this.state.aboutHover ? 'calc(100% - 16px)' : '56px',
+      aboutArrowT: this.state.aboutHover ? 'rotate(45deg)' : 'rotate(0deg)',
+      aboutLabelT: this.state.aboutHover ? 'translateX(4px)' : 'translateX(0)',
+      ...(() => {
+        const v = this.state.btnV || 'A', on = !!this.state.aboutHover;
+        return {
+          wideSig: this.state.wideSig ?? true,
+          bUnderline: on ? '100% 2px' : '0% 2px',
+          bCircleBg: on ? '#C8F169' : 'rgba(200,241,105,0)',
+          bArrowA: on ? 'translateX(48px)' : 'translateX(0)',
+          bArrowB: on ? 'translateX(0)' : 'translateX(-48px)',
+          cBg: on ? '#C8F169' : '#E7F0D8',
+          cArrowT: on ? 'translateX(5px)' : 'translateX(0)',
+          dFillH: on ? '100%' : '0%',
+          dFillR: on ? '0' : '50% 50% 0 0',
+          dRollT: on ? 'translateY(-50%)' : 'translateY(0)',
+          dDot: on ? '#17301F' : '#C8F169',
+          dDotT: on ? 'scale(1.3)' : 'scale(1)'
+        };
+      })(),
+      aboutBtnFg: this.state.aboutHover ? '#17301F' : '#4F7A16',
+      ctaOn: () => this.setState({ ctaHover: true }),
+      ctaOff: () => this.setState({ ctaHover: false }),
+      ctaTileW: this.state.ctaHover ? 'calc(100% - 16px)' : '56px',
+      ctaArrowT: this.state.ctaHover ? 'rotate(45deg)' : 'rotate(0deg)',
+      ctaLabelT: this.state.ctaHover ? 'translateX(4px)' : 'translateX(0)',
+      ctaA: this.state.ctaHover ? 'translateX(130%)' : 'translateX(0)',
+      ctaB: this.state.ctaHover ? 'translateX(0)' : 'translateX(-130%)',
+      ctaChipBg: this.state.ctaHover ? '#D6F58C' : '#C8F169',
+      ctaChipFg: '#17301F',
+      lang,
+      langStyle: this.props.langStyle ?? 'single',
+      showCards: !!this.state.cards,
+      cookieOpen: !!this.state.cookieOpen,
+      cookieBtnBg: this.state.cookieOpen ? '#C8F169' : '#E2F4C0',
+      toggleCookie: () => this.setState(st => ({ cookieOpen: !st.cookieOpen })),
+      acceptOn: () => this.setState({ acceptHover: true }),
+      acceptOff: () => this.setState({ acceptHover: false }),
+      acceptTileW: this.state.acceptHover ? 'calc(100% - 12px)' : '0px',
+      acceptTileOp: this.state.acceptHover ? 1 : 0,
+      cookieBtnOn: () => this.setState({ cookieBtnHover: true }),
+      cookieBtnOff: () => this.setState({ cookieBtnHover: false }),
+      cookieIconT: this.state.cookieBtnHover ? 'rotate(-40deg) scale(1.12)' : 'rotate(0deg) scale(1)',
+      mainPadBottom: 'clamp(40px,22vh,160px)',
+      acceptCookies: () => this.setCookies('accepted'),
+      declineCookies: () => this.setCookies('declined'),
+      hoverAbout: () => this.setState({ hover: 'about' }),
+      hoverWork: () => this.setState({ hover: 'work' }),
+      unhover: () => this.setState({ hover: null }),
+      ...['About', 'Work'].reduce((o, k) => {
+        const on = this.state.hover === k.toLowerCase();
+        o['img' + k] = on ? 'scale(1.05)' : 'scale(1)';
+        o['arrowOp' + k] = on ? 1 : 0;
+        o['arrowT' + k] = on ? 'scale(1)' : 'scale(0.6)';
+        o['shade' + k] = on ? 1 : 0;
+        return o;
+      }, {}),
+      setLang: l => this.setLang(l),
+      txStyle: this.syncTx(),
+      // Czech line 2 is longer, so it gets a slightly smaller scale to stay on one line
+      h1Size: cz ? 'clamp(42px, min(calc(6.6vw + 32px), calc(13vh + 12px)), 144px)' : 'clamp(44px, min(calc(7.2vw + 32px), calc(14vh + 12px)), 152px)',
+      scrim: this.props.scrim ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

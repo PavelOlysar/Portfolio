@@ -6,6 +6,12 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Served from pavelolysar.com/archiveportfolio/ — the new portfolio owns the root.
+  base: '/archiveportfolio/',
+  build: {
+    outDir: '../site/archiveportfolio',
+    emptyOutDir: true,
+  },
   plugins: [
     vue(),
     vueDevTools(),
