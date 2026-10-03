@@ -6,6 +6,7 @@ Deployed by Cloudflare Workers Builds (worker `portfolio`) on every push to `mai
 | Path | URL | What it is |
 |---|---|---|
 | `site/` | pavelolysar.com/ | Current portfolio — a Claude Design export, static, no build step |
+| `site/404.html` | any unknown path | Branded 404 — standalone HTML (no runtime), all URLs absolute so it works at any depth |
 | `site/archiveportfolio/` | pavelolysar.com/archiveportfolio/ | Previous portfolio — committed build output of `archive/` |
 | `archive/` | — | Source of the previous portfolio (Vue 3 + Vite) |
 

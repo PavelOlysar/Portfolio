@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="cs" data-lang="cz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 · Pavel Olyšar</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#3E7B5A">
+<!--
+  Standalone 404, served by Cloudflare for any unknown path (wrangler.toml: not_found_handling = "404-page").
+  Deliberately not a Design Component: it can be served at any depth (/a/b/c), so every URL here is absolute,
+  and it needs no runtime. Visual values mirror index.html / Nav.dc.html; the bands are a static port of
+  Teal Hero Background.dc.html (teal #3E7B5A, 6 bands, drift 0.8).
+-->
+<script>(function(){var l='cz';try{if(localStorage.getItem('po-lang')==='en')l='en'}catch(e){}var d=document.documentElement;d.setAttribute('data-lang',l);d.lang=l==='en'?'en':'cs'})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+:root{--ease:cubic-bezier(.65,0,.35,1);--ink:#16231B;--ink-cta:#17301F;--lime:#C8F169;--tile:#F3FBE4}
+*{box-sizing:border-box}
+html,body{margin:0;background:#F4F7F2;-webkit-font-smoothing:antialiased}
+body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
+::selection{background:var(--lime);color:var(--ink-cta)}
+[data-lang="cz"] [data-l="en"],[data-lang="en"] [data-l="cz"]{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+.page{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:flex;flex-direction:column;background:linear-gradient(to bottom,#3E7B5A 0%,#8DB49C 50%,#DCE9E0 84%,#F4F7F2 100%)}
+.bg{position:absolute;inset:0;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 68%,transparent 100%);mask-image:linear-gradient(to bottom,#000 68%,transparent 100%)}
+.bands{position:absolute;inset:0;transform:scaleX(-1);background:linear-gradient(to bottom,#3e7b5a 0%,#7ca58f 50%,#d8e5de 84%,#f6f9f8 100%)}
+.band{position:absolute;inset:-120px;pointer-events:none}
+.drift{position:absolute;inset:0;will-change:transform;animation:drift var(--d) ease-in-out var(--dl) infinite alternate}
+.drift svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+@keyframes drift{from{transform:translate3d(calc(var(--a) * -1),0,0)}to{transform:translate3d(var(--a),0,0)}}
+.scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 60% at 50% 46%,rgba(20,60,40,.2),rgba(20,60,40,.07) 55%,rgba(20,60,40,0) 80%)}
+
+.nav-wrap{position:relative;z-index:2;display:flex;justify-content:center;padding:40px 20px 0}
+.nav{width:100%;max-width:1240px;height:88px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 32px;border-radius:10px;color:var(--ink);background:rgba(234,240,234,.46);-webkit-backdrop-filter:blur(26px) saturate(1.15);backdrop-filter:blur(26px) saturate(1.15);border:1px solid rgba(255,255,255,.55);box-shadow:0 10px 40px rgba(10,40,25,.10)}
+.wordmark{color:var(--ink);font-weight:600;font-size:32px;letter-spacing:-.03em;white-space:nowrap;text-decoration:none}
+.wordmark span{color:var(--lime)}
+.lang{appearance:none;border:0;padding:4px 0;cursor:pointer;font:inherit;font-size:18px;font-weight:600;letter-spacing:.04em;color:var(--ink);opacity:.88;background:transparent linear-gradient(currentColor,currentColor) no-repeat 0 100%/0% 1px;transition:background-size .6s var(--ease),opacity .3s var(--ease)}
+.lang:hover,.lang:focus-visible{opacity:1;background-size:100% 1px}
+
+.main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(32px,6vh,64px) 20px clamp(72px,14vh,140px)}
+.code{margin:0;font-weight:600;font-size:clamp(120px,24vw,300px);line-height:.9;letter-spacing:-.05em;text-shadow:0 2px 32px rgba(15,50,30,.22)}
+.title{margin:clamp(16px,3vh,28px) 0 0;max-width:1100px;font-weight:600;font-size:clamp(30px,min(4vw,7vh),56px);line-height:1.08;letter-spacing:-.025em;text-wrap:balance;text-shadow:0 2px 32px rgba(15,50,30,.22)}
+.sub{margin:clamp(12px,2.4vh,20px) 0 0;max-width:720px;font-size:clamp(18px,min(2vw,3.6vh),24px);line-height:1.35;font-weight:500;letter-spacing:-.012em;text-wrap:pretty;text-shadow:0 1px 18px rgba(15,50,30,.25)}
+.actions{margin-top:clamp(28px,5vh,44px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px 32px}
+
+/* Same build as the hero CTA in index.html: lime pill, pale tile that widens on hover, arrow turns 45°. */
+.cta{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:72px;padding:0 34px 0 86px;border-radius:10px;background:var(--lime);color:var(--ink-cta);font-size:21px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s var(--ease)}
+.cta:active{transform:scale(.97)}
+.cta:focus-visible{outline:2px solid var(--ink-cta);outline-offset:3px}
+.cta__tile{position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:56px;border-radius:6px;background:var(--tile);transition:width .6s var(--ease)}
+.cta__icon{position:absolute;left:8px;top:8px;width:56px;height:56px;display:flex;align-items:center;justify-content:center}
+.cta__icon svg{display:block;transition:transform .6s var(--ease)}
+.cta__label{display:block;transition:transform .6s var(--ease)}
+.cta:hover .cta__tile,.cta:focus-visible .cta__tile{width:calc(100% - 16px)}
+.cta:hover .cta__icon svg,.cta:focus-visible .cta__icon svg{transform:rotate(45deg)}
+.cta:hover .cta__label,.cta:focus-visible .cta__label{transform:translateX(4px)}
+
+.link{font-size:18px;font-weight:600;color:var(--ink-cta);text-decoration:none;padding:4px 0;background:linear-gradient(currentColor,currentColor) no-repeat 0 100%/0% 1px;transition:background-size .6s var(--ease)}
+.link:hover,.link:focus-visible{background-size:100% 1px}
+
+@media (max-width:560px){
+  .nav-wrap{padding:24px 16px 0}
+  .nav{height:72px;padding:0 24px}
+  .wordmark{font-size:28px}
+  .main{padding-left:16px;padding-right:16px}
+  .actions{flex-direction:column}
+  .cta{height:64px;padding:0 28px 0 76px;font-size:18px}
+  .cta__tile{width:48px}
+  .cta__icon{width:48px;height:48px}
+}
+@media (prefers-reduced-motion:reduce){
+  .drift{animation:none}
+  .cta,.cta__tile,.cta__icon svg,.cta__label,.lang,.link{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bg" aria-hidden="true"><div class="bands">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="bs" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="22"/></filter><filter id="bi" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="28"/></filter><filter id="bg" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="7"/></filter><filter id="bl" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="0.9"/></filter></defs></svg>
+<div class="band"><div class="drift" style="--a:20px;--d:14.4s;--dl:0.0s"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fb0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#3e7b5a"/><stop offset="0.5" stop-color="#7ca58f"/><stop offset="0.84" stop-color="#d8e5de"/><stop offset="1" stop-color="#f6f9f8"/></linearGradient><linearGradient id="eb0" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="hsl(148,41%,66%)"/><stop offset="0.45" stop-color="#c5d7ce"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/></linearGradient><radialGradient id="qb0" gradientUnits="userSpaceOnUse" cx="980" cy="400" r="880"><stop offset="0" stop-color="#3a3a3a"/><stop offset="0.55" stop-color="#8a8a8a"/><stop offset="1" stop-color="#ffffff"/></radialGradient><mask id="mb0" maskUnits="userSpaceOnUse" x="-800" y="-800" width="3200" height="2600"><rect x="-800" y="-800" width="3200" height="2600" fill="url(#qb0)"/></mask><clipPath id="cb0"><circle cx="1490" cy="1080" r="1750" /></clipPath></defs><g mask="url(#mb0)"><circle cx="1490" cy="1080" r="1750" fill="none" stroke="hsl(148,33%,22%)" stroke-width="50" opacity="0.3" filter="url(#bs)" transform="translate(-14 0)"/></g><circle cx="1490" cy="1080" r="1750" fill="url(#fb0)"/><g clip-path="url(#cb0)"><circle cx="1490" cy="1080" r="1750" fill="none" stroke="#ffffff" stroke-width="80" opacity="0.2" filter="url(#bi)"/></g><g mask="url(#mb0)"><circle cx="1490" cy="1080" r="1750" fill="none" stroke="url(#eb0)" stroke-width="12" opacity="0.5" filter="url(#bg)"/><circle cx="1490" cy="1080" r="1750" fill="none" stroke="url(#eb0)" stroke-width="2.2" opacity="0.95" filter="url(#bl)"/></g></svg></div></div>
+<div class="band"><div class="drift" style="--a:28px;--d:19.2s;--dl:-14.2s"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fb1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#407d5c"/><stop offset="0.5" stop-color="#7ea791"/><stop offset="0.84" stop-color="#dae5df"/><stop offset="1" stop-color="#f6f9f8"/></linearGradient><linearGradient id="eb1" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="hsl(148,41%,66%)"/><stop offset="0.45" stop-color="#c5d7ce"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/></linearGradient><radialGradient id="qb1" gradientUnits="userSpaceOnUse" cx="980" cy="400" r="880"><stop offset="0" stop-color="#3a3a3a"/><stop offset="0.55" stop-color="#8a8a8a"/><stop offset="1" stop-color="#ffffff"/></radialGradient><mask id="mb1" maskUnits="userSpaceOnUse" x="-800" y="-800" width="3200" height="2600"><rect x="-800" y="-800" width="3200" height="2600" fill="url(#qb1)"/></mask><clipPath id="cb1"><circle cx="1777" cy="1080" r="1750" /></clipPath></defs><g mask="url(#mb1)"><circle cx="1777" cy="1080" r="1750" fill="none" stroke="hsl(148,33%,22%)" stroke-width="50" opacity="0.3" filter="url(#bs)" transform="translate(-14 0)"/></g><circle cx="1777" cy="1080" r="1750" fill="url(#fb1)"/><g clip-path="url(#cb1)"><circle cx="1777" cy="1080" r="1750" fill="none" stroke="#ffffff" stroke-width="80" opacity="0.2" filter="url(#bi)"/></g><g mask="url(#mb1)"><circle cx="1777" cy="1080" r="1750" fill="none" stroke="url(#eb1)" stroke-width="12" opacity="0.5" filter="url(#bg)"/><circle cx="1777" cy="1080" r="1750" fill="none" stroke="url(#eb1)" stroke-width="2.2" opacity="0.95" filter="url(#bl)"/></g></svg></div></div>
+<div class="band"><div class="drift" style="--a:36px;--d:24.0s;--dl:-35.5s"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fb2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#437e5e"/><stop offset="0.5" stop-color="#80a893"/><stop offset="0.84" stop-color="#dbe6e0"/><stop offset="1" stop-color="#f6f9f8"/></linearGradient><linearGradient id="eb2" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="hsl(148,41%,66%)"/><stop offset="0.45" stop-color="#c5d7ce"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/></linearGradient><radialGradient id="qb2" gradientUnits="userSpaceOnUse" cx="980" cy="400" r="880"><stop offset="0" stop-color="#3a3a3a"/><stop offset="0.55" stop-color="#8a8a8a"/><stop offset="1" stop-color="#ffffff"/></radialGradient><mask id="mb2" maskUnits="userSpaceOnUse" x="-800" y="-800" width="3200" height="2600"><rect x="-800" y="-800" width="3200" height="2600" fill="url(#qb2)"/></mask><clipPath id="cb2"><circle cx="2063" cy="1080" r="1750" /></clipPath></defs><g mask="url(#mb2)"><circle cx="2063" cy="1080" r="1750" fill="none" stroke="hsl(148,33%,22%)" stroke-width="50" opacity="0.3" filter="url(#bs)" transform="translate(-14 0)"/></g><circle cx="2063" cy="1080" r="1750" fill="url(#fb2)"/><g clip-path="url(#cb2)"><circle cx="2063" cy="1080" r="1750" fill="none" stroke="#ffffff" stroke-width="80" opacity="0.2" filter="url(#bi)"/></g><g mask="url(#mb2)"><circle cx="2063" cy="1080" r="1750" fill="none" stroke="url(#eb2)" stroke-width="12" opacity="0.5" filter="url(#bg)"/><circle cx="2063" cy="1080" r="1750" fill="none" stroke="url(#eb2)" stroke-width="2.2" opacity="0.95" filter="url(#bl)"/></g></svg></div></div>
+<div class="band"><div class="drift" style="--a:44px;--d:16.3s;--dl:-3.6s"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fb3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#458060"/><stop offset="0.5" stop-color="#83aa95"/><stop offset="0.84" stop-color="#dce7e1"/><stop offset="1" stop-color="#f6f9f8"/></linearGradient><linearGradient id="eb3" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="hsl(148,41%,66%)"/><stop offset="0.45" stop-color="#c5d7ce"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/></linearGradient><radialGradient id="qb3" gradientUnits="userSpaceOnUse" cx="980" cy="400" r="880"><stop offset="0" stop-color="#3a3a3a"/><stop offset="0.55" stop-color="#8a8a8a"/><stop offset="1" stop-color="#ffffff"/></radialGradient><mask id="mb3" maskUnits="userSpaceOnUse" x="-800" y="-800" width="3200" height="2600"><rect x="-800" y="-800" width="3200" height="2600" fill="url(#qb3)"/></mask><clipPath id="cb3"><circle cx="2350" cy="1080" r="1750" /></clipPath></defs><g mask="url(#mb3)"><circle cx="2350" cy="1080" r="1750" fill="none" stroke="hsl(148,33%,22%)" stroke-width="50" opacity="0.3" filter="url(#bs)" transform="translate(-14 0)"/></g><circle cx="2350" cy="1080" r="1750" fill="url(#fb3)"/><g clip-path="url(#cb3)"><circle cx="2350" cy="1080" r="1750" fill="none" stroke="#ffffff" stroke-width="80" opacity="0.2" filter="url(#bi)"/></g><g mask="url(#mb3)"><circle cx="2350" cy="1080" r="1750" fill="none" stroke="url(#eb3)" stroke-width="12" opacity="0.5" filter="url(#bg)"/><circle cx="2350" cy="1080" r="1750" fill="none" stroke="url(#eb3)" stroke-width="2.2" opacity="0.95" filter="url(#bl)"/></g></svg></div></div>
+<div class="band"><div class="drift" style="--a:52px;--d:21.1s;--dl:-20.3s"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fb4" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#478162"/><stop offset="0.5" stop-color="#85ac97"/><stop offset="0.84" stop-color="#dde8e2"/><stop offset="1" stop-color="#f6f9f8"/></linearGradient><linearGradient id="eb4" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="hsl(148,41%,66%)"/><stop offset="0.45" stop-color="#c5d7ce"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/></linearGradient><radialGradient id="qb4" gradientUnits="userSpaceOnUse" cx="980" cy="400" r="880"><stop offset="0" stop-color="#3a3a3a"/><stop offset="0.55" stop-color="#8a8a8a"/><stop offset="1" stop-color="#ffffff"/></radialGradient><mask id="mb4" maskUnits="userSpaceOnUse" x="-800" y="-800" width="3200" height="2600"><rect x="-800" y="-800" width="3200" height="2600" fill="url(#qb4)"/></mask><clipPath id="cb4"><circle cx="2637" cy="1080" r="1750" /></clipPath></defs><g mask="url(#mb4)"><circle cx="2637" cy="1080" r="1750" fill="none" stroke="hsl(148,33%,22%)" stroke-width="50" opacity="0.3" filter="url(#bs)" transform="translate(-14 0)"/></g><circle cx="2637" cy="1080" r="1750" fill="url(#fb4)"/><g clip-path="url(#cb4)"><circle cx="2637" cy="1080" r="1750" fill="none" stroke="#ffffff" stroke-width="80" opacity="0.2" filter="url(#bi)"/></g><g mask="url(#mb4)"><circle cx="2637" cy="1080" r="1750" fill="none" stroke="url(#eb4)" stroke-width="12" opacity="0.5" filter="url(#bg)"/><circle cx="2637" cy="1080" r="1750" fill="none" stroke="url(#eb4)" stroke-width="2.2" opacity="0.95" filter="url(#bl)"/></g></svg></div></div>
+<div class="band"><div class="drift" style="--a:60px;--d:13.4s;--dl:-22.8s"><svg viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="fb5" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="#4a8364"/><stop offset="0.5" stop-color="#87ad99"/><stop offset="0.84" stop-color="#dee9e3"/><stop offset="1" stop-color="#f6f9f8"/></linearGradient><linearGradient id="eb5" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000"><stop offset="0" stop-color="hsl(148,41%,66%)"/><stop offset="0.45" stop-color="#c5d7ce"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.9"/></linearGradient><radialGradient id="qb5" gradientUnits="userSpaceOnUse" cx="980" cy="400" r="880"><stop offset="0" stop-color="#3a3a3a"/><stop offset="0.55" stop-color="#8a8a8a"/><stop offset="1" stop-color="#ffffff"/></radialGradient><mask id="mb5" maskUnits="userSpaceOnUse" x="-800" y="-800" width="3200" height="2600"><rect x="-800" y="-800" width="3200" height="2600" fill="url(#qb5)"/></mask><clipPath id="cb5"><circle cx="2923" cy="1080" r="1750" /></clipPath></defs><g mask="url(#mb5)"><circle cx="2923" cy="1080" r="1750" fill="none" stroke="hsl(148,33%,22%)" stroke-width="50" opacity="0.3" filter="url(#bs)" transform="translate(-14 0)"/></g><circle cx="2923" cy="1080" r="1750" fill="url(#fb5)"/><g clip-path="url(#cb5)"><circle cx="2923" cy="1080" r="1750" fill="none" stroke="#ffffff" stroke-width="80" opacity="0.2" filter="url(#bi)"/></g><g mask="url(#mb5)"><circle cx="2923" cy="1080" r="1750" fill="none" stroke="url(#eb5)" stroke-width="12" opacity="0.5" filter="url(#bg)"/><circle cx="2923" cy="1080" r="1750" fill="none" stroke="url(#eb5)" stroke-width="2.2" opacity="0.95" filter="url(#bl)"/></g></svg></div></div>
+  </div></div>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <header class="nav-wrap">
+    <nav class="nav">
+      <a class="wordmark" href="/">Pavel<span>.</span></a>
+      <button class="lang" type="button" id="lang"><span data-l="cz">EN</span><span data-l="en">CZ</span></button>
+    </nav>
+  </header>
+
+  <main class="main">
+    <p class="code" aria-hidden="true">404</p>
+    <h1 class="title"><span class="sr">404 – </span><span data-l="cz">Tady nic není. Žádné starosti.</span><span data-l="en">Nothing here. No worries.</span></h1>
+    <p class="sub"><span data-l="cz">Stránka, kterou hledáte, se přesunula nebo nikdy neexistovala.</span><span data-l="en">The page you’re looking for has moved or never existed.</span></p>
+    <div class="actions">
+      <a class="cta" href="/">
+        <span class="cta__tile"></span>
+        <span class="cta__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.846" aria-hidden="true"><path d="M6 18L8.5 15.5M18 15V6H9M18 6L11.5 12.5"/></svg></span>
+        <span class="cta__label"><span data-l="cz">Zpět na úvod</span><span data-l="en">Back to home</span></span>
+      </a>
+      <a class="link" href="/#contact"><span data-l="cz">nebo mi napište</span><span data-l="en">or get in touch</span></a>
+    </div>
+  </main>
+</div>
+<script>
+(function () {
+  var d = document.documentElement, b = document.getElementById('lang');
+  function label() { b.setAttribute('aria-label', d.getAttribute('data-lang') === 'cz' ? 'Switch to English' : 'Přepnout do češtiny'); }
+  label();
+  b.addEventListener('click', function () {
+    var l = d.getAttribute('data-lang') === 'cz' ? 'en' : 'cz';
+    d.setAttribute('data-lang', l);
+    d.lang = l === 'en' ? 'en' : 'cs';
+    try { localStorage.setItem('po-lang', l); } catch (e) {}
+    label();
+  });
+})();
+</script>
+</body>
+</html>
