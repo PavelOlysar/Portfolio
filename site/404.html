@@ -9,8 +9,8 @@
 <!--
   Standalone 404, served by Cloudflare for any unknown path (wrangler.toml: not_found_handling = "404-page").
   Deliberately not a Design Component: it can be served at any depth (/a/b/c), so every URL here is absolute,
-  and it needs no runtime. Visual values mirror index.html / Nav.dc.html; the bands are a static port of
-  Teal Hero Background.dc.html (teal #3E7B5A, 6 bands, drift 0.8).
+  and it needs no runtime. The nav is a static port of Nav.dc.html (same copy, links, 1120px breakpoint);
+  the bands are a static port of Teal Hero Background.dc.html (teal #3E7B5A, 6 bands, drift 0.8).
 -->
 <script>(function(){var l='cz';try{if(localStorage.getItem('po-lang')==='en')l='en'}catch(e){}var d=document.documentElement;d.setAttribute('data-lang',l);d.lang=l==='en'?'en':'cs'})()</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
 <style>
 :root{--ease:cubic-bezier(.65,0,.35,1);--ink:#16231B;--ink-cta:#17301F;--lime:#C8F169;--tile:#F3FBE4}
 *{box-sizing:border-box}
-html,body{margin:0;background:#F4F7F2;-webkit-font-smoothing:antialiased}
+html,body{margin:0;background:#F4F7F2;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
 body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
 ::selection{background:var(--lime);color:var(--ink-cta)}
 [data-lang="cz"] [data-l="en"],[data-lang="en"] [data-l="cz"]{display:none}
@@ -34,47 +34,64 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
 @keyframes drift{from{transform:translate3d(calc(var(--a) * -1),0,0)}to{transform:translate3d(var(--a),0,0)}}
 .scrim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 60% at 50% 46%,rgba(20,60,40,.2),rgba(20,60,40,.07) 55%,rgba(20,60,40,0) 80%)}
 
-.nav-wrap{position:relative;z-index:2;display:flex;justify-content:center;padding:40px 20px 0}
-.nav{width:100%;max-width:1240px;height:88px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 32px;border-radius:10px;color:var(--ink);background:rgba(234,240,234,.46);-webkit-backdrop-filter:blur(26px) saturate(1.15);backdrop-filter:blur(26px) saturate(1.15);border:1px solid rgba(255,255,255,.55);box-shadow:0 10px 40px rgba(10,40,25,.10)}
-.wordmark{color:var(--ink);font-weight:600;font-size:32px;letter-spacing:-.03em;white-space:nowrap;text-decoration:none}
+/* Nav — mirrors Nav.dc.html. Overlays the page like the fixed nav on the home page, so the mobile menu opens over content. */
+.nav-wrap{position:absolute;z-index:2;top:0;left:0;right:0;display:flex;justify-content:center;padding:40px 20px 0}
+.nav{width:100%;max-width:1240px;border-radius:10px;color:var(--ink);background:rgba(234,240,234,.46);-webkit-backdrop-filter:blur(26px) saturate(1.15);backdrop-filter:blur(26px) saturate(1.15);border:1px solid rgba(255,255,255,.55);box-shadow:0 10px 40px rgba(10,40,25,.10)}
+.nav__bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;height:88px;padding:0 16px 0 32px}
+.wordmark{justify-self:start;color:var(--ink);font-weight:600;font-size:32px;letter-spacing:-.03em;white-space:nowrap;text-decoration:none}
 .wordmark span{color:var(--lime)}
-.lang{appearance:none;border:0;padding:4px 0;cursor:pointer;font:inherit;font-size:18px;font-weight:600;letter-spacing:.04em;color:var(--ink);opacity:.88;background:transparent linear-gradient(currentColor,currentColor) no-repeat 0 100%/0% 1px;transition:background-size .6s var(--ease),opacity .3s var(--ease)}
-.lang:hover,.lang:focus-visible{opacity:1;background-size:100% 1px}
+.nav__links{display:flex;align-items:center;gap:44px;font-size:19px;font-weight:600}
+.nav__link,.lang{position:relative;color:var(--ink);opacity:.88;white-space:nowrap;text-decoration:none;padding:4px 0;background:transparent linear-gradient(currentColor,currentColor) no-repeat 0 100%/0% 1px;transition:background-size .6s var(--ease),opacity .3s var(--ease)}
+.nav__link:hover,.nav__link:focus-visible,.lang:hover,.lang:focus-visible{opacity:1;background-size:100% 1px}
+.nav__end{grid-column:3;justify-self:end;display:flex;align-items:center;gap:28px}
+.lang{appearance:none;border:0;cursor:pointer;font:inherit;font-size:18px;font-weight:600;letter-spacing:.04em}
+.menu-btn{position:relative;appearance:none;width:44px;height:44px;border-radius:7px;border:1px solid rgba(22,35,27,.18);background:rgba(255,255,255,.4);color:var(--ink);display:none;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.menu-btn:focus-visible,.wordmark:focus-visible,.menu__link:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:7px}
+.menu{display:none;flex-direction:column;gap:4px;padding:4px 10px 12px;border-top:1px solid rgba(22,35,27,.12)}
+.menu__link{color:var(--ink);display:flex;align-items:center;min-height:48px;padding:0 14px;font-size:19px;font-weight:500;text-decoration:none}
+.menu__link>span{position:relative}
+.menu .cta{margin-top:6px}
+@media (max-width:1120px){
+  .nav__links,.nav__end>.cta{display:none}
+  .menu-btn{display:flex}
+  .nav[data-open] .menu{display:flex}
+  .nav[data-open] .menu-btn .dot{display:none}
+}
 
-.main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(32px,6vh,64px) 20px clamp(72px,14vh,140px)}
+/* Red "new work" dot on Práce, pulsing like Nav.dc.html makeDot(). */
+.dot{position:absolute;top:1px;right:-8px;width:7px;height:7px;pointer-events:none}
+.dot::before,.dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#E5484D}
+.dot::before{animation:poPulse 2.2s cubic-bezier(.2,.6,.3,1) infinite}
+.menu-btn .dot{top:6px;right:6px}
+@keyframes poPulse{0%{transform:scale(1);opacity:.55}80%,100%{transform:scale(3);opacity:0}}
+
+.main{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(128px + clamp(24px,4vh,48px)) 20px clamp(72px,14vh,140px)}
 .code{margin:0;font-weight:600;font-size:clamp(120px,24vw,300px);line-height:.9;letter-spacing:-.05em;text-shadow:0 2px 32px rgba(15,50,30,.22)}
 .title{margin:clamp(16px,3vh,28px) 0 0;max-width:1100px;font-weight:600;font-size:clamp(30px,min(4vw,7vh),56px);line-height:1.08;letter-spacing:-.025em;text-wrap:balance;text-shadow:0 2px 32px rgba(15,50,30,.22)}
 .sub{margin:clamp(12px,2.4vh,20px) 0 0;max-width:720px;font-size:clamp(18px,min(2vw,3.6vh),24px);line-height:1.35;font-weight:500;letter-spacing:-.012em;text-wrap:pretty;text-shadow:0 1px 18px rgba(15,50,30,.25)}
-.actions{margin-top:clamp(28px,5vh,44px);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px 32px}
+.main>.cta{margin-top:clamp(28px,5vh,44px)}
 
-/* Same build as the hero CTA in index.html: lime pill, pale tile that widens on hover, arrow turns 45°. */
-.cta{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:72px;padding:0 34px 0 86px;border-radius:10px;background:var(--lime);color:var(--ink-cta);font-size:21px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s var(--ease)}
+/* Lime CTA, same build as index.html's hero button and Nav.dc.html's "Domluvit hovor":
+   a pale tile that widens to fill on hover, arrow turns 45°, label nudges right. --i inset, --t tile size. */
+.cta{--i:8px;--t:56px;position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;height:72px;padding:0 34px 0 86px;border-radius:10px;background:var(--lime);color:var(--ink-cta);font-size:21px;font-weight:600;white-space:nowrap;text-decoration:none;transition:transform .3s var(--ease)}
+.cta--nav{--i:6px;--t:44px;height:56px;padding:0 24px 0 66px;border-radius:8px;font-size:18px}
 .cta:active{transform:scale(.97)}
 .cta:focus-visible{outline:2px solid var(--ink-cta);outline-offset:3px}
-.cta__tile{position:absolute;z-index:-1;left:8px;top:8px;bottom:8px;width:56px;border-radius:6px;background:var(--tile);transition:width .6s var(--ease)}
-.cta__icon{position:absolute;left:8px;top:8px;width:56px;height:56px;display:flex;align-items:center;justify-content:center}
-.cta__icon svg{display:block;transition:transform .6s var(--ease)}
-.cta__label{display:block;transition:transform .6s var(--ease)}
-.cta:hover .cta__tile,.cta:focus-visible .cta__tile{width:calc(100% - 16px)}
+.cta__tile{position:absolute;z-index:-1;left:var(--i);top:var(--i);bottom:var(--i);width:var(--t);border-radius:calc(var(--i) - 1px);background:var(--tile);transition:width .6s var(--ease)}
+.cta__icon{position:absolute;left:var(--i);top:var(--i);width:var(--t);height:var(--t);display:flex;align-items:center;justify-content:center}
+.cta__icon svg,.cta__label{display:block;transition:transform .6s var(--ease)}
+.cta:hover .cta__tile,.cta:focus-visible .cta__tile{width:calc(100% - var(--i) * 2)}
 .cta:hover .cta__icon svg,.cta:focus-visible .cta__icon svg{transform:rotate(45deg)}
 .cta:hover .cta__label,.cta:focus-visible .cta__label{transform:translateX(4px)}
 
-.link{font-size:18px;font-weight:600;color:var(--ink-cta);text-decoration:none;padding:4px 0;background:linear-gradient(currentColor,currentColor) no-repeat 0 100%/0% 1px;transition:background-size .6s var(--ease)}
-.link:hover,.link:focus-visible{background-size:100% 1px}
-
 @media (max-width:560px){
-  .nav-wrap{padding:24px 16px 0}
-  .nav{height:72px;padding:0 24px}
-  .wordmark{font-size:28px}
   .main{padding-left:16px;padding-right:16px}
-  .actions{flex-direction:column}
-  .cta{height:64px;padding:0 28px 0 76px;font-size:18px}
-  .cta__tile{width:48px}
-  .cta__icon{width:48px;height:48px}
+  .main>.cta{--t:48px;height:64px;padding:0 28px 0 76px;font-size:18px}
 }
 @media (prefers-reduced-motion:reduce){
-  .drift{animation:none}
-  .cta,.cta__tile,.cta__icon svg,.cta__label,.lang,.link{transition:none}
+  .drift,.dot::before{animation:none}
+  .dot::before{display:none}
+  .cta,.cta__tile,.cta__icon svg,.cta__label,.lang,.nav__link{transition:none}
 }
 </style>
 </head>
@@ -92,9 +109,39 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
   <div class="scrim" aria-hidden="true"></div>
 
   <header class="nav-wrap">
-    <nav class="nav">
-      <a class="wordmark" href="/">Pavel<span>.</span></a>
-      <button class="lang" type="button" id="lang"><span data-l="cz">EN</span><span data-l="en">CZ</span></button>
+    <nav class="nav" id="nav">
+      <div class="nav__bar">
+        <a class="wordmark" href="/">Pavel<span>.</span></a>
+        <div class="nav__links">
+          <a class="nav__link" href="/#work"><span data-l="cz">Práce</span><span data-l="en">Work</span><span class="dot" aria-hidden="true"></span></a>
+          <a class="nav__link" href="/#services"><span data-l="cz">Služby</span><span data-l="en">Services</span></a>
+          <a class="nav__link" href="/#about"><span data-l="cz">O mně</span><span data-l="en">About</span></a>
+          <a class="nav__link" href="/#contact"><span data-l="cz">Kontakt</span><span data-l="en">Contact</span></a>
+        </div>
+        <div class="nav__end">
+          <button class="lang" type="button" id="lang"><span data-l="cz">EN</span><span data-l="en">CZ</span></button>
+          <a class="cta cta--nav" href="/#contact">
+            <span class="cta__tile"></span>
+            <span class="cta__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.909" aria-hidden="true"><path d="M6 18L8.5 15.5M18 15V6H9M18 6L11.5 12.5"/></svg></span>
+            <span class="cta__label"><span data-l="cz">Domluvit hovor</span><span data-l="en">Book a call</span></span>
+          </a>
+          <button class="menu-btn" type="button" id="menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.909" aria-hidden="true"><path d="M4 7L7 7M20 7L11 7"/><path d="M20 17H17M4 17L13 17"/><path d="M4 12H7L20 12"/></svg>
+            <span class="dot" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+      <div class="menu" id="menu">
+        <a class="menu__link" href="/#work"><span><span data-l="cz">Práce</span><span data-l="en">Work</span><span class="dot" aria-hidden="true"></span></span></a>
+        <a class="menu__link" href="/#services"><span><span data-l="cz">Služby</span><span data-l="en">Services</span></span></a>
+        <a class="menu__link" href="/#about"><span><span data-l="cz">O mně</span><span data-l="en">About</span></span></a>
+        <a class="menu__link" href="/#contact"><span><span data-l="cz">Kontakt</span><span data-l="en">Contact</span></span></a>
+        <a class="cta cta--nav" href="/#contact">
+          <span class="cta__tile"></span>
+          <span class="cta__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.909" aria-hidden="true"><path d="M6 18L8.5 15.5M18 15V6H9M18 6L11.5 12.5"/></svg></span>
+          <span class="cta__label"><span data-l="cz">Domluvit hovor</span><span data-l="en">Book a call</span></span>
+        </a>
+      </div>
     </nav>
   </header>
 
@@ -102,28 +149,37 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
     <p class="code" aria-hidden="true">404</p>
     <h1 class="title"><span class="sr">404 – </span><span data-l="cz">Tady nic není. Žádné starosti.</span><span data-l="en">Nothing here. No worries.</span></h1>
     <p class="sub"><span data-l="cz">Stránka, kterou hledáte, se přesunula nebo nikdy neexistovala.</span><span data-l="en">The page you’re looking for has moved or never existed.</span></p>
-    <div class="actions">
-      <a class="cta" href="/">
-        <span class="cta__tile"></span>
-        <span class="cta__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.846" aria-hidden="true"><path d="M6 18L8.5 15.5M18 15V6H9M18 6L11.5 12.5"/></svg></span>
-        <span class="cta__label"><span data-l="cz">Zpět na úvod</span><span data-l="en">Back to home</span></span>
-      </a>
-      <a class="link" href="/#contact"><span data-l="cz">nebo mi napište</span><span data-l="en">or get in touch</span></a>
-    </div>
+    <a class="cta" href="/">
+      <span class="cta__tile"></span>
+      <span class="cta__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.846" aria-hidden="true"><path d="M6 18L8.5 15.5M18 15V6H9M18 6L11.5 12.5"/></svg></span>
+      <span class="cta__label"><span data-l="cz">Zpět na úvod</span><span data-l="en">Back to home</span></span>
+    </a>
   </main>
 </div>
 <script>
 (function () {
-  var d = document.documentElement, b = document.getElementById('lang');
-  function label() { b.setAttribute('aria-label', d.getAttribute('data-lang') === 'cz' ? 'Switch to English' : 'Přepnout do češtiny'); }
+  var d = document.documentElement, nav = document.getElementById('nav');
+  var lang = document.getElementById('lang'), menuBtn = document.getElementById('menu-btn');
+
+  function label() { lang.setAttribute('aria-label', d.getAttribute('data-lang') === 'cz' ? 'Switch to English' : 'Přepnout do češtiny'); }
   label();
-  b.addEventListener('click', function () {
+  lang.addEventListener('click', function () {
     var l = d.getAttribute('data-lang') === 'cz' ? 'en' : 'cz';
     d.setAttribute('data-lang', l);
     d.lang = l === 'en' ? 'en' : 'cs';
     try { localStorage.setItem('po-lang', l); } catch (e) {}
     label();
   });
+
+  function setMenu(open) {
+    if (open) nav.setAttribute('data-open', ''); else nav.removeAttribute('data-open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!nav.hasAttribute('data-open')); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  // Like Nav.dc.html: crossing the 1120px breakpoint closes the menu.
+  var mq = matchMedia('(max-width: 1120px)');
+  (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(function () { setMenu(false); });
 })();
 </script>
 </body>
