@@ -32,8 +32,9 @@ piece by piece). What was added on top of the export:
 
 Hand edits inside export files: the contact form in `index.html` posts to Web3Forms (`static W3F_KEY`
 holds the access key; while it is empty the form opens the visitor's mail app instead), real contact
-details/social links, hero-card fit check, menu-closes-on-tap in `Nav.dc.html`, and two `pavelolysar.com:`
-patches in `image-slot.js` that silence editor-only requests. `smooth-scroll.js` jumps no longer wait
+details/social links, hero-card fit check, menu-closes-on-tap in `Nav.dc.html`, and three `pavelolysar.com:`
+patches in `image-slot.js`: two silence editor-only requests, and one drops `touch-action:none` from
+slot images, which otherwise made the page impossible to scroll on phones. `smooth-scroll.js` jumps no longer wait
 forever on an animation that never starts.
 
 ## Rebuilding the archive
