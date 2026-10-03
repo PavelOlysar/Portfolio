@@ -26,7 +26,7 @@ piece by piece). What was added on top of the export:
 |---|---|
 | `responsive.css` | All phone/tablet breakpoints. `index.html` styles everything inline, so elements that need to adapt carry a `data-r="…"` hook and the rules here override them with `!important`. |
 | `fonts.css`, `fonts/` | Self-hosted Montserrat + Instrument Serif (no Google Fonts). |
-| `vendor/` | Self-hosted React 18.3.1, mapped via `window.__resources` in `index.html` (no unpkg at runtime). |
+| `vendor/` | Self-hosted React 18.3.1 + Lenis. `support.js` points `REACT_URL`/`REACT_DOM_URL` here. **Never set `window.__resources`**: it makes the runtime skip its raw-HTML re-render, which silently breaks every `transform:{{ … }}` binding (hover arrows, rotating crosses). |
 | `tab-status.js`, `favicon*.svg` | Favicon, and the animated "On hold" title + red-dot favicon while the tab is in the background. |
 | `privacy.html`, `404.html` | Standalone pages (no runtime) sharing the nav and hero bands. |
 
@@ -36,6 +36,11 @@ details/social links, hero-card fit check, menu-closes-on-tap in `Nav.dc.html`, 
 patches in `image-slot.js`: two silence editor-only requests, and one drops `touch-action:none` from
 slot images, which otherwise made the page impossible to scroll on phones. `smooth-scroll.js` jumps no longer wait
 forever on an animation that never starts.
+
+**Phones/tablets** (`(hover: none), (pointer: coarse)`) get a lighter page on purpose: static hero/contact bands
+(no drift, shimmer or grain), flat tints instead of `backdrop-filter`, no Lenis, and no per-frame corner rounding
+on the project cards. On desktop the band animations pause while their section is off-screen. Scroll-reveal
+elements are pre-hidden by CSS (`html.po-rv` in `responsive.css`), never by JS after paint.
 
 ## Rebuilding the archive
 

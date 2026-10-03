@@ -52,3 +52,17 @@ html, body { overflow-x: clip; }
   [data-r~="wrap"], [data-r~="wrap"] > span { white-space: normal !important; }
   [data-r~="pr-big"] { font-size: 24px !important; }
 }
+
+/* Scroll-reveal pre-state. smooth-scroll.js adds html.po-rv (only when motion is allowed) and sets data-rv-in when an
+   element first intersects, then plays the fade. Hiding here — rather than with inline JS after render — means
+   elements are never painted visible and then hidden again on load/refresh. */
+html.po-rv #dc-root [data-reveal]:not([data-rv-in]) { opacity: 0; }
+
+/* Touch devices: frosted-glass blurs (fixed nav, project tags, contact pill) re-blur what's behind them on every
+   scroll frame, which phones can't keep up with. Swap them for flat tints of the same colour. */
+@media (hover: none), (pointer: coarse) {
+  [data-r~="glass"], [data-r~="glass-dark"], [data-r~="glass-pill"] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+  [data-r~="glass"] { background: rgba(234, 240, 234, 0.94) !important; }
+  [data-r~="glass-dark"] { background: rgba(5, 15, 10, 0.45) !important; }
+  [data-r~="glass-pill"] { background: rgba(244, 247, 242, 0.22) !important; }
+}

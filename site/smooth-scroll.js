@@ -16,7 +16,10 @@
   root.setAttribute('aria-hidden', 'true');
   root.style.cssText = 'position:fixed;inset:0;z-index:2147483000;pointer-events:none;overflow:hidden';
   var blur = document.createElement('div');
-  blur.style.cssText = 'position:absolute;inset:0;opacity:0;backdrop-filter:blur(22px) saturate(1.1);-webkit-backdrop-filter:blur(22px) saturate(1.1)';
+  // The full-screen backdrop blur is only attached while the 'blur' transition actually runs; left on permanently it
+  // costs a full-screen compositing layer on every frame even at opacity 0.
+  blur.style.cssText = 'position:absolute;inset:0;opacity:0';
+  function blurOn() { blur.style.backdropFilter = blur.style.webkitBackdropFilter = 'blur(22px) saturate(1.1)'; }
   var veil = document.createElement('div');
   veil.style.cssText = 'position:absolute;inset:0;opacity:0;background:#F4F7F2';
   var panel = document.createElement('div');
@@ -37,6 +40,7 @@
   }
   function reset() {
     blur.style.opacity = veil.style.opacity = '0';
+    blur.style.backdropFilter = blur.style.webkitBackdropFilter = '';
     panel.style.transform = 'translateY(120vh)';
     root.style.pointerEvents = 'none';
   }
@@ -47,8 +51,9 @@
       reveal: function () { return anim(veil, { opacity: 1 }, { opacity: 0 }, 680, SOFT); }
     },
     blur: {
-      set: function (c) { veil.style.background = c; veil.style.opacity = blur.style.opacity = '1'; },
+      set: function (c) { blurOn(); veil.style.background = c; veil.style.opacity = blur.style.opacity = '1'; },
       cover: function (c) {
+        blurOn();
         veil.style.background = c;
         return Promise.all([anim(blur, { opacity: 0 }, { opacity: 1 }, 380, SOFT), anim(veil, { opacity: 0 }, { opacity: 1 }, 380, SOFT, 140)]);
       },
@@ -125,7 +130,10 @@
   })();
 
   // shared scroll reveal — same entrance timing as the intro (1200ms, expo-out)
+  // Elements are hidden from the very first paint by responsive.css (html.po-rv … [data-reveal]:not([data-rv-in])),
+  // not by JS after they have already been drawn — that caused a visible → blank → fade-in flicker on every load.
   if (!reduced && 'IntersectionObserver' in window && Element.prototype.animate) {
+    document.documentElement.classList.add('po-rv');
     var rio = new IntersectionObserver(function (es) {
       es.filter(function (e) { return e.isIntersecting; })
         .sort(function (x, y) { return (x.boundingClientRect.top - y.boundingClientRect.top) || (x.boundingClientRect.left - y.boundingClientRect.left); })
@@ -134,7 +142,7 @@
           rio.unobserve(el);
           el.animate([{ opacity: 0, transform: 'translate3d(0,28px,0)' }, { opacity: 1, transform: 'translate3d(0,0,0)' }],
             { duration: 1200, delay: (+el.dataset.revealDelay || 0) + Math.min(i, 6) * 90, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards' });
-          el.style.opacity = '';
+          el.setAttribute('data-rv-in', '');
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
     var scanT;
@@ -142,12 +150,12 @@
     // the HTML is still streaming in, and the runtime builds the page from that template, so anything stamped on it
     // (a marker attribute, opacity:0) is cloned into every rendered element, which then never gets observed and
     // stays invisible. Observed elements are tracked in a WeakSet rather than an attribute for the same reason.
+    // (data-rv-in is only ever set on rendered elements, after they intersect.)
     var seen = typeof WeakSet === 'function' ? new WeakSet() : null;
     var scan = function () {
       document.querySelectorAll('#dc-root [data-reveal]').forEach(function (el) {
         if (seen ? seen.has(el) : el.__rv) return;
         if (seen) seen.add(el); else el.__rv = 1;
-        el.style.opacity = '0';
         rio.observe(el);
       });
     };
@@ -155,7 +163,9 @@
     scan();
   }
 
-  if (reduced) return;
+  // Lenis only smooths wheel scrolling; on touch devices it would just run a requestAnimationFrame loop forever on
+  // top of native momentum scrolling, so phones and tablets don't load it.
+  if (reduced || matchMedia('(hover: none), (pointer: coarse)').matches) return;
   var s = document.createElement('script');
   s.src = '/vendor/lenis.min.js'; // lenis@1.1.13, self-hosted (was unpkg)
   s.onload = function () {

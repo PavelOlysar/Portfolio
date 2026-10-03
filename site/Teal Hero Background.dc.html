@@ -42,13 +42,19 @@ class Component extends DCLogic {
   }
 
   componentDidMount() {
-    this.onVis = () => (document.hidden ? this.pause() : this.resume());
+    this.onVis = () => (document.hidden || this.inView === false ? this.pause() : this.resume());
     this.onMove = (e) => {
       this.gx = (e.clientX / innerWidth - 0.5) * 2;
       this.gy = (e.clientY / innerHeight - 0.5) * 2;
       this.kick();
     };
     document.addEventListener('visibilitychange', this.onVis);
+    // pavelolysar.com: pause the drift/shimmer whenever this background is scrolled out of view (there are two
+    // instances on the page — hero and contact — and both used to animate forever).
+    if ('IntersectionObserver' in window && this.rootRef.current) {
+      this.io = new IntersectionObserver(([e]) => { this.inView = e.isIntersecting; this.onVis(); });
+      this.io.observe(this.rootRef.current);
+    }
     this.build();
   }
   componentDidUpdate(prev) {
@@ -57,6 +63,7 @@ class Component extends DCLogic {
   componentWillUnmount() {
     this.teardown();
     document.removeEventListener('visibilitychange', this.onVis);
+    this.io && this.io.disconnect();
   }
 
   teardown() {
@@ -69,7 +76,7 @@ class Component extends DCLogic {
   resume() { this.anims.forEach(a => a.play()); this.kick(); }
 
   kick() {
-    if (this.raf || !this.parallaxOn || document.hidden) return;
+    if (this.raf || !this.parallaxOn || document.hidden || this.inView === false) return;
     const step = () => {
       this.tx += (this.gx - this.tx) * 0.05;
       this.ty += (this.gy - this.ty) * 0.05;
@@ -91,6 +98,10 @@ class Component extends DCLogic {
     root.innerHTML = '';
     const c = this.cfg();
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // pavelolysar.com: on phones/tablets the bands are drawn once and left still — 6 blurred full-screen layers, each
+    // promoted with will-change and animated (plus masked shimmer layers and a grain canvas), per instance, exhaust a
+    // phone GPU and show up as laggy scrolling and flicker.
+    const touch = matchMedia('(hover: none), (pointer: coarse)').matches, still = reduce || touch;
     this.parallaxOn = !reduce && matchMedia('(hover: hover) and (pointer: fine)').matches && c.parallaxStrength > 0;
     this.strength = c.parallaxStrength;
     this.flip = c.faceRight;
@@ -139,12 +150,12 @@ ${circ(`fill="none" stroke="url(#e${id})" stroke-width="2.2" opacity="0.95" filt
 </g></svg>`;
 
       const layer = document.createElement('div');
-      layer.style.cssText = 'position:absolute;inset:-120px;will-change:transform;pointer-events:none';
+      layer.style.cssText = 'position:absolute;inset:-120px;pointer-events:none' + (still ? '' : ';will-change:transform');
       const drift = document.createElement('div');
-      drift.style.cssText = 'position:absolute;inset:0;will-change:transform';
+      drift.style.cssText = 'position:absolute;inset:0' + (still ? '' : ';will-change:transform');
       drift.innerHTML = svg;
 
-      if (c.shimmer && !reduce) {
+      if (c.shimmer && !still) {
         const m = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid slice"><filter id="b" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="3"/></filter><circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="#fff" stroke-width="13" filter="url(#b)"/></svg>`;
         const url = `url("data:image/svg+xml,${encodeURIComponent(m)}")`;
         const sh = document.createElement('div');
@@ -166,7 +177,7 @@ ${circ(`fill="none" stroke="url(#e${id})" stroke-width="2.2" opacity="0.95" filt
       root.appendChild(layer);
       this.layers.push(layer);
 
-      if (!reduce) {
+      if (!still) {
         const amp = 20 + 40 * t;
         const period = (20 + ((i * 7.7 + 3) % 20)) * 1000 / c.driftSpeed;
         this.anims.push(drift.animate(
@@ -177,7 +188,7 @@ ${circ(`fill="none" stroke="url(#e${id})" stroke-width="2.2" opacity="0.95" filt
     }
 
     // static film grain
-    if (c.grain > 0) {
+    if (c.grain > 0 && !touch) {
       const S2 = 180, cv = document.createElement('canvas');
       cv.width = cv.height = S2;
       const ctx = cv.getContext('2d'), img = ctx.createImageData(S2, S2);
@@ -193,7 +204,7 @@ ${circ(`fill="none" stroke="url(#e${id})" stroke-width="2.2" opacity="0.95" filt
     }
 
     if (this.parallaxOn) window.addEventListener('pointermove', this.onMove, { passive: true });
-    if (document.hidden) this.pause();
+    if (document.hidden || this.inView === false) this.pause();
   }
 
   renderVals() {
