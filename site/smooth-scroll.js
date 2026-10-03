@@ -138,8 +138,18 @@
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
     var scanT;
+    // Only touch the rendered page (#dc-root), never the raw <x-dc> template: on a slow connection this runs while
+    // the HTML is still streaming in, and the runtime builds the page from that template, so anything stamped on it
+    // (a marker attribute, opacity:0) is cloned into every rendered element, which then never gets observed and
+    // stays invisible. Observed elements are tracked in a WeakSet rather than an attribute for the same reason.
+    var seen = typeof WeakSet === 'function' ? new WeakSet() : null;
     var scan = function () {
-      document.querySelectorAll('[data-reveal]:not([data-rv])').forEach(function (el) { el.dataset.rv = '1'; el.style.opacity = '0'; rio.observe(el); });
+      document.querySelectorAll('#dc-root [data-reveal]').forEach(function (el) {
+        if (seen ? seen.has(el) : el.__rv) return;
+        if (seen) seen.add(el); else el.__rv = 1;
+        el.style.opacity = '0';
+        rio.observe(el);
+      });
     };
     new MutationObserver(function () { clearTimeout(scanT); scanT = setTimeout(scan, 30); }).observe(document.documentElement, { childList: true, subtree: true });
     scan();
