@@ -74,7 +74,7 @@
     </a>
   </div>
   </sc-if>
-  <main style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:safe center;text-align:center;padding:clamp(124px,22vh,160px) 20px {{ mainPadBottom }};gap:0;min-height:0">
+  <main data-r="hero-main" style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:safe center;text-align:center;padding:clamp(124px,22vh,160px) 20px {{ mainPadBottom }};gap:0;min-height:0">
     <h1 style="flex-shrink:0;margin:0;font-weight:600;letter-spacing:-0.025em;line-height:1.04;font-size:{{ h1Size }};max-width:1500px;text-shadow:0 2px 32px rgba(15,50,30,0.22)">
       <span data-intro="h1" style="display:block;text-wrap:balance">{{ t.h1a }}</span>
       <span data-intro="h1" style="display:block;text-wrap:balance">{{ t.h1b }}</span>
@@ -134,7 +134,7 @@
                 <div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ p.tags }}" as="tag" hint-placeholder-count="2"><span data-r="glass-dark" style="display:inline-flex;align-items:center;height:34px;padding:0 14px;border:1px solid rgba(255,255,255,0.55);border-radius:999px;background:rgba(5,15,10,0.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase">{{ tag }}</span></sc-for></div>
                 <span style="font-size:14px;font-weight:600;letter-spacing:0.14em;white-space:nowrap">{{ p.num }} / {{ count }}</span>
               </div>
-              <div style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(24px,4vw,56px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap;pointer-events:none">
+              <div data-r="card-foot" style="position:absolute;left:clamp(20px,4vw,56px);right:clamp(20px,4vw,56px);bottom:clamp(24px,4vw,56px);display:flex;justify-content:space-between;align-items:flex-end;gap:24px 40px;flex-wrap:wrap;pointer-events:none">
                 <div style="display:flex;flex-direction:column;gap:clamp(12px,2vh,20px);min-width:0">
                   <h3 style="margin:0;font-size:clamp(48px,8vw,160px);line-height:0.92;font-weight:600;letter-spacing:-0.05em">{{ p.name }}</h3>
                   <p style="margin:0;max-width:640px;font-size:clamp(19px,1.7vw,26px);line-height:1.4;font-weight:500;color:#EEF3EF;text-wrap:pretty">{{ p.desc }}</p>
@@ -649,7 +649,7 @@ class Component extends DCLogic {
       })),
       faqs: C.faqs.map((f, i) => ({
         ...f, num: '0' + (i + 1), open: open === i, on: sel === i,
-        toggle: () => this.setState(st => ({ faqOpen: (st.faqOpen === undefined ? 0 : st.faqOpen) === i ? null : i })),
+        toggle: e => this.pinRow(e) || this.setState(st => ({ faqOpen: (st.faqOpen === undefined ? 0 : st.faqOpen) === i ? null : i })),
         rows: open === i ? '1fr' : '0fr', op: open === i ? 1 : 0,
         plusT: open === i ? 'rotate(45deg)' : 'rotate(0deg)',
         circBg: open === i ? '#C8F169' : 'rgba(200,241,105,0)',
@@ -848,7 +848,7 @@ class Component extends DCLogic {
     cards.forEach((c, i) => {
       const inner = c.querySelector('[data-card-inner]'), shade = c.querySelector('[data-shade]'), next = cards[i + 1];
       const p = next && !this.reduce ? cl(1 - next.getBoundingClientRect().top / vh) : 0;
-      if (inner) { inner.style.transform = 'scale(' + (1 - 0.07 * p).toFixed(4) + ')'; if (!touch) inner.style.borderRadius = (p * 24).toFixed(1) + 'px'; }
+      if (inner) { inner.style.transform = touch ? '' : 'scale(' + (1 - 0.07 * p).toFixed(4) + ')'; if (!touch) inner.style.borderRadius = (p * 24).toFixed(1) + 'px'; }
       if (shade) shade.style.opacity = (0.6 * p).toFixed(3);
     });
   };
@@ -1000,6 +1000,22 @@ class Component extends DCLogic {
     const bottom = top + (H <= avail ? (avail + H) / 2 : H);
     return bottom <= vh - 20 - cardH - 16;
   }
+  canHover() { return this.hoverDev ?? (this.hoverDev = matchMedia('(hover: hover)').matches); }
+  // Accordions: opening a row closes the one above it, which used to yank the tapped row hundreds of pixels up the
+  // screen. Keep the tapped row's button at the same viewport position for the length of the transition.
+  pinRow(e) {
+    const btn = e && e.currentTarget;
+    if (!btn || !btn.getBoundingClientRect) return;
+    const top0 = btn.getBoundingClientRect().top, t0 = performance.now(), html = document.documentElement;
+    // The browser's own scroll anchoring would fight this compensation, so it is off for the duration.
+    html.style.overflowAnchor = 'none';
+    const step = () => {
+      const d = btn.getBoundingClientRect().top - top0;
+      if (Math.abs(d) > 0.5) { if (window.lenis) window.lenis.scrollTo(window.scrollY + d, { immediate: true, force: true }); else window.scrollBy(0, d); }
+      if (performance.now() - t0 < 800) requestAnimationFrame(step); else html.style.overflowAnchor = '';
+    };
+    requestAnimationFrame(step);
+  }
   componentDidMount() {
     this.mqFaq = matchMedia('(max-width: 760px), (max-height: 640px)');
     this.onFaqMq = () => this.setState({ faqMob: this.mqFaq.matches });
@@ -1059,8 +1075,8 @@ class Component extends DCLogic {
             const open = openI === i, hov = this.state.svHover === i, cta = this.state.svCta === i;
             return {
               ...s, num: '0' + (i + 1), open,
-              toggle: () => this.setState(st => ({ svOpen: (st.svOpen === undefined ? 0 : st.svOpen) === i ? null : i })),
-              on: () => this.setState({ svHover: i }),
+              toggle: e => this.pinRow(e) || this.setState(st => ({ svOpen: (st.svOpen === undefined ? 0 : st.svOpen) === i ? null : i })),
+              on: () => this.canHover() && this.setState({ svHover: i }),
               off: () => this.setState({ svHover: null }),
               rows: open ? '1fr' : '0fr',
               descOpA: open ? 1 : 0,

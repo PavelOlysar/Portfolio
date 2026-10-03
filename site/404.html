@@ -84,6 +84,13 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
 .cta:hover .cta__icon svg,.cta:focus-visible .cta__icon svg{transform:rotate(45deg)}
 .cta:hover .cta__label,.cta:focus-visible .cta__label{transform:translateX(4px)}
 
+@media (max-width:760px){
+  .nav-wrap{padding:12px 12px 0}
+  .nav__bar{height:60px;padding:0 8px 0 18px;gap:12px}
+  .wordmark{font-size:24px}
+  .menu-btn{width:40px;height:40px}
+  .main{padding-top:calc(72px + clamp(24px,4vh,48px))}
+}
 @media (max-width:560px){
   .main{padding-left:16px;padding-right:16px}
   .main>.cta{--t:48px;height:64px;padding:0 28px 0 76px;font-size:18px}

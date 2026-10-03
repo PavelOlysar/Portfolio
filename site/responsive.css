@@ -66,3 +66,20 @@ html.po-rv #dc-root [data-reveal]:not([data-rv-in]) { opacity: 0; }
   [data-r~="glass-dark"] { background: rgba(5, 15, 10, 0.45) !important; }
   [data-r~="glass-pill"] { background: rgba(244, 247, 242, 0.22) !important; }
 }
+
+/* Phones: a compact nav close to the top (the desktop bar sat 40px down and was 88px tall), and the hero copy
+   moved up to match. */
+@media (max-width: 760px) {
+  [data-r~="nav-wrap"] { padding: 12px 12px 0 !important; }
+  [data-r~="nav-bar"] { height: 60px !important; padding: 0 8px 0 18px !important; gap: 12px !important; }
+  [data-r~="nav-logo"] { font-size: 24px !important; }
+  [data-r~="nav-menu"] { width: 40px !important; height: 40px !important; }
+  [data-r~="hero-main"] { padding-top: 104px !important; }
+}
+
+/* Touch devices: project cards fill the *largest* viewport so no gap opens at the bottom when the browser's
+   address bar collapses mid-scroll; the caption keeps clear of the bar while it is still showing. */
+@media (hover: none), (pointer: coarse) {
+  [data-card] { height: 100lvh !important; }
+  [data-r~="card-foot"] { bottom: calc(clamp(24px, 4vw, 56px) + 100lvh - 100svh) !important; }
+}

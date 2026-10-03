@@ -81,6 +81,13 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
 .cta:hover .cta__icon svg,.cta:focus-visible .cta__icon svg{transform:rotate(45deg)}
 .cta:hover .cta__label,.cta:focus-visible .cta__label{transform:translateX(4px)}
 
+@media (max-width:760px){
+  .nav-wrap{padding:12px 12px 0}
+  .nav__bar{height:60px;padding:0 8px 0 18px;gap:12px}
+  .wordmark{font-size:24px}
+  .menu-btn{width:40px;height:40px}
+  .main{padding-top:calc(72px + clamp(24px,4vh,48px))}
+}
 @media (max-width:560px){
   .main{padding-left:16px;padding-right:16px}
   .main>.cta{--t:48px;height:64px;padding:0 28px 0 76px;font-size:18px}
@@ -88,6 +95,7 @@ body{font-family:'Montserrat',system-ui,sans-serif;color:#FFFFFF}
 /* Privacy page: a shorter header over the bands, then a reading column on the light background. */
 .page--doc{min-height:0}
 .page--doc .main{flex:none;padding:calc(128px + clamp(48px,9vh,96px)) 20px clamp(96px,16vh,160px)}
+@media (max-width:760px){.page--doc .main{padding-top:calc(72px + clamp(40px,7vh,72px))}}
 .doc-title{margin:0;max-width:1100px;font-weight:600;font-size:clamp(40px,7vw,96px);line-height:1;letter-spacing:-.042em;text-wrap:balance;text-shadow:0 2px 32px rgba(15,50,30,.22)}
 .doc-date{margin:16px 0 0;font-size:17px;font-weight:500;text-shadow:0 1px 18px rgba(15,50,30,.25)}
 .doc{background:#F4F7F2;color:var(--ink);padding:clamp(16px,4vh,48px) 20px clamp(80px,12vh,128px)}
